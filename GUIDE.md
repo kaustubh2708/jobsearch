@@ -13,10 +13,18 @@ and your application history never leave your computer.
 
 ## 1. Install
 
-One command, from this folder:
+One command, from this folder.
+
+**macOS / Linux / WSL**
 
 ```bash
-./install.sh
+./start.sh
+```
+
+**Windows** — double-click `start.bat`, or from Windows Terminal / PowerShell:
+
+```powershell
+.\start.bat
 ```
 
 That will:
@@ -24,9 +32,21 @@ That will:
 - create a Python virtualenv in `.venv/`
 - install all Python dependencies
 - install the Chromium build Playwright drives
-- install Ollama if it's missing (or tell you where to get it on macOS)
+- install Ollama if it's missing (or point you at the download on macOS/Windows)
+- detect your GPU and offer the right model size
 - download the two models the agent thinks with
 - create the SQLite database
+- walk you through a short setup, then start the agent
+
+It's safe to run any time — every step is idempotent, and after the first run it
+skips straight to starting the agent.
+
+> **On Windows**, install Python from python.org and **tick "Add python.exe to
+> PATH"** during setup. If you skip that, the launcher can't find it. Ollama for
+> Windows is at [ollama.com/download/windows](https://ollama.com/download/windows).
+>
+> `start.bat` runs the PowerShell script with `-ExecutionPolicy Bypass`, so you
+> never need to change your machine's execution policy.
 
 The models are the big download. On a 12GB+ NVIDIA GPU the defaults are:
 
@@ -82,9 +102,9 @@ by hand, once, and the cookies persist in `data/browser_profile/`. No passwords
 are stored anywhere in this project.
 
 ```bash
-./run.sh login linkedin
+./run.sh login linkedin        # Windows: run.bat login linkedin
 ./run.sh login naukri
-./run.sh login wellfound    # optional
+./run.sh login wellfound       # optional
 ```
 
 A browser opens. Log in normally, solve any OTP or captcha, then come back to the
@@ -93,7 +113,7 @@ terminal and press Enter.
 ### d. Check everything's wired up
 
 ```bash
-./run.sh doctor
+./run.sh doctor                # Windows: run.bat doctor
 ```
 
 Green ticks all the way down means you're ready.
@@ -103,7 +123,7 @@ Green ticks all the way down means you're ready.
 ## 3. Run it
 
 ```bash
-./run.sh
+./start.sh                     # Windows: start.bat
 ```
 
 That starts the dashboard at **http://127.0.0.1:8765** and the background agent
@@ -138,13 +158,13 @@ is scored against. If the target roles look wrong, that's the first thing to fix
 
 ### Or drive it from the terminal
 
-```bash
-./run.sh discover        # run one search now
-./run.sh apply           # apply to everything approved
-./run.sh profile         # show your parsed skill library
-./run.sh status          # quick pipeline snapshot
-./run.sh doctor          # check the setup
-```
+| What | macOS / Linux | Windows |
+|---|---|---|
+| Run one search now | `./run.sh discover` | `run.bat discover` |
+| Apply to everything approved | `./run.sh apply` | `run.bat apply` |
+| Show your skill library | `./run.sh profile` | `run.bat profile` |
+| Pipeline snapshot | `./run.sh status` | `run.bat status` |
+| Check the setup | `./run.sh doctor` | `run.bat doctor` |
 
 ---
 
@@ -310,8 +330,19 @@ is meaningfully better at reading a JD sceptically than the 14B.
 | Lots of "Needs input" | Normal at first. Answer them once; the bank remembers. |
 | Wellfound returns nothing | `./run.sh login wellfound` |
 | Discovery run is slow | Expected — a 14B model scoring 40 JDs takes 10-20 min on a 12GB GPU. It runs in the background. |
-| `disk I/O error` from SQLite | The repo is on a filesystem without file locking (network drive). Set `JOBAGENT_DATA_DIR=~/jobagent-data` |
-| Playwright won't launch | `source .venv/bin/activate && python -m playwright install chromium` |
+| `disk I/O error` from SQLite | The repo is on a filesystem without file locking (network drive). Set `JOBAGENT_DATA_DIR` to a local folder. |
+| Playwright won't launch | `.venv/bin/python -m playwright install chromium` (Windows: `.venv\Scripts\python -m playwright install chromium`) |
+
+### Windows-specific
+
+| Symptom | Fix |
+|---|---|
+| "Python 3.10 or newer is required" but it *is* installed | It isn't on PATH. Reinstall from python.org with **"Add python.exe to PATH"** ticked, then open a **new** terminal. |
+| A Microsoft Store page opens instead of Python | That's the Store stub. The launcher skips it automatically — but install real Python from python.org to be safe. |
+| "running scripts is disabled on this system" | Use `start.bat` rather than `start.ps1`. It bypasses the policy for that one run. |
+| `.pages` resume won't parse | `python-snappy` needs a C compiler and usually can't build on Windows. Export your resume to PDF instead — better anyway, since forms need a PDF. |
+| Boxes instead of ✓ in the terminal | Old `conhost`. Use Windows Terminal, or ignore it — the launcher falls back to ASCII automatically. |
+| Scheduler times look wrong | `pip install tzdata` inside `.venv` (it's in requirements, but worth checking). |
 
 Logs live in `logs/jobagent.log` and in the Activity tab.
 
@@ -342,8 +373,8 @@ Logs live in `logs/jobagent.log` and in the Activity tab.
 Jobsearch/
 ├── config.yaml              ← everything you tune
 ├── .env                     ← optional free API keys
-├── install.sh               ← one-command setup
-├── run.sh                   ← one-command launcher
+├── start.sh / start.bat     ← the one command (installs, then runs)
+├── run.sh   / run.bat       ← CLI passthrough
 ├── resume/                  ← your resume goes here
 ├── data/
 │   ├── jobagent.db          ← jobs, applications, answer bank, skill library

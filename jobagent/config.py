@@ -144,7 +144,7 @@ def load_config(path: Optional[Path] = None, reload: bool = False) -> Config:
     path = path or Path(os.environ.get("JOBAGENT_CONFIG", ROOT / "config.yaml"))
     raw: Dict[str, Any] = {}
     if Path(path).exists():
-        raw = yaml.safe_load(Path(path).read_text()) or {}
+        raw = yaml.safe_load(Path(path).read_text(encoding="utf-8")) or {}
     _CACHE = Config(**raw)
     return _CACHE
 
@@ -154,6 +154,7 @@ def save_config(cfg: Config, path: Optional[Path] = None) -> None:
     global _CACHE
     path = path or Path(os.environ.get("JOBAGENT_CONFIG", ROOT / "config.yaml"))
     Path(path).write_text(
-        yaml.safe_dump(cfg.model_dump(mode="json"), sort_keys=False, allow_unicode=True)
+        yaml.safe_dump(cfg.model_dump(mode="json"), sort_keys=False, allow_unicode=True),
+        encoding="utf-8",
     )
     _CACHE = cfg

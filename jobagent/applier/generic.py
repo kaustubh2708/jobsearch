@@ -122,6 +122,13 @@ def fill_visible_fields(page, resolver: AnswerResolver, max_fields: int = 60) ->
     for i in range(min(sels.count(), 25)):
         el = sels.nth(i)
         try:
+            # already answered on an earlier pass — don't re-resolve it, or a
+            # validation retry loops forever re-picking the same option
+            try:
+                if (el.input_value() or "").strip():
+                    continue
+            except Exception:
+                pass
             q = label_for(page, el)
             if not q or SKIP_PAT.search(q):
                 continue
@@ -188,8 +195,11 @@ def apply(page, job, resolver: AnswerResolver, resume_pdf: Optional[Path],
     page.goto(url, wait_until="domcontentloaded", timeout=60000)
     page.wait_for_timeout(3000)
 
-    # Greenhouse/Ashby often need a click to reveal the form
-    for label in ("Apply for this job", "Apply now", "Apply", "I'm interested", "Submit application"):
+    # Greenhouse/Ashby often need a click to reveal the form.
+    # Deliberately NOT including any "Submit" wording here — on a page that
+    # renders the form inline, that would fire off an empty application.
+    for label in ("Apply for this job", "Apply now", "Apply to this job",
+                  "I'm interested", "Apply"):
         try:
             btn = page.get_by_role("button", name=re.compile(f"^{label}$", re.I))
             if btn.count() and btn.first.is_visible():

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # =============================================================================
-#  LocalJobAgent launcher
+#  LocalJobAgent CLI  (macOS / Linux / WSL)   —   Windows: use run.bat
 #
 #    ./run.sh                 start the dashboard + background agent
 #    ./run.sh discover        run one job search now
@@ -13,16 +13,15 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-[ -d .venv ] || { echo "No virtualenv found. Run ./install.sh first."; exit 1; }
-# shellcheck disable=SC1091
-source .venv/bin/activate
+[ -d .venv ] || { echo "No virtualenv found. Run ./start.sh first."; exit 1; }
+VPY=".venv/bin/python"
+
 [ -f .env ] && set -a && . ./.env && set +a
 
 # Make sure Ollama is up before we need it.
-if command -v ollama >/dev/null 2>&1 && ! curl -sf http://localhost:11434/api/tags >/dev/null 2>&1; then
-  echo "▸ starting ollama…"
-  (ollama serve >/dev/null 2>&1 &)
-  sleep 3
-fi
+"$VPY" - <<'PY' 2>/dev/null || true
+from jobagent.bootstrap import start_ollama
+start_ollama()
+PY
 
-exec python -m jobagent.cli "${@:-serve}"
+exec "$VPY" -m jobagent.cli "${@:-serve}"

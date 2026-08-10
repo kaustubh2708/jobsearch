@@ -1,9 +1,29 @@
+# --- python ---
 .venv/
+venv/
+env/
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# --- runtime state (db, browser sessions, screenshots, logs) ---
 data/
 logs/
 .env
+
+# --- your resume stays on your machine ---
 resume/*
 !resume/.gitkeep
+
+# --- os junk ---
 .DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# --- editors ---
+.idea/
+.vscode/
+*.swp

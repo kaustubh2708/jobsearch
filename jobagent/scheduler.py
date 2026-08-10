@@ -46,6 +46,24 @@ def _apply():
         dblog("error", f"Scheduled apply run failed: {e}")
 
 
+def _timezone(name: str = "Asia/Kolkata"):
+    """Windows has no system tz database. The `tzdata` wheel supplies one, but
+    if it's somehow missing we fall back to local time rather than crashing."""
+    try:
+        from zoneinfo import ZoneInfo
+
+        return ZoneInfo(name)
+    except Exception:
+        try:
+            import pytz
+
+            return pytz.timezone(name)
+        except Exception:
+            log.warning("no tz database for %s — using local time. "
+                        "Fix with: pip install tzdata", name)
+            return None
+
+
 def start() -> BackgroundScheduler | None:
     global _sched
     cfg = load_config()
@@ -55,7 +73,8 @@ def start() -> BackgroundScheduler | None:
     if _sched:
         return _sched
 
-    _sched = BackgroundScheduler(timezone="Asia/Kolkata")
+    tz = _timezone()
+    _sched = BackgroundScheduler(timezone=tz) if tz else BackgroundScheduler()
 
     for slot in filter(None, [cfg.schedule.discovery_time, cfg.schedule.discovery_time_2]):
         try:

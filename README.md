@@ -12,18 +12,32 @@ application history stay on your computer.
 
 ## Quick start
 
+**macOS / Linux / WSL**
+
 ```bash
-git clone <this-repo> Jobsearch
+git clone https://github.com/kaustubh2708/jobsearch.git Jobsearch
 cd Jobsearch
 cp ~/Downloads/MyResume.pdf resume/
 ./start.sh
 ```
 
-That's it. `start.sh` installs Python dependencies, Playwright's Chromium, Ollama
-and the models, walks you through a short setup, and opens the dashboard at
-**http://127.0.0.1:8765**.
+**Windows** (PowerShell, Windows Terminal, or just double-click `start.bat`)
+
+```powershell
+git clone https://github.com/kaustubh2708/jobsearch.git Jobsearch
+cd Jobsearch
+copy "$env:USERPROFILE\Downloads\MyResume.pdf" resume\
+.\start.bat
+```
+
+That's it. The launcher installs Python dependencies, Playwright's Chromium and
+the Ollama models, sizes the model to your GPU, walks you through a short setup,
+and opens the dashboard at **http://127.0.0.1:8765**.
 
 Every run after the first just starts the agent.
+
+> Both launchers are thin wrappers. All the real setup logic lives in
+> `jobagent/bootstrap.py`, so every platform behaves identically.
 
 ---
 
@@ -52,21 +66,25 @@ answer from your resume — and remembers your answer forever.
 - Python 3.10+
 - ~10 GB free disk for the models
 - A GPU helps a lot (12GB+ VRAM recommended), but CPU works with a smaller model
-- macOS, Linux, or Windows via WSL
+- Windows 10/11, macOS, or Linux
 
 ---
 
 ## Commands
 
-```bash
-./start.sh               # install if needed, then run everything
-./run.sh discover        # run one job search now
-./run.sh apply           # apply to everything approved
-./run.sh profile         # show your parsed skill library
-./run.sh login linkedin  # log into a board once
-./run.sh doctor          # check the setup
-./run.sh status          # pipeline snapshot
-```
+| What | macOS / Linux | Windows |
+|---|---|---|
+| Install + run everything | `./start.sh` | `start.bat` |
+| Run one job search now | `./run.sh discover` | `run.bat discover` |
+| Apply to everything approved | `./run.sh apply` | `run.bat apply` |
+| Show your skill library | `./run.sh profile` | `run.bat profile` |
+| Log into a board once | `./run.sh login linkedin` | `run.bat login linkedin` |
+| Check the setup | `./run.sh doctor` | `run.bat doctor` |
+| Pipeline snapshot | `./run.sh status` | `run.bat status` |
+
+On Windows you can also use `.\start.ps1` / `.\run.ps1` directly if your
+execution policy allows it — the `.bat` files just wrap them with
+`-ExecutionPolicy Bypass` so you never have to change a machine setting.
 
 ---
 

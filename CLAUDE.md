@@ -63,8 +63,13 @@ jobagent/
 │                       search terms from the resume unless config overrides.
 ├── pipeline.py         run_discovery(): gather → hard_filter → dedupe →
 │                       drop_already_seen → embed sort → LLM score → persist.
+├── bootstrap.py        Cross-platform installer. ALL setup logic lives here —
+│                       deps, playwright, ollama detect/start, GPU sizing, model
+│                       pulls, db init. The shell launchers are thin wrappers so
+│                       Windows and Unix cannot drift. Imports stdlib only.
 ├── scheduler.py        APScheduler. Cron discovery 2×/day + apply poll loop.
-│                       Runs in-process with the server.
+│                       Runs in-process with the server. tz falls back to local
+│                       if no tz database (Windows without `tzdata`).
 ├── server.py           FastAPI. All routes under /api/*. Serves web/ statically.
 ├── cli.py              typer entry point. serve/discover/apply/profile/login/
 │                       setup/status/doctor.
@@ -183,10 +188,38 @@ unreachable.
 
 ---
 
+## Cross-platform rules
+
+The project must run identically on Windows, macOS and Linux. When touching it:
+
+- **Never put logic in a shell script.** `start.sh`, `start.ps1`, `start.bat`,
+  `run.sh`, `run.ps1`, `run.bat` may only: find a Python, make a venv, load
+  `.env`, and call `jobagent.bootstrap` / `jobagent.cli`. Anything else goes in
+  `bootstrap.py`, which is written once and runs everywhere.
+- **`bootstrap.py` imports stdlib only.** It runs *before* dependencies exist.
+- **Always pass `encoding="utf-8"`** to `read_text`/`write_text`/`FileHandler`.
+  Windows defaults to cp1252 and mangles ₹ and bullet characters.
+- **SQLite URLs use `Path.as_posix()`** — `sqlite:///C:\Users\…` is malformed.
+- **No hardcoded `/` in paths.** Use `pathlib`.
+- **`python-snappy` is optional** and installed separately by `bootstrap.py`; it
+  needs a C toolchain and usually fails on Windows. `.pages` support degrades
+  with a clear message rather than crashing.
+- **`tzdata` is a Windows-only requirement** — there's no system tz database
+  there, and the scheduler is `Asia/Kolkata`-pinned.
+- Unicode in console output goes through `bootstrap.TICK` / `ARROW` / `CROSS`,
+  which fall back to ASCII when the console encoding can't represent them.
+
+---
+
 ## Gotchas
 
 - **SQLite needs file locking.** On network drives or some FUSE mounts you get
   `disk I/O error`. Fix: `JOBAGENT_DATA_DIR=~/jobagent-data`.
+- **Never add a "Submit"-like label to the form-reveal click loop** in
+  `generic.apply`. On a page that renders the form inline, that fires off an
+  empty application. There's a regression test for this.
+- **Skip form fields that already have a value.** Validation retries re-run
+  `fill_visible_fields`; without the guard, selects get re-resolved forever.
 - **`chat_json` never raises.** It coerces malformed model output and falls back
   to `{}`. Callers must handle empty dicts.
 - **Playwright is sync API.** The whole applier is synchronous and runs in a

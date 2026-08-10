@@ -18,12 +18,19 @@ c = Console()
 
 
 def _logging(verbose: bool = False):
+    # Windows consoles default to cp1252 and blow up on ₹ / ✓ in a log line.
+    if hasattr(sys.stdout, "reconfigure"):
+        try:
+            sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+            sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
     logging.basicConfig(
         level=logging.DEBUG if verbose else logging.INFO,
         format="%(asctime)s  %(levelname)-7s %(name)-26s %(message)s",
         datefmt="%H:%M:%S",
         handlers=[logging.StreamHandler(sys.stdout),
-                  logging.FileHandler(LOG_DIR / "jobagent.log")],
+                  logging.FileHandler(LOG_DIR / "jobagent.log", encoding="utf-8")],
     )
     for noisy in ("httpx", "urllib3", "apscheduler.executors", "playwright", "asyncio"):
         logging.getLogger(noisy).setLevel(logging.WARNING)

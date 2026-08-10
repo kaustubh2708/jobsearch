@@ -8,11 +8,18 @@ from enum import Enum
 from typing import Any, Dict, List, Optional
 
 from sqlalchemy import Column, Text
+from sqlalchemy.engine import URL
 from sqlmodel import Field, Session, SQLModel, create_engine, select
 
 from .config import DB_PATH
 
-engine = create_engine(f"sqlite:///{DB_PATH}", connect_args={"check_same_thread": False})
+# URL.create rather than string interpolation: it escapes properly, which
+# matters on Windows where the path is often C:\Users\First Last\… (spaces,
+# backslashes) and a hand-built "sqlite:///…" URL would be malformed.
+engine = create_engine(
+    URL.create("sqlite", database=str(DB_PATH)),
+    connect_args={"check_same_thread": False},
+)
 
 
 def utcnow() -> datetime:

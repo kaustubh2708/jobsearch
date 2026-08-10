@@ -40,7 +40,8 @@ def find_resume(cfg=None) -> Optional[Path]:
 def extract_text(path: Path) -> str:
     suf = path.suffix.lower()
     if suf in (".txt", ".md"):
-        return path.read_text(errors="ignore")
+        # explicit encoding — Windows defaults to cp1252 and mangles bullets/₹
+        return path.read_text(encoding="utf-8", errors="ignore")
     if suf == ".pdf":
         return _pdf_text(path)
     if suf == ".docx":
