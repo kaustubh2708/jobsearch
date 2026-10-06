@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js" integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2" crossorigin="anonymous"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #000;
+      }
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #F4F1E9;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="30"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div
+        id="el-01-clearer-next-move"
+        class="scene"
+        data-composition-id="f-01-clearer-next-move"
+        data-composition-src="compositions/frames/01-clearer-next-move.html"
+        data-start="0"
+        data-duration="3"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-02-profile"
+        class="scene"
+        data-composition-id="f-02-profile"
+        data-composition-src="compositions/frames/02-profile.html"
+        data-start="3"
+        data-duration="5.5"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-03-discovery"
+        class="scene"
+        data-composition-id="f-03-discovery"
+        data-composition-src="compositions/frames/03-discovery.html"
+        data-start="8.5"
+        data-duration="5"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-04-verify"
+        class="scene"
+        data-composition-id="f-04-verify"
+        data-composition-src="compositions/frames/04-verify.html"
+        data-start="13.5"
+        data-duration="4"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-05-tracker"
+        class="scene"
+        data-composition-id="f-05-tracker"
+        data-composition-src="compositions/frames/05-tracker.html"
+        data-start="17.5"
+        data-duration="4.5"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-06-referrals"
+        class="scene"
+        data-composition-id="f-06-referrals"
+        data-composition-src="compositions/frames/06-referrals.html"
+        data-start="22"
+        data-duration="4"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-07-human-control"
+        class="scene"
+        data-composition-id="f-07-human-control"
+        data-composition-src="compositions/frames/07-human-control.html"
+        data-start="26"
+        data-duration="4"
+        data-track-index="1"
+      ></div>
+
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

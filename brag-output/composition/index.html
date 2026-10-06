@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js" integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2" crossorigin="anonymous"></script>
+<style>
+@font-face{font-family:'Manrope';font-style:normal;font-weight:400 800;font-display:swap;src:url('assets/fonts/captured-xn7gYHE41ni1AdIRggexSvfedN4.woff2') format('woff2')}
+@font-face{font-family:'DM Mono';font-style:normal;font-weight:400 500;font-display:swap;src:url('assets/fonts/captured-aFTU7PB1QTsUX8KYthqQBK6PYK0.woff2') format('woff2')}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#000}
+#root{position:relative;width:100%;height:100%;overflow:hidden;background:#F4F1E9;font-family:'Manrope',sans-serif;color:#202923}
+.scene{position:absolute;inset:0}
+.abs{position:absolute}
+#glow{position:absolute;inset:0;background:radial-gradient(ellipse at 72% 30%,rgba(66,107,86,.20),transparent 55%),radial-gradient(ellipse at 18% 90%,rgba(184,120,96,.14),transparent 50%)}
+.k{position:absolute;font:500 26px 'DM Mono',monospace;letter-spacing:.14em;color:#6F5C4B;text-transform:uppercase;white-space:nowrap}
+.h{position:absolute;font-weight:700;letter-spacing:-.055em;line-height:1.02;white-space:nowrap}
+.g{color:#426B56}
+.sub{position:absolute;font-weight:500;font-size:36px;color:#4d574f;line-height:1.35;letter-spacing:-.01em}
+.ov{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+/* scene 1 */
+.deco{position:absolute;border-radius:28px;background:#EBE6E2;border:1px solid rgba(32,41,35,.14)}
+.deco i{display:block;height:14px;border-radius:7px;background:rgba(32,41,35,.13);margin:26px 30px 0}
+/* scene 2 */
+.mode{position:absolute;height:84px;border-radius:24px;border:1.5px solid rgba(32,41,35,.16);background:#FFFDF8;display:flex;align-items:center;padding:0 32px;font-weight:800;font-size:32px;letter-spacing:-.02em;white-space:nowrap}
+.mode.on{border-color:#426B56;background:#E4ECE2;box-shadow:0 0 0 4px rgba(66,107,86,.18)}
+.pay{position:absolute;height:84px;border-radius:24px;border:1.5px solid rgba(32,41,35,.16);background:#FFFDF8;display:flex;align-items:center;gap:14px;padding:0 30px;font-weight:700;font-size:30px;white-space:nowrap}
+.pay b{font:500 26px 'DM Mono',monospace;color:#6F5C4B}
+.blk{position:absolute;width:304px;height:210px;border-radius:26px;background:#FFFDF8;border:1.5px solid rgba(32,41,35,.16);padding:22px 24px}
+.blk .selbg{position:absolute;inset:-1.5px;border-radius:26px;border:3px solid #426B56;background:linear-gradient(160deg,rgba(228,236,226,.95),rgba(255,253,248,.2));opacity:0}
+.blk .tick{position:absolute;right:20px;top:20px;width:38px;height:38px;border-radius:50%;background:#426B56;color:#fff;display:grid;place-items:center;font-weight:800;font-size:22px;opacity:0}
+.blk .ring{position:absolute;right:20px;top:20px;width:38px;height:38px;border-radius:50%;border:2px solid rgba(32,41,35,.2)}
+.blk .mk{position:absolute;left:24px;top:22px;width:58px;height:58px;border-radius:16px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:26px}
+.blk .nm{position:absolute;left:24px;top:94px;font-weight:800;font-size:30px;letter-spacing:-.025em;white-space:nowrap}
+.blk .op{position:absolute;left:24px;top:132px;font-size:22px;color:#5c665e;font-weight:500}
+.blk .bd{position:absolute;left:24px;bottom:20px;display:flex;gap:8px}
+.bd i{font:500 19px 'DM Mono',monospace;font-style:normal;padding:5px 12px;border-radius:99px;background:#EBE6E2;color:#6F5C4B;white-space:nowrap}
+.bd i.hr{background:rgba(184,120,96,.2);color:#7d472f}.bd i.al{background:rgba(111,92,75,.18)}.bd i.en{background:rgba(66,107,86,.18);color:#2F5240}
+#cursor{position:absolute;left:0;top:0;width:54px;height:54px}
+/* scene 3 */
+.board{position:absolute;width:700px;height:200px;border-radius:30px;background:#FFFDF8;border:1.5px solid rgba(32,41,35,.18);padding:26px 34px}
+.board .t{font:500 27px 'DM Mono',monospace;letter-spacing:.14em;color:#6F5C4B;display:flex;align-items:center;gap:14px}
+.board .t u{width:16px;height:16px;border-radius:50%;background:#B87860;display:block}
+.board .r{height:11px;border-radius:6px;background:rgba(32,41,35,.13);margin-top:19px}
+.board .tag{position:absolute;right:30px;bottom:20px;font-weight:800;font-size:26px;color:#426B56}
+.jc{position:absolute;left:0;top:0;width:128px;height:84px;border-radius:18px;background:#FFFDF8;border:1.5px solid rgba(32,41,35,.28);opacity:0}
+.jc b{position:absolute;left:16px;top:16px;right:16px;height:9px;border-radius:5px;background:rgba(32,41,35,.2)}
+.jc i{position:absolute;left:16px;bottom:16px;width:56px;height:20px;border-radius:10px;background:#426B56}
+/* scene 4 */
+#belt{position:absolute;left:0;top:700px;width:100%;height:20px;background:#56635A}
+#beltb{position:absolute;left:0;top:720px;width:100%;height:84px;background:#3C4840}
+.sign{position:absolute;height:44px;border-radius:12px;background:#202923;color:#F4F1E9;font:500 24px 'DM Mono',monospace;letter-spacing:.16em;display:grid;place-items:center;padding:0 24px;white-space:nowrap}
+.bin{position:absolute;top:812px;width:300px;height:150px;background:#CFC6B2;clip-path:polygon(0 0,100% 0,92% 100%,8% 100%);display:grid;place-items:end center;padding-bottom:18px;font:500 22px 'DM Mono',monospace;letter-spacing:.12em;color:#6F5C4B}
+.bc{position:absolute;left:0;top:560px;width:290px;height:140px;border-radius:22px;background:#FFFDF8;border:2px solid rgba(32,41,35,.28)}
+.bc .ti{position:absolute;left:0;right:0;top:20px;text-align:center;font-weight:800;font-size:27px;letter-spacing:-.02em;white-space:nowrap}
+.bc .ln{position:absolute;left:30px;right:30px;top:62px;height:7px;border-radius:4px;background:rgba(32,41,35,.13)}
+.chip{position:absolute;height:40px;border-radius:20px;display:grid;place-items:center;padding:0 14px;font:700 20px 'DM Mono',monospace;color:#fff;white-space:nowrap;opacity:0}
+/* scene 5 */
+.panel{position:absolute;border-radius:30px;background:#FFFDF8;border:1.5px solid rgba(32,41,35,.16)}
+.co{position:absolute;left:160px;width:1010px;border-radius:30px;background:#FFFDF8;border:2px solid rgba(66,107,86,.55)}
+.lg{position:absolute;width:64px;height:64px;border-radius:18px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:28px}
+.pill{position:absolute;height:44px;border-radius:22px;display:grid;place-items:center;padding:0 18px;font:500 22px 'DM Mono',monospace;white-space:nowrap}
+.btn{position:absolute;height:64px;border-radius:32px;display:grid;place-items:center;padding:0 30px;font-weight:800;font-size:26px;white-space:nowrap}
+.person{position:absolute;left:30px;right:30px;border-radius:22px;background:#EBE6E2;padding:16px 22px}
+.person b{display:block;font-size:28px;letter-spacing:-.02em}.person span{display:block;font-size:21px;color:#5c665e;margin-top:2px}
+.grp{position:absolute;left:30px;font:500 21px 'DM Mono',monospace;letter-spacing:.14em;color:#6F5C4B;text-transform:uppercase}
+/* scene 6 */
+.lock{position:absolute;display:flex;align-items:center;gap:22px}
+.orb{width:74px;height:74px;border:3px solid #426B56;border-radius:50%;display:grid;place-items:center;transform:rotate(-32deg);position:relative}
+.orb:before{content:"";position:absolute;width:86px;height:34px;border:3px solid #8B7461;border-radius:50%;transform:rotate(50deg)}
+.orb i{width:18px;height:18px;border-radius:50%;background:#426B56}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="orbit-brag" data-start="0" data-duration="23.7" data-width="1920" data-height="1080">
+  <div id="glow" class="clip" data-start="0" data-duration="23.7" data-track-index="0"></div>
+
+  <!-- 1 · Hook -->
+  <section id="s1" class="clip scene" data-start="0" data-duration="3.7" data-track-index="1">
+    <div class="sc scene">
+      <div class="deco" id="s1-d1" style="left:1130px;top:160px;width:380px;height:210px"><i style="width:240px"></i><i style="width:300px"></i><i style="width:180px"></i></div>
+      <div class="deco" id="s1-d2" style="left:1480px;top:330px;width:340px;height:200px"><i style="width:210px"></i><i style="width:260px"></i></div>
+      <div class="deco" id="s1-d3" style="left:1040px;top:560px;width:360px;height:190px"><i style="width:250px"></i><i style="width:170px"></i></div>
+      <div class="k" id="s1-k" style="left:160px;top:250px">Orbit · The job search factory</div>
+      <div class="h" id="s1-l1" style="left:160px;top:310px;font-size:132px">Pick your companies.</div>
+      <div class="h g" id="s1-l2" style="left:160px;top:464px;font-size:132px">Let a detective hunt.</div>
+      <svg class="ov" viewBox="0 0 1920 1080"><ellipse cx="1590" cy="930" rx="220" ry="24" fill="rgba(32,41,35,.1)"/><g transform="translate(1590,920) scale(3.0)"><g class="pulse"><g id="s1-det"></g></g></g></svg>
+    </div>
+  </section>
+
+  <!-- 2 · Choose -->
+  <section id="s2" class="clip scene" data-start="3.7" data-duration="4.22" data-track-index="1">
+    <div class="sc scene">
+      <div class="k" style="left:160px;top:52px">Step 1 · Choose</div>
+      <div class="h" style="left:160px;top:120px;font-size:88px">Choose your companies.</div>
+      <div class="sub" style="left:160px;top:224px;font-size:34px">Or stay open to any, as long as your minimum pay is met.</div>
+      <div class="mode on" id="s2-m1" style="left:160px;top:310px;width:440px">Choose companies</div>
+      <div class="mode" id="s2-m2" style="left:624px;top:310px;width:470px">Open to any company</div>
+      <div class="pay" id="s2-pay" style="left:1118px;top:310px"><b>MIN PAY</b>35 LPA</div>
+      <div id="s2-grid"></div>
+      <svg id="cursor" viewBox="0 0 54 54"><path d="M8 4 L8 40 L18 31 L25 46 L32 43 L25 28 L38 28 Z" fill="#202923" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></svg>
+    </div>
+  </section>
+
+  <!-- 3 · Hunt -->
+  <section id="s3" class="clip scene" data-start="7.92" data-duration="4.2" data-track-index="1">
+    <div class="sc scene">
+      <div class="k" style="left:160px;top:52px">Step 2 · The hunt</div>
+      <div class="h" style="left:160px;top:120px;font-size:92px">A detective on the lookout</div>
+      <div class="sub" style="left:160px;top:232px;font-size:34px">Career portals first. Then LinkedIn posts and job platforms.</div>
+      <svg class="ov" viewBox="0 0 1920 1080"><ellipse cx="470" cy="950" rx="250" ry="26" fill="rgba(32,41,35,.1)"/>
+        <line id="s3-beam" x1="720" y1="700" x2="1060" y2="360" stroke="#B87860" stroke-width="5" stroke-dasharray="12 14" opacity="0"/>
+        <g transform="translate(470,940) scale(2.9)"><g class="pulse"><g id="s3-det"></g></g></g></svg>
+      <div class="board" id="s3-b0" style="left:1060px;top:300px"><div class="t"><u></u>CAREER PORTALS</div><div class="r" style="width:560px"></div><div class="r" style="width:430px"></div><div class="r" style="width:500px"></div><div class="tag">first</div></div>
+      <div class="board" id="s3-b1" style="left:1060px;top:540px"><div class="t"><u></u>LINKEDIN POSTS</div><div class="r" style="width:540px"></div><div class="r" style="width:470px"></div><div class="r" style="width:420px"></div><div class="tag">posts you can see</div></div>
+      <div class="board" id="s3-b2" style="left:1060px;top:780px"><div class="t"><u></u>JOB PLATFORMS</div><div class="r" style="width:520px"></div><div class="r" style="width:450px"></div><div class="r" style="width:560px"></div><div class="tag">public listings</div></div>
+      <div id="s3-cards"></div>
+    </div>
+  </section>
+
+  <!-- 4 · Filter + verify -->
+  <section id="s4" class="clip scene" data-start="12.12" data-duration="4.22" data-track-index="1">
+    <div class="sc scene">
+      <div class="k" style="left:160px;top:34px">Steps 3 and 4 · Fit and verify</div>
+      <div class="h" style="left:160px;top:98px;font-size:80px">Filtered by skills and fit.</div>
+      <div class="h g" style="left:160px;top:188px;font-size:80px">Verified, link by link.</div>
+      <svg class="ov" viewBox="0 0 1920 1080"><g transform="translate(560,706) scale(1.85)"><g class="pulse"><g id="s4-an"></g></g></g><g transform="translate(1180,706) scale(1.85)"><g class="pulse"><g id="s4-vf"></g></g></g></svg>
+      <div class="sign" style="left:430px;top:318px">02 · ANALYST</div>
+      <div class="sign" style="left:1030px;top:318px">03 · VERIFIER</div>
+      <div id="belt"></div><div id="beltb"></div>
+      <div class="bin" style="left:410px">NOT A FIT</div><div class="bin" style="left:1030px">LINK BROKEN</div>
+      <div id="s4-cards"></div>
+    </div>
+  </section>
+
+  <!-- 5 · Jobs available -->
+  <section id="s5" class="clip scene" data-start="16.34" data-duration="4.2" data-track-index="1">
+    <div class="sc scene">
+      <div class="k" style="left:160px;top:30px">Step 5 · Your tracker</div>
+      <div class="h" style="left:160px;top:94px;font-size:76px">Jobs available, with referral options beside them.</div>
+      <div class="k" id="s5-sum" style="left:160px;top:212px;font-size:24px;text-transform:none;letter-spacing:.04em">3 openings at 2 companies · 2 verified live</div>
+      <!-- company 1, open -->
+      <div class="co" id="s5-co1" style="top:262px;height:640px">
+        <div class="lg" style="left:32px;top:28px;background:#426B56">NL</div>
+        <div class="abs" style="left:116px;top:26px;font-weight:800;font-size:34px;letter-spacing:-.025em">Northstar Labs</div>
+        <div class="abs" style="left:116px;top:70px;font-size:22px;color:#5c665e">2 jobs · best fit 88 · 2 verified live</div>
+        <div class="pill" style="right:30px;top:32px;background:rgba(184,120,96,.2);color:#92583f">HR 2</div>
+        <div class="pill" style="right:148px;top:32px;background:rgba(111,92,75,.18);color:#6F5C4B">Alumni 1</div>
+        <div class="pill" style="right:306px;top:32px;background:rgba(66,107,86,.18);color:#2F5240">Eng 1</div>
+        <div class="abs" id="s5-job" style="left:28px;top:122px;width:954px;height:480px;border-radius:24px;border:1.5px solid rgba(32,41,35,.16);background:#FFFDF8">
+          <div class="abs" style="left:32px;top:28px;font-weight:800;font-size:44px;letter-spacing:-.035em">Backend Engineer</div>
+          <div class="abs" style="left:32px;top:92px;font-size:26px;color:#5c665e">Bengaluru</div>
+          <div class="pill" style="left:176px;top:86px;background:rgba(66,107,86,.18);color:#2F5240">Fit 88 · Strong</div>
+          <div class="pill" id="s5-ver" style="left:424px;top:86px;background:rgba(66,107,86,.18);color:#2F5240">✓ Verified live</div>
+          <div class="pill" style="left:672px;top:86px;background:#EBE6E2;color:#6F5C4B">Pay not published</div>
+          <div class="pill" style="left:32px;top:156px;border:1.5px solid rgba(32,41,35,.16);color:#4d574f">✓ Backend role</div>
+          <div class="pill" style="left:268px;top:156px;border:1.5px solid rgba(32,41,35,.16);color:#4d574f">✓ In Bengaluru</div>
+          <div class="pill" style="left:504px;top:156px;border:1.5px solid rgba(32,41,35,.16);color:#4d574f">✓ Skills match</div>
+          <div class="btn" id="s5-open" style="left:32px;top:240px;background:#426B56;color:#fff">Open listing ↗</div>
+          <div class="btn" style="left:324px;top:240px;border:1.5px solid rgba(32,41,35,.16);color:#202923;width:220px">Applied ▾</div>
+          <div class="btn" style="left:568px;top:240px;border:1.5px solid rgba(32,41,35,.16);color:#202923">Notes</div>
+          <div class="abs" style="left:32px;top:344px;right:32px;border-top:2px dashed rgba(32,41,35,.16);padding-top:22px;font-size:25px;color:#5c665e"><b style="color:#202923">Applied</b> · Oct 2 · Next: Follow up in 4 days</div>
+          <div class="abs" style="left:32px;top:410px;font-size:22px;color:#4d574f">Tracking details live right beside the listing.</div>
+        </div>
+      </div>
+      <div class="co" id="s5-co2" style="top:926px;height:84px;border:1.5px solid rgba(32,41,35,.16)">
+        <div class="lg" style="left:32px;top:10px;width:64px;height:64px;background:#B87860;border-radius:18px">PP</div>
+        <div class="abs" style="left:116px;top:12px;font-weight:800;font-size:30px;letter-spacing:-.025em">Paper Planes</div>
+        <div class="abs" style="left:116px;top:50px;font-size:20px;color:#5c665e">1 job · 1 verified live</div>
+      </div>
+      <!-- reach out panel -->
+      <div class="panel" id="s5-panel" style="left:1210px;top:262px;width:550px;height:748px">
+        <div class="abs" id="s5-ph" style="left:30px;top:26px;font-weight:800;font-size:32px;letter-spacing:-.025em">Reach out · Northstar Labs</div>
+        <div id="s5-g1"><div class="grp" style="top:92px">HR / TA <span>2</span></div>
+          <div class="person" style="top:128px;height:84px"><b>Anika Rao</b><span>Talent Partner</span></div>
+          <div class="person" style="top:224px;height:84px"><b>Sam Iyer</b><span>Recruiter</span></div></div>
+        <div id="s5-g2"><div class="grp" style="top:326px">Alumni <span>1</span></div>
+          <div class="person" style="top:362px;height:84px"><b>Dev Mehta</b><span>SDE II · fellow alum</span></div>
+          <div class="grp" style="top:464px">Engineers <span>1</span></div>
+          <div class="person" style="top:500px;height:84px"><b>Riya Shah</b><span>Backend, same team</span></div></div>
+        <div id="s5-g3" class="abs" style="left:30px;right:30px;top:604px;height:120px;border-radius:22px;border:2px solid #426B56;background:#F2F6F1;padding:14px 20px">
+          <div style="font-size:23px;line-height:1.35;color:#202923">Hi Anika, I came across the Backend Engineer opening at Northstar Labs…</div>
+          <div class="abs" style="left:20px;bottom:10px;font:500 19px 'DM Mono',monospace;color:#2F5240">You copy it. You send it.</div>
+          <div class="abs" style="right:20px;bottom:10px;font:700 20px 'DM Mono',monospace;color:#fff;background:#426B56;border-radius:16px;padding:4px 16px">Copy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · Outro -->
+  <section id="s6" class="clip scene" data-start="20.54" data-duration="3.16" data-track-index="1">
+    <div class="sc scene">
+      <div class="h" id="s6-l1" style="left:0;right:0;text-align:center;top:250px;font-size:150px">You review. You send.</div>
+      <div class="sub" id="s6-l2" style="left:0;right:0;text-align:center;top:430px;font-size:46px;color:#3d473f">Orbit never applies or messages for you.</div>
+      <svg class="ov" viewBox="0 0 1920 1080"><g id="s6-row"></g></svg>
+      <div class="lock" id="s6-lock" style="left:0;right:0;top:760px;justify-content:center"><div class="orb"><i></i></div><div style="font-weight:800;font-size:84px;letter-spacing:-.05em">orbit<span class="g">.</span></div></div>
+      <div class="sub" id="s6-tag" style="left:0;right:0;text-align:center;top:876px;font-size:40px;font-weight:700;color:#426B56">Pick your companies. Let a detective hunt.</div>
+    </div>
+  </section>
+
+  <!-- audio -->
+  <audio id="a-music" data-start="0" data-duration="23.7" data-track-index="20" data-volume="1" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":1,"v":0.5},{"t":22.0,"v":0.5},{"t":23.6,"v":0}]}]}' src="assets/music/music.mp3"></audio>
+  <audio id="sfx-bong1" data-start="1.6" data-duration="0.12" data-track-index="21" data-volume="0.5" src="assets/sfx/bong_001.ogg"></audio>
+  <audio id="sfx-imp1" data-start="3.7" data-duration="0.18" data-track-index="22" data-volume="0.35" src="assets/sfx/impactSoft_medium_001.ogg"></audio>
+  <audio id="sfx-imp2" data-start="7.92" data-duration="0.18" data-track-index="23" data-volume="0.35" src="assets/sfx/impactSoft_medium_001.ogg"></audio>
+  <audio id="sfx-imp3" data-start="12.12" data-duration="0.18" data-track-index="24" data-volume="0.35" src="assets/sfx/impactSoft_medium_001.ogg"></audio>
+  <audio id="sfx-c1" data-start="4.23" data-duration="0.01" data-track-index="25" data-volume="0.5" src="assets/sfx/click_003.ogg"></audio>
+  <audio id="sfx-c2" data-start="4.75" data-duration="0.01" data-track-index="26" data-volume="0.5" src="assets/sfx/click_003.ogg"></audio>
+  <audio id="sfx-c3" data-start="5.28" data-duration="0.01" data-track-index="27" data-volume="0.5" src="assets/sfx/click_003.ogg"></audio>
+  <audio id="sfx-c4" data-start="5.8" data-duration="0.01" data-track-index="28" data-volume="0.5" src="assets/sfx/click_003.ogg"></audio>
+  <audio id="sfx-r1" data-start="8.44" data-duration="0.06" data-track-index="29" data-volume="0.5" src="assets/sfx/rollover2.ogg"></audio>
+  <audio id="sfx-r2" data-start="9.5" data-duration="0.06" data-track-index="30" data-volume="0.5" src="assets/sfx/rollover2.ogg"></audio>
+  <audio id="sfx-r3" data-start="10.54" data-duration="0.06" data-track-index="31" data-volume="0.5" src="assets/sfx/rollover2.ogg"></audio>
+  <audio id="sfx-d1" data-start="13.9" data-duration="0.11" data-track-index="32" data-volume="0.6" src="assets/sfx/drop_001.ogg"></audio>
+  <audio id="sfx-d2" data-start="15.35" data-duration="0.11" data-track-index="33" data-volume="0.6" src="assets/sfx/drop_001.ogg"></audio>
+  <audio id="sfx-s1" data-start="17.38" data-duration="0.05" data-track-index="34" data-volume="0.35" src="assets/sfx/select_008.ogg"></audio>
+  <audio id="sfx-s2" data-start="18.44" data-duration="0.05" data-track-index="35" data-volume="0.35" src="assets/sfx/select_008.ogg"></audio>
+  <audio id="sfx-bong2" data-start="19.48" data-duration="0.12" data-track-index="36" data-volume="0.45" src="assets/sfx/bong_001.ogg"></audio>
+  <audio id="sfx-bong3" data-start="22.2" data-duration="0.12" data-track-index="37" data-volume="0.45" src="assets/sfx/bong_001.ogg"></audio>
+</div>
+
+<script src="audio-data.js"></script>
+<script>
+(function(){
+var C={ink:"#202923",green:"#426B56",clay:"#6F5C4B",terra:"#B87860",paper:"#FFFDF8",ivory:"#F4F1E9",stone:"#EBE6E2"};
+var DET={key:"scout",color:C.green,dark:"#2F5240",hat:true},ANA={key:"analyst",color:C.clay,dark:"#54463A"},VER={key:"guard",color:"#34433A",dark:"#222C26"},CON={key:"connector",color:C.terra,dark:"#8F5A45"};
+  const robotSVG = (c, extra = "") => `
+    <g class="rb" data-k="${c.key}" ${extra}>
+      <g class="rb-sway">
+        <rect x="-36" y="-92" width="72" height="72" rx="22" fill="${c.color}"/>
+        <rect x="-36" y="-92" width="72" height="30" rx="16" fill="#fff" opacity=".08"/>
+        <rect x="-22" y="-70" width="44" height="30" rx="9" fill="#FFFDF8" opacity=".6"/>
+        <circle class="rb-led" cx="-11" cy="-55" r="3.2" fill="${c.dark}"/><circle class="rb-led l2" cx="0" cy="-55" r="3.2" fill="${c.dark}"/><circle class="rb-led l3" cx="11" cy="-55" r="3.2" fill="${c.dark}"/>
+        <rect x="-8" y="-100" width="16" height="10" rx="4" fill="${c.dark}"/>
+        <g transform="translate(-47,-76)"><g class="rb-arm rb-arm-l"><rect x="-6" y="0" width="12" height="30" rx="6" fill="${c.dark}"/><g transform="translate(0,26)"><g class="rb-fore"><rect x="-5.5" y="0" width="11" height="26" rx="5.5" fill="${c.dark}"/><circle cx="0" cy="27" r="8.5" fill="${c.color}" stroke="${c.dark}" stroke-width="2"/></g></g></g></g>
+        <g transform="translate(47,-76)"><g class="rb-arm rb-arm-r"><rect x="-6" y="0" width="12" height="30" rx="6" fill="${c.dark}"/><g transform="translate(0,26)"><g class="rb-fore"><rect x="-5.5" y="0" width="11" height="26" rx="5.5" fill="${c.dark}"/><circle cx="0" cy="27" r="8.5" fill="${c.color}" stroke="${c.dark}" stroke-width="2"/></g></g></g></g>
+        <g class="rb-head">
+          ${c.hat ? "" : `<line x1="0" y1="-152" x2="0" y2="-172" stroke="${c.dark}" stroke-width="4" stroke-linecap="round"/><circle class="rb-bulb" cx="0" cy="-176" r="6" fill="${C.terra}"/>`}
+          <rect x="-36" y="-154" width="72" height="56" rx="20" fill="${c.color}"/>
+          <rect x="-36" y="-154" width="72" height="24" rx="14" fill="#fff" opacity=".1"/>
+          <rect x="-28" y="-144" width="56" height="36" rx="14" fill="#1B241E"/>
+          <g class="rb-eyes"><ellipse class="rb-eye" cx="-12" cy="-127" rx="5.4" ry="6.6" fill="#BFE8CC"/><ellipse class="rb-eye" cx="12" cy="-127" rx="5.4" ry="6.6" fill="#BFE8CC"/></g>
+          <path class="rb-mouth" d="M-6 -115 Q0 -110 6 -115" fill="none" stroke="#BFE8CC" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="-23" cy="-117" r="3.4" fill="${C.terra}" opacity=".55"/><circle cx="23" cy="-117" r="3.4" fill="${C.terra}" opacity=".55"/>
+          ${c.hat ? `<g class="rb-hat"><ellipse cx="0" cy="-153" rx="50" ry="9" fill="#3A2F27"/><path d="M-27 -153 Q-27 -184 0 -184 Q27 -184 27 -153Z" fill="#4A3B30"/><rect x="-27" y="-165" width="54" height="8" fill="${C.terra}"/><circle class="rb-bulb" cx="0" cy="-184" r="0" fill="none"/></g>` : ""}
+        </g>
+      </g>
+      ${extra ? "" : ""}
+    </g>`;
+function mount(id,c){var g=document.getElementById(id);g.innerHTML=robotSVG(c);return g;}
+var det1=mount("s1-det",DET),det3=mount("s3-det",DET),an=mount("s4-an",ANA),vf=mount("s4-vf",VER);
+var rowG=document.getElementById("s6-row");
+[[DET,150],[ANA,320],[VER,1600],[CON,1770]].forEach(function(p,i){rowG.insertAdjacentHTML("beforeend",'<g transform="translate('+(p[1]+0)+',1010) scale(1.6)"><g class="s6bot">'+robotSVG(p[0])+'</g></g>');});
+
+/* scene 2 grid */
+var NAMES=[["Northstar Labs","NL","#426B56",8,[["hr","HR 2"],["al","Alumni 1"]]],["Paper Planes","PP","#B87860",5,[["en","Eng 3"]]],["Acme Cloud","AC","#6F5C4B",12,[["hr","HR 1"],["en","Eng 2"]]],["Brightwave","BW","#34433A",3,[["al","Alumni 2"]]],["Lumen Pay","LP","#426B56",6,[["hr","HR 2"]]],
+["Orchard AI","OA","#B87860",4,[["hr","HR 1"],["al","Alumni 1"]]],["Quill Systems","QS","#6F5C4B",7,[["en","Eng 4"]]],["Harbor Data","HD","#34433A",2,[["hr","HR 1"]]],["Redwood Tech","RT","#426B56",9,[["al","Alumni 1"],["en","Eng 2"]]],["Signal Works","SW","#B87860",5,[["hr","HR 3"]]]];
+var grid=document.getElementById("s2-grid"),html="";
+NAMES.forEach(function(n,i){var col=i%5,row=Math.floor(i/5),x=160+col*324,y=450+row*234;
+ html+='<div class="blk" id="blk'+i+'" style="left:'+x+'px;top:'+y+'px"><div class="selbg"></div><div class="mk" style="background:'+n[2]+'">'+n[1]+'</div><div class="ring"></div><div class="tick">✓</div><div class="nm">'+n[0]+'</div><div class="op">'+n[3]+' openings</div><div class="bd">'+n[4].map(function(b){return '<i class="'+b[0]+'">'+b[1]+'</i>';}).join("")+'</div></div>';});
+grid.innerHTML=html;
+
+/* scene 3 flying cards */
+var s3c=document.getElementById("s3-cards"),ch="";for(var i=0;i<12;i++){ch+='<div class="jc" id="jc'+i+'"><b></b><i></i></div>';}s3c.innerHTML=ch;
+
+/* scene 4 belt cards */
+var B4=[{t:"Backend Eng",fate:"ok",x0:-290,end:1640,score:88},{t:"Sales Exec",fate:"fit",x0:-620,score:41},{t:"SDE II",fate:"link",x0:-950,score:76},{t:"Platform Eng",fate:"ok",x0:-1280,end:1310,score:82}];
+var s4c=document.getElementById("s4-cards"),h4="";
+B4.forEach(function(c,i){h4+='<div class="bc" id="bc'+i+'"><div class="ti">'+c.t+'</div><div class="ln"></div><div class="chip" id="bs'+i+'" style="left:14px;top:80px;background:'+(c.score<60?C.terra:C.green)+'">Fit '+c.score+'</div><div class="chip" id="bv'+i+'" style="right:12px;top:80px;background:'+(c.fate==="link"?"#B4553D":C.green)+'">'+(c.fate==="link"?"✗ dead":"✓ live")+'</div></div>';});
+s4c.innerHTML=h4;
+
+var tl=gsap.timeline({paused:true,defaults:{ease:"power3.out"}});
+function bot(id){return document.querySelector("#"+id+" .rb-arm-r");}
+
+/* generic scene fades */
+[["s1",0,3.7],["s2",3.7,7.92],["s3",7.92,12.12],["s4",12.12,16.34],["s5",16.34,20.54]].forEach(function(s){
+  tl.fromTo("#"+s[0]+" .sc",{opacity:0},{opacity:1,duration:.25,ease:"power1.out"},s[1]);
+  tl.to("#"+s[0]+" .sc",{opacity:0,duration:.2,ease:"power1.in"},s[2]-.2);
+});
+tl.fromTo("#s6 .sc",{opacity:0},{opacity:1,duration:.25},20.54);
+
+/* ---- Scene 1 hook ---- */
+tl.fromTo(".deco",{y:40,opacity:0},{y:0,opacity:1,duration:.7,stagger:.12},0.1);
+tl.fromTo("#s1-k",{opacity:0,y:-14},{opacity:1,y:0,duration:.4},0.1);
+tl.fromTo("#s1-l1",{y:50,opacity:0},{y:0,opacity:1,duration:.6},0.3);
+tl.fromTo("#s1-l2",{y:50,opacity:0},{y:0,opacity:1,duration:.6},1.45);
+tl.fromTo("#s1-det",{y:300,opacity:0},{y:0,opacity:1,duration:.7,ease:"back.out(1.5)"},1.6);
+tl.to("#s1-det .rb-arm-r",{rotation:-65,transformOrigin:"50% 0%",duration:.5,ease:"power2.out"},2.3);
+
+/* ---- Scene 2 choose ---- */
+var S2=3.7;
+tl.fromTo("#s2 .k, #s2 .h, #s2 .sub",{y:24,opacity:0},{y:0,opacity:1,duration:.5,stagger:.08},S2+.1);
+tl.fromTo("#s2-m1,#s2-m2,#s2-pay",{y:24,opacity:0},{y:0,opacity:1,duration:.45,stagger:.08},S2+.3);
+tl.fromTo(".blk",{y:40,opacity:0},{y:0,opacity:1,duration:.5,stagger:.04},S2+.35);
+var sel=[[0,4.23],[2,4.75],[5,5.28],[8,5.80]]; // beat-grid: selections on consecutive beats 4.23 4.75 5.28 5.80
+var pos=[[0,0],[0,0],[0,0]];
+tl.fromTo("#cursor",{x:1500,y:380,opacity:0},{x:1500,y:380,opacity:0,duration:.01},S2);
+tl.to("#cursor",{opacity:1,duration:.2},S2+.3);
+sel.forEach(function(p,k){var i=p[0],t=p[1],col=i%5,row=Math.floor(i/5),x=160+col*324+230,y=450+row*234+120;
+  tl.to("#cursor",{x:x,y:y,duration:.38,ease:"power2.inOut"},t-.42);
+  tl.to("#cursor",{scale:.82,duration:.07,transformOrigin:"20% 10%"},t-.04).to("#cursor",{scale:1,duration:.1},t+.03);
+  tl.to("#blk"+i+" .selbg",{opacity:1,duration:.2},t);
+  tl.fromTo("#blk"+i+" .tick",{scale:0,opacity:0},{scale:1,opacity:1,duration:.3,ease:"back.out(3)"},t);
+  tl.to("#blk"+i+" .ring",{opacity:0,duration:.1},t);
+  tl.fromTo("#blk"+i,{y:0},{y:-8,duration:.14,yoyo:true,repeat:1,ease:"sine.inOut"},t);
+});
+// beat-locked: 6.34s pay + mode emphasis
+tl.to("#cursor",{x:1180,y:352,duration:.5,ease:"power2.inOut"},5.86);
+tl.fromTo("#s2-pay",{scale:1},{scale:1.06,duration:.2,yoyo:true,repeat:1,transformOrigin:"50% 50%"},6.34);
+tl.to("#s2-pay",{borderColor:"#426B56",backgroundColor:"#E4ECE2",duration:.25},6.34);
+tl.to("#cursor",{opacity:0,duration:.3},7.2);
+
+/* ---- Scene 3 hunt ---- */
+var S3=7.92;
+tl.fromTo("#s3 .k, #s3 .h, #s3 .sub",{y:24,opacity:0},{y:0,opacity:1,duration:.5,stagger:.08},S3+.1);
+tl.fromTo("#s3-det",{y:260,opacity:0},{y:0,opacity:1,duration:.6,ease:"back.out(1.4)"},S3+.1);
+tl.to("#s3-det .rb-arm-r",{rotation:-78,transformOrigin:"50% 0%",duration:.5},S3+.5);
+tl.fromTo(".board",{x:80,opacity:0},{x:0,opacity:1,duration:.5,stagger:.1},S3+.3);
+var yb=[400,640,880];
+[[0,8.44],[1,9.50],[2,10.54]].forEach(function(p){var i=p[0],t=p[1]; // beat-locked: 8.44 / 10.54 strong cues, 9.50 grid
+  tl.set("#s3-beam",{attr:{x2:1060,y2:yb[i]-0},opacity:1},t-.05);
+  tl.to("#s3-b"+i,{borderColor:"#B87860",backgroundColor:"#FFF7EE",duration:.2},t);
+  tl.to("#s3-b"+i+" .r",{backgroundColor:"rgba(184,120,96,.45)",duration:.2,stagger:.1},t);
+  for(var n=0;n<4;n++){var cid="#jc"+(i*4+n),t0=t+.1+n*.22;
+    tl.fromTo(cid,{x:1100,y:yb[i]-40,opacity:1,scale:1},{x:760,y:760-n*14,opacity:1,duration:.7,ease:"power2.in"},t0);
+    tl.to(cid,{opacity:0,scale:.6,duration:.14},t0+.7);}
+});
+tl.to("#s3-beam",{opacity:0,duration:.2},11.7);
+
+/* ---- Scene 4 filter + verify ---- */
+var S4=12.12,V=600,BX_AN=560,BX_VF=1180;
+tl.fromTo("#s4 .k, #s4 .h",{y:24,opacity:0},{y:0,opacity:1,duration:.5,stagger:.08},S4+.1);
+tl.fromTo("#s4-an",{y:200,opacity:0},{y:0,opacity:1,duration:.5,ease:"back.out(1.4)"},S4+.15);
+tl.fromTo("#s4-vf",{y:200,opacity:0},{y:0,opacity:1,duration:.5,ease:"back.out(1.4)"},S4+.25);
+tl.fromTo(".sign",{y:-20,opacity:0},{y:0,opacity:1,duration:.4,stagger:.1},S4+.3);
+tl.fromTo(".bin",{y:40,opacity:0},{y:0,opacity:1,duration:.4,stagger:.1},S4+.4);
+B4.forEach(function(c,i){
+  var tAn=(BX_AN-145-c.x0)/V, tVf=(BX_VF-145-c.x0)/V, id="#bc"+i;
+  gsap.set(id,{x:c.x0});
+  var stop=c.fate==="fit"?tAn+.3:c.fate==="link"?tVf+.3:(c.end-c.x0)/V;
+  var xEnd=c.fate==="fit"?c.x0+V*stop:c.fate==="link"?c.x0+V*stop:c.end;
+  tl.to(id,{x:xEnd,duration:stop,ease:"none"},S4);
+  tl.to("#bs"+i,{opacity:1,duration:.15},S4+tAn-.1);
+  if(c.fate!=="fit")tl.to("#bv"+i,{opacity:1,duration:.15},S4+tVf-.1);
+  if(c.fate==="fit")tl.to(id,{y:240,rotation:18,opacity:0,duration:.6,ease:"power2.in"},S4+stop);
+  if(c.fate==="link")tl.to(id,{y:240,rotation:-16,opacity:0,duration:.6,ease:"power2.in"},S4+stop);
+  var arm=c.fate==="fit"||c.fate==="ok"||c.fate==="link";
+  tl.to("#s4-an .rb-arm-l",{rotation:130,transformOrigin:"50% 0%",duration:.2},S4+tAn-.3).to("#s4-an .rb-arm-l",{rotation:0,duration:.3},S4+tAn+.1);
+  if(c.fate!=="fit")tl.to("#s4-vf .rb-arm-r",{rotation:-130,transformOrigin:"50% 0%",duration:.2},S4+tVf-.3).to("#s4-vf .rb-arm-r",{rotation:0,duration:.3},S4+tVf+.1);
+});
+
+/* ---- Scene 5 jobs available ---- */
+var S5=16.34;
+tl.fromTo("#s5 .k, #s5 .h",{y:24,opacity:0},{y:0,opacity:1,duration:.5,stagger:.08},S5+.1);
+tl.fromTo("#s5-co1,#s5-co2",{y:50,opacity:0},{y:0,opacity:1,duration:.55,stagger:.12},S5+.25);
+tl.fromTo("#s5-panel",{x:60,opacity:0},{x:0,opacity:1,duration:.55},S5+.4);
+// beat-grid: panel groups on 17.38, 18.44, 19.48 (every other beat so text can be read)
+tl.fromTo("#s5-g1",{y:24,opacity:0},{y:0,opacity:1,duration:.45},17.38);
+tl.fromTo("#s5-g2",{y:24,opacity:0},{y:0,opacity:1,duration:.45},18.44);
+tl.fromTo("#s5-g3",{y:30,opacity:0,scale:.96},{y:0,opacity:1,scale:1,duration:.5,ease:"back.out(1.6)"},19.48);
+tl.fromTo("#s5-ver",{scale:.9},{scale:1.08,duration:.25,yoyo:true,repeat:1,transformOrigin:"50% 50%"},17.0);
+
+/* ---- Scene 6 outro ---- */
+tl.fromTo("#s6-l1",{y:50,opacity:0},{y:0,opacity:1,duration:.6},20.7);
+tl.fromTo("#s6-l2",{y:30,opacity:0},{y:0,opacity:1,duration:.5},21.4);
+tl.fromTo(".s6bot",{y:140,opacity:0},{y:0,opacity:1,duration:.5,stagger:.1,ease:"back.out(1.5)"},21.8);
+tl.fromTo("#s6-lock",{y:30,opacity:0},{y:0,opacity:1,duration:.5},22.2); // beat-locked: ~22.12-22.2
+tl.fromTo("#s6-tag",{y:24,opacity:0},{y:0,opacity:1,duration:.5},22.55);
+
+/* ---- gentle idle: robots sway (finite) + blinks ---- */
+document.querySelectorAll(".rb-sway").forEach(function(el,i){tl.to(el,{y:-5,duration:.9,yoyo:true,repeat:25,ease:"sine.inOut"},i*.13);});
+
+/* ---- audio-reactive: bass breathes glow + robots, treble warms the active card edge ---- */
+var glow=document.getElementById("glow"),pulses=document.querySelectorAll(".pulse");
+var FR=window.AUDIO_FRAMES||[];
+for(var f=0;f<FR.length;f++){
+  tl.call((function(fr){return function(){
+    glow.style.opacity=(0.55+0.45*fr[0]).toFixed(3);
+    var s=1+0.018*fr[0];
+    for(var k=0;k<pulses.length;k++){pulses[k].style.transform="scale("+s.toFixed(4)+")";pulses[k].style.transformOrigin="0px 0px";}
+  };})(FR[f]),[],f/30);
+}
+tl.to({},{duration:.01},23.69);
+window.__timelines=window.__timelines||{};
+window.__timelines["orbit-brag"]=tl;
+})();
+</script>
+</body>
+</html>

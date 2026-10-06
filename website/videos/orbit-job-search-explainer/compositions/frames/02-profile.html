@@ -1,0 +1,174 @@
+<template>
+  <div id="root" data-composition-id="f-02-profile" data-duration="5.5" data-width="1920" data-height="1080">
+    <div id="f-02-profile-ground" class="clip" data-start="0" data-duration="5.5" data-track-index="0"></div>
+    <main id="f-02-profile-scene" class="clip" data-start="0" data-duration="5.5" data-track-index="1" aria-label="Profile setup illustration">
+      <div id="f-02-profile-camera">
+        <div id="f-02-profile-heading" aria-label="Start with your profile">
+          <span class="02-profile-heading-word">
+            <span class="02-profile-char">S</span><span class="02-profile-char">t</span><span class="02-profile-char">a</span><span class="02-profile-char">r</span><span class="02-profile-char">t</span>
+          </span>
+          <span class="02-profile-heading-gap"> </span>
+          <span class="02-profile-heading-word">
+            <span class="02-profile-char">w</span><span class="02-profile-char">i</span><span class="02-profile-char">t</span><span class="02-profile-char">h</span>
+          </span>
+          <span class="02-profile-heading-gap"> </span>
+          <span class="02-profile-heading-word">
+            <span class="02-profile-char">y</span><span class="02-profile-char">o</span><span class="02-profile-char">u</span><span class="02-profile-char">r</span>
+          </span>
+          <span class="02-profile-heading-gap"> </span>
+          <span class="02-profile-heading-word">
+            <span class="02-profile-char">p</span><span class="02-profile-char">r</span><span class="02-profile-char">o</span><span class="02-profile-char">f</span><span class="02-profile-char">i</span><span class="02-profile-char">l</span><span class="02-profile-char">e</span>
+          </span><span id="f-02-profile-caret" aria-hidden="true"></span>
+        </div>
+
+        <section id="f-02-profile-workbench" aria-label="Illustrative profile composer">
+          <div id="f-02-profile-resume-card">
+            <div id="f-02-profile-resume-face">
+              <div class="02-profile-file-icon" aria-hidden="true"><span></span></div>
+              <div class="02-profile-resume-copy">
+                <span class="02-profile-mono-label">PROFILE IMPORT</span>
+                <strong>Resume file</strong>
+                <span class="02-profile-muted">Ready to shape your search</span>
+              </div>
+              <div class="02-profile-file-status"><i></i>READY</div>
+            </div>
+            <div id="f-02-profile-skills-chip" class="02-profile-chip 02-profile-chip-accent">
+              <span class="02-profile-chip-dot"></span><span>Skills + experience</span>
+            </div>
+          </div>
+
+          <div id="f-02-profile-scout" aria-hidden="true">
+            <span class="02-profile-scout-antenna"></span>
+            <span class="02-profile-scout-helmet"></span>
+            <span class="02-profile-scout-face"><i></i><i></i><b></b></span>
+            <span class="02-profile-scout-body"></span>
+            <span id="f-02-profile-scout-arm" class="02-profile-scout-arm"></span>
+            <span class="02-profile-scout-badge">✱</span>
+          </div>
+
+          <section id="f-02-profile-card" aria-label="Generic preference profile">
+            <div class="02-profile-card-topline">
+              <span class="02-profile-mono-label">PROFILE SNAPSHOT</span>
+              <span class="02-profile-card-mark">✱</span>
+            </div>
+            <div class="02-profile-card-rule"></div>
+            <div id="f-02-profile-chip-backend" class="02-profile-chip"><span>Backend / SDE</span></div>
+            <div id="f-02-profile-chip-india" class="02-profile-chip"><span>India-wide</span></div>
+            <div id="f-02-profile-chip-location" class="02-profile-chip"><span>Location</span></div>
+            <div id="f-02-profile-chip-pay" class="02-profile-chip"><span>Base-pay target</span></div>
+            <div id="f-02-profile-card-foot" class="02-profile-card-foot">Preferences, gathered in one place</div>
+          </section>
+        </section>
+
+        <div id="f-02-profile-built" aria-label="Built around you">Built around you</div>
+      </div>
+    </main>
+
+    <style>
+      @font-face{font-family:'Manrope';font-style:normal;font-weight:400;font-display:swap;src:url("assets/fonts/captured-xn7gYHE41ni1AdIRggexSvfedN4.woff2") format('woff2')}
+      @font-face{font-family:'Manrope';font-style:normal;font-weight:500;font-display:swap;src:url("assets/fonts/captured-xn7gYHE41ni1AdIRggexSvfedN4.woff2") format('woff2')}
+      @font-face{font-family:'DM Mono';font-style:normal;font-weight:400;font-display:swap;src:url("assets/fonts/captured-aFTU7PB1QTsUX8KYthqQBK6PYK0.woff2") format('woff2')}
+      @font-face{font-family:'DM Mono';font-style:normal;font-weight:500;font-display:swap;src:url("assets/fonts/captured-aFTU7PB1QTsUX8KYthqQBK6PYK0.woff2") format('woff2')}
+
+      #root{position:relative;width:100%;height:100%;overflow:hidden;container-type:size;color:#202923;font-family:'Manrope',sans-serif}
+      #f-02-profile-ground{position:absolute;inset:0;background:#F4F1E9}
+      #f-02-profile-scene{position:absolute;inset:0;overflow:hidden}
+      #f-02-profile-camera{position:absolute;inset:0;transform-origin:50% 46%;}
+      #f-02-profile-heading{position:absolute;left:0;right:0;top:116px;text-align:center;font-size:52px;line-height:1.06;letter-spacing:-.028em;font-weight:400;color:#202923;white-space:nowrap}
+      .\30 2-profile-heading-prefix,.\30 2-profile-heading-word{display:inline-block}
+      .\30 2-profile-heading-gap{display:inline-block;width:.22em}
+      .\30 2-profile-char{display:inline-block}
+      #f-02-profile-caret{display:inline-block;width:2px;height:51px;margin-left:11px;vertical-align:-7px;background:#202923}
+
+      #f-02-profile-workbench{position:absolute;left:50%;top:236px;width:1450px;height:540px;transform:translateX(-50%);}
+      #f-02-profile-workbench:before{content:"";position:absolute;inset:0;border:1px solid rgba(32,41,35,.12);border-radius:12px;background:#EBE6E2;box-shadow:0 1px 3px rgba(32,41,35,.08),0 4px 16px rgba(32,41,35,.04)}
+      #f-02-profile-resume-card{position:absolute;left:88px;top:118px;width:650px;height:270px;box-sizing:border-box;padding:31px 35px;background:#F4F1E9;border:1px solid rgba(32,41,35,.16);border-radius:12px;box-shadow:0 1px 3px rgba(32,41,35,.08),0 4px 16px rgba(32,41,35,.04)}
+      #f-02-profile-resume-face{position:relative;height:100%;display:flex;align-items:center;gap:24px}
+      .\30 2-profile-file-icon{position:relative;width:92px;height:116px;flex:0 0 auto;border:1px solid rgba(32,41,35,.22);border-radius:8px;background:#EBE6E2}
+      .\30 2-profile-file-icon:before{content:"";position:absolute;right:-1px;top:-1px;width:27px;height:27px;border-left:1px solid rgba(32,41,35,.22);border-bottom:1px solid rgba(32,41,35,.22);background:#F4F1E9;border-radius:0 8px 0 8px}
+      .\30 2-profile-file-icon:after{content:"";position:absolute;left:20px;right:20px;top:56px;height:1px;background:rgba(32,41,35,.28);box-shadow:0 12px 0 rgba(32,41,35,.20),0 24px 0 rgba(32,41,35,.14)}
+      .\30 2-profile-file-icon span{position:absolute;left:20px;top:32px;width:23px;height:7px;border-radius:5px;background:#6F5C4B}
+      .\30 2-profile-resume-copy{display:flex;flex-direction:column;gap:11px}
+      .\30 2-profile-mono-label{font:500 16px/1 'DM Mono',monospace;letter-spacing:.13em;color:#202923}
+      .\30 2-profile-resume-copy strong{font-size:34px;line-height:1.08;font-weight:500;letter-spacing:-.02em}
+      .\30 2-profile-muted{font-size:18px;line-height:1.35;color:#6F5C4B}
+      .\30 2-profile-file-status{position:absolute;right:0;top:0;font:500 14px/1 'DM Mono',monospace;letter-spacing:.11em;color:#6F5C4B}
+      .\30 2-profile-file-status i{display:inline-block;width:8px;height:8px;margin-right:7px;border-radius:50%;background:#6F5C4B}
+      #f-02-profile-skills-chip{position:absolute;left:35px;bottom:25px}
+
+      #f-02-profile-scout{position:absolute;left:782px;top:110px;width:126px;height:176px}
+      .\30 2-profile-scout-antenna{position:absolute;left:61px;top:0;width:1px;height:18px;background:#202923}
+      .\30 2-profile-scout-antenna:after{content:"";position:absolute;left:-4px;top:-5px;width:9px;height:9px;border:1px solid #202923;border-radius:50%;background:#F4F1E9}
+      .\30 2-profile-scout-helmet{position:absolute;left:23px;top:14px;width:80px;height:62px;border:1px solid #202923;border-radius:42px 42px 25px 25px;background:#F4F1E9}
+      .\30 2-profile-scout-helmet:after{content:"";position:absolute;left:17px;right:17px;bottom:-6px;height:10px;border:1px solid #202923;border-radius:8px;background:#EBE6E2}
+      .\30 2-profile-scout-face{position:absolute;left:38px;top:40px;width:50px;height:29px}
+      .\30 2-profile-scout-face i{position:absolute;top:3px;width:5px;height:5px;border-radius:50%;background:#202923}
+      .\30 2-profile-scout-face i:first-child{left:4px}.\30 2-profile-scout-face i:nth-child(2){right:4px}
+      .\30 2-profile-scout-face b{position:absolute;left:18px;top:14px;width:15px;height:7px;border-bottom:1px solid #202923;border-radius:0 0 12px 12px}
+      .\30 2-profile-scout-body{position:absolute;left:32px;top:78px;width:64px;height:72px;border:1px solid #202923;border-radius:25px 25px 14px 14px;background:#EBE6E2}
+      .\30 2-profile-scout-body:after{content:"";position:absolute;left:24px;top:19px;width:16px;height:16px;border:1px solid rgba(32,41,35,.24);border-radius:50%}
+      .\30 2-profile-scout-arm{position:absolute;left:87px;top:95px;width:52px;height:1px;background:#202923;transform-origin:0 50%;}
+      .\30 2-profile-scout-arm:after{content:"";position:absolute;right:-4px;top:-4px;width:8px;height:8px;border:1px solid #202923;border-radius:50%;background:#F4F1E9}
+      .\30 2-profile-scout-badge{position:absolute;left:51px;top:103px;color:#202923;font-size:19px;line-height:1}
+
+      #f-02-profile-card{position:absolute;left:956px;top:58px;width:438px;height:404px;box-sizing:border-box;padding:29px 30px;background:#F4F1E9;border:2px solid rgba(66,107,86,.74);border-radius:12px;box-shadow:0 1px 3px rgba(32,41,35,.08),0 4px 16px rgba(32,41,35,.04)}
+      .\30 2-profile-card-topline{display:flex;align-items:center;justify-content:space-between}
+      .\30 2-profile-card-mark{font-size:19px;line-height:1;color:#426B56}
+      .\30 2-profile-card-rule{height:1px;margin-top:22px;background:rgba(32,41,35,.14)}
+      .\30 2-profile-chip{position:absolute;display:flex;align-items:center;gap:10px;box-sizing:border-box;height:43px;padding:0 14px;border:1px solid rgba(32,41,35,.18);border-radius:9999px;background:#EBE6E2;font-size:17px;line-height:1;white-space:nowrap;box-shadow:0 1px 3px rgba(32,41,35,.05)}
+      .\30 2-profile-chip-dot{width:7px;height:7px;border-radius:50%;background:#6F5C4B}
+      .\30 2-profile-chip-accent{border-color:rgba(66,107,86,.42);color:#202923}
+      #f-02-profile-chip-backend{left:28px;top:130px}
+      #f-02-profile-chip-india{left:244px;top:130px}
+      #f-02-profile-chip-location{left:28px;top:192px}
+      #f-02-profile-chip-pay{left:244px;top:192px}
+      .\30 2-profile-card-foot{position:absolute;left:30px;right:30px;bottom:26px;padding-top:18px;border-top:1px solid rgba(32,41,35,.12);font-size:15px;line-height:1.25;color:#6F5C4B}
+      #f-02-profile-built{position:absolute;left:0;right:0;top:800px;text-align:center;font-size:38px;line-height:1.06;letter-spacing:-.022em;color:#202923}
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+      (function(){
+        const tl = gsap.timeline({paused:true});
+        window.__timelines = window.__timelines || {};
+        window.__timelines["f-02-profile"] = tl;
+
+        const chars = document.querySelectorAll('[class~="02-profile-char"]');
+        const typeStart = 1.08;
+        chars.forEach((char, index) => {
+          tl.fromTo(char, {opacity:0, y:5}, {opacity:1, y:0, duration:.075, ease:"power2.out"}, typeStart + index * .045);
+        });
+        tl.fromTo('#f-02-profile-caret', {opacity:0}, {opacity:1, duration:.05}, typeStart - .02);
+        tl.to('#f-02-profile-caret', {opacity:0, duration:.10}, 1.52)
+          .to('#f-02-profile-caret', {opacity:1, duration:.10}, 1.65)
+          .to('#f-02-profile-caret', {opacity:0, duration:.10}, 1.78)
+          .to('#f-02-profile-caret', {opacity:1, duration:.10}, 1.91)
+          .to('#f-02-profile-caret', {opacity:0, duration:.10}, 2.04)
+          .to('#f-02-profile-caret', {opacity:1, duration:.10}, 2.17)
+          .to('#f-02-profile-caret', {opacity:0, duration:.10}, 2.30)
+          .to('#f-02-profile-caret', {opacity:1, duration:.10}, 2.43)
+          .to('#f-02-profile-caret', {opacity:0, duration:.10}, 2.56)
+          .to('#f-02-profile-caret', {opacity:1, duration:.10}, 2.69)
+          .to('#f-02-profile-caret', {opacity:0, duration:.10}, 2.82)
+          .to('#f-02-profile-caret', {opacity:1, duration:.10}, 2.95)
+          .to('#f-02-profile-caret', {opacity:0, duration:.10}, 3.08)
+          .to('#f-02-profile-caret', {opacity:1, duration:.10}, 3.21);
+
+        tl.fromTo('#f-02-profile-resume-card', {opacity:0, x:-170, y:10, scale:.98}, {opacity:1, x:0, y:0, scale:1, duration:.72, ease:"power2.out"}, .08)
+          .fromTo('#f-02-profile-scout', {opacity:0, x:18, scale:.92}, {opacity:1, x:0, scale:1, duration:.48, ease:"back.out(1.35)"}, .52)
+          .fromTo('#f-02-profile-skills-chip', {opacity:0, y:10, scale:.94}, {opacity:1, y:0, scale:1, duration:.38, ease:"back.out(1.2)"}, 1.82)
+          .to('#f-02-profile-resume-face', {opacity:.24, duration:.18, ease:"power1.out"}, 1.72)
+          .fromTo('#f-02-profile-camera', {scale:1}, {scale:1.028, duration:3.05, ease:"power2.inOut"}, 1.10)
+          .fromTo('#f-02-profile-card', {opacity:0, scale:.965, y:10}, {opacity:1, scale:1, y:0, duration:.48, ease:"power2.out"}, 2.50)
+          .fromTo('#f-02-profile-chip-backend', {opacity:0, x:-98, y:-48, scale:.88}, {opacity:1, x:0, y:0, scale:1, duration:.46, ease:"back.out(1.25)"}, 2.62)
+          .fromTo('#f-02-profile-chip-india', {opacity:0, x:100, y:-48, scale:.88}, {opacity:1, x:0, y:0, scale:1, duration:.46, ease:"back.out(1.25)"}, 2.90)
+          .fromTo('#f-02-profile-chip-location', {opacity:0, x:-94, y:62, scale:.88}, {opacity:1, x:0, y:0, scale:1, duration:.46, ease:"back.out(1.25)"}, 3.18)
+          .fromTo('#f-02-profile-chip-pay', {opacity:0, x:96, y:62, scale:.88}, {opacity:1, x:0, y:0, scale:1, duration:.46, ease:"back.out(1.25)"}, 3.46)
+          .fromTo('#f-02-profile-card-foot', {opacity:0, y:7}, {opacity:1, y:0, duration:.35, ease:"power2.out"}, 3.78)
+          .fromTo('#f-02-profile-scout-arm', {rotation:-17}, {rotation:15, duration:.46, ease:"power2.inOut"}, 4.18)
+          .fromTo('#f-02-profile-built', {opacity:0, y:12}, {opacity:1, y:0, duration:.5, ease:"power2.out"}, 4.28)
+          .to({}, {duration:.72}, 4.78);
+      })();
+    </script>
+  </div>
+</template>

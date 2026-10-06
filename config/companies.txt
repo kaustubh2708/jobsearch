@@ -1,0 +1,299 @@
+Uber
+Zomato
+Atlassian
+Urban Company
+Swiggy
+Paytm
+InfoEdge
+# Amazon (PAUSED by user instruction)
+Adobe
+Flipkart
+Salesforce
+Sprinklr
+Meta
+Google
+D. E. Shaw
+Goldman Sachs
+Tower Research Capital
+Rippling
+Razorpay
+MakeMyTrip
+Oracle
+Visa
+Apple
+Intuit
+BharatPe
+Netflix
+BCG
+Twitter / X
+LinkedIn
+Walmart
+Rubrik
+Morgan Stanley
+Deloitte
+JPMorgan Chase
+Citi
+ServiceNow
+SanDisk
+JioHotstar
+PayPal
+Databricks
+CrowdStrike
+Palo Alto Networks
+Myntra
+Expedia Group
+Media.net
+Pine Labs
+PhonePe
+Postman
+Freshworks
+Agoda
+Blinkit
+Stripe
+Juspay
+Atlys
+Chargebee
+CRED
+Groww
+Brex
+Plaid
+Coinbase
+Checkout.com
+BrowserStack
+Confluent
+Elastic
+Snowflake
+Twilio
+Palantir
+Figma
+Dropbox
+Canva
+UiPath
+Workday
+SAP
+Nutanix
+VMware
+American Express
+BlackRock
+HSBC
+Airbnb
+Zepto
+Meesho
+Dunzo
+Target (Target Tech)
+Turnitin
+NVIDIA
+AMD
+Qualcomm
+Intel
+Thoughtworks
+Publicis Sapient
+EPAM Systems
+LTIMindtree
+Millennium
+Roku
+Mastercard
+Innovaccer
+MongoDB
+Okta
+Bain & Company
+YouTube
+Indeed
+CashKaro
+Stashfin
+Snapmint
+Copart
+Gushwork
+EXL Service
+Quinnox
+Empower Pharma
+Koi Reader Tech
+Tech Holding
+Diligent
+Swish Club
+Pidge
+Attentive.ai
+Pocket FM
+Bloomreach
+Syfe
+Gupshup
+S&P Global
+ZS
+Zscaler
+Graviton
+EY
+NatWest
+Cvent
+McKinsey & Company
+CData
+Colt
+Barco
+Cisco
+Commvault
+Navigus
+PlaySimple
+Zopsmart
+Carta Healthcare
+HackerRank
+Quadeye
+NK Securities
+AlphaGrep
+Squarepoint Capital
+WorldQuant
+Da Vinci Derivatives
+Cars24
+OfBusiness
+PolicyBazaar
+Moglix
+Shiprocket
+Sarvam AI
+Ema Unlimited
+DevRev
+Braintrust
+Codeium
+Together AI
+Krutrim
+Datadog
+Docker
+GitLab
+Hasura
+Optum
+Fidelity Investments
+Wells Fargo
+BNY Mellon
+Barclays
+Societe Generale
+Siemens Healthineers
+Philips
+Bosch
+Honeywell
+GE Healthcare
+CoRover.ai
+Yellow.ai
+Haptik
+Wadhwani AI
+Uniphore
+Fractal Analytics
+Perplexity
+Modal Labs
+Weights & Biases
+Cohere
+Spinny
+Pristyn Care
+Battery Smart
+Bluestone
+FarEye
+Incedo
+Shadowfax
+Honasa Consumer
+Estee Advisors
+Edelweiss
+Angel One
+Zerodha
+INDmoney
+Jupiter
+Fi Money
+Slice
+Navi
+Jar
+Appsmith
+SigNoz
+PostHog
+HackerEarth
+Scaler
+Darwinbox
+Zoho
+Kissflow
+Wingify
+Druva
+Zenoti
+HighRadius
+CleverTap
+WebEngage
+MoEngage
+Exotel
+InMobi
+Glance
+VerSe Innovation
+ShareChat
+Pratilipi
+Diligent Corporation
+Abnormal AI
+AI Squared
+Rox Data Corp
+Scale AI
+Ciroos
+WisdomAI
+Walmart Global Tech
+Starburst
+Instawork
+Dremio
+
+# --- Newly Added Discovered Tech Unicorns, GCCs & Global Platforms ---
+7-Eleven GSC
+AiSensy
+Ascendion
+Cadence Design Systems
+Chegg India
+Corridor Platforms
+Cursor / Anysphere
+Fidelity International
+HDFC Bank
+Kite
+Leena AI
+LetzBizz
+Observe.ai
+PAR Technology
+Paisabazaar
+PwC India
+Sourcegraph
+Sparrow RMS
+Statiq
+Storm Finance
+Stryker
+Supabase
+Syniverse
+Trexquant Investment LP
+UKG
+dunnhumby
+ixigo
+
+# --- Wave 4 & Discovered Employers Portfolio ---
+Aristocrat
+Artech L.L.C.
+Birdeye
+Carelon Global Solutions
+CredHive
+EY GDS
+Fareportal
+Fi Money (epiFi / Tetriz)
+Foxit
+Graviton Research Capital
+HCLSoftware
+HPE
+Harvey AI
+Honeywell Technologies
+InCred Financial Services
+Indus Valley Partners
+Iris Software Inc.
+Keywords Studios
+LSEG
+MiQ
+MoneyMul
+Navi Technologies
+Optum India
+Payoneer
+Paytm / One97 Communications
+PhysicsWallah (PW)
+Pluang
+RunPod
+Siemens Energy
+Slice (GaragePreneurs)
+Target
+Vyntelligence
+
+# --- Wave 5 Discovered Employers ---
+GoKwik
+Policybazaar.com
+Hyperproof
+WSP in India

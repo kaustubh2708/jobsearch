@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Job Discovery & Verification Canonical 12 Sub-Agents Roster",
+  "description": "Standardized 12 specialized sub-agents running systematically in every discovery wave across both candidate tracks (Vrinda SDE II and Vaanya Fresher/0 YOE)",
+  "version": "2.0",
+  "total_agents": 12,
+  "consolidation_note": "Consolidated from ~62 historical ad-hoc subagent variants into 12 canonical core capabilities that run in every wave.",
+  "agents": [
+    {
+      "id": "agent-01-ncr-enterprise-tech",
+      "name": "NCR Tech Corridor & Enterprise Specialist",
+      "cluster": "C# / .NET Core / ASP.NET / Azure / Java / Enterprise Cloud",
+      "geography": ["Gurugram (Priority 1)", "Noida (Priority 1/2)", "Delhi NCR"],
+      "target_companies": [
+        "Microsoft GDC", "Honeywell", "Siemens Energy", "SimCorp", "Keysight Technologies",
+        "3Pillar Global", "UKG", "Johnson Controls", "Wolters Kluwer", "Amdocs", "S&P Global"
+      ],
+      "focus": "Enterprise cloud services, .NET Core microservices, Azure Service Bus, Azure Functions, REST APIs, SQL Server"
+    },
+    {
+      "id": "agent-02-high-scale-unicorns",
+      "name": "High-Scale Unicorns & Consumer Tech Specialist",
+      "cluster": "Node.js / TypeScript / Python / Microservices / High Concurrency",
+      "geography": ["Gurugram HQ", "Noida", "Delhi NCR", "Bengaluru", "Remote India"],
+      "target_companies": [
+        "Plane Software", "Urban Company", "GoKwik", "Cars24", "Spinny", "Shiprocket",
+        "Blinkit", "Zomato", "Snapmint", "Atlys", "Zepto", "Swiggy"
+      ],
+      "focus": "Event-driven architecture, Redis caching, Kafka message streaming, Fast-growth consumer tech platforms"
+    },
+    {
+      "id": "agent-03-ai-agent-llm-orchestration",
+      "name": "AI Agent, LLM Orchestration & MCP Specialist",
+      "cluster": "AI Agents / Model Context Protocol (MCP) / Tool-Calling / LLM APIs / RAG",
+      "geography": ["Gurugram", "Noida", "Bengaluru", "Remote India"],
+      "target_companies": [
+        "Anuvaya Labs", "Level AI", "Bolna", "Ema", "Cartesia", "Cursor",
+        "Cognition", "Glean", "Braintrust", "Decagon", "Avoca"
+      ],
+      "focus": "Autonomous agentic workflows, LangGraph, Model Context Protocol (MCP), tool-calling, vector search, generative AI pipelines"
+    },
+    {
+      "id": "agent-04-fintech-distributed-systems",
+      "name": "High-Growth FinTech & Concurrency Specialist",
+      "cluster": "Distributed Systems / Payments / Low Latency / Ledger / Quant Rails",
+      "geography": ["Gurugram", "Noida", "Bengaluru", "Mumbai"],
+      "target_companies": [
+        "Tower Research Capital", "Squarepoint Capital", "NK Securities Research", "Quadeye",
+        "Stripe", "PayPay India", "PhonePe", "BharatPe", "Slice", "Navi", "CRED", "Cashfree"
+      ],
+      "focus": "High throughput payment rails, fault-tolerant transaction processing, ledger systems, low-latency microservices"
+    },
+    {
+      "id": "agent-05-tier1-gcc-banking",
+      "name": "Tier-1 GCCs & Global Investment Banks Specialist",
+      "cluster": "Enterprise Scale / Banking Technology / High Availability / Global Centers",
+      "geography": ["Gurugram Tech Center", "Bengaluru Tech Center", "Noida", "Mumbai"],
+      "target_companies": [
+        "American Express", "BNP Paribas", "NatWest Group", "Fidelity International",
+        "Mastercard", "United Airlines India Knowledge Center", "Bain & Company", "Barclays", "UBS", "PwC AC"
+      ],
+      "focus": "Global capability center systems, secure API gateways, cloud migrations, enterprise resilience"
+    },
+    {
+      "id": "agent-06-global-remote-cloud-infra",
+      "name": "Global Remote & Cloud Infrastructure Specialist",
+      "cluster": "Remote India / Cloud Platforms / Developer Tooling / Observability",
+      "geography": ["Remote India", "Global Remote (India Payroll)"],
+      "target_companies": [
+        "Elastic", "Coinbase", "Rubrik", "BrowserStack", "HackerRank",
+        "Grafana Labs", "Temporal", "Supabase", "Pure Storage", "Cloudflare"
+      ],
+      "focus": "Cloud-native infrastructure, developer tooling, Kubernetes, edge databases, workflow engines, distributed state"
+    },
+    {
+      "id": "agent-07-data-platform-ml-engineering",
+      "name": "Data Engineering, ML Platform & Analytics Specialist",
+      "cluster": "Data Pipelines / ETL / Snowflake / Databricks / Spark / Machine Learning",
+      "geography": ["Noida", "Gurugram", "Bengaluru", "Remote India"],
+      "target_companies": [
+        "EXL", "WSP in India", "Gramik", "Athena Infonomics", "Signant Health",
+        "Darwin Labs", "Databricks", "AHL - Saaf AI", "Atlan"
+      ],
+      "focus": "Python document-routing pipelines, SQL, Celery, Redis, BERT/Transformers, feature stores, data warehousing"
+    },
+    {
+      "id": "agent-08-fresher-campus-intake",
+      "name": "Campus, Fresher & Graduate Trainee Specialist",
+      "cluster": "0 YOE / Graduate Engineer Trainee (GET) / 2026 Batch Entry Level / Campus Drives",
+      "geography": ["Noida (Home)", "Gurugram", "Delhi NCR", "Pan-India"],
+      "target_companies": [
+        "All Monitored Employers in config/companies.txt with dedicated fresher intakes"
+      ],
+      "focus": "Targeting 0 YOE / 2026 B.Tech graduate full-time requisitions (FTE only, zero internships), verifying entry gates"
+    },
+    {
+      "id": "agent-09-ats-deep-crawler",
+      "name": "ATS Deep Crawler (Ashby, Greenhouse, Lever, Workday)",
+      "cluster": "Direct Requisition Endpoints / Requisition UUIDs / Zero Aggregator Delays",
+      "geography": ["India-wide"],
+      "target_companies": ["All Monitored Employers on Greenhouse, Ashby, Lever, SmartRecruiters, Workday"],
+      "focus": "Bypassing aggregator delays to extract exact job requisitions, compensation ranges, and direct application links"
+    },
+    {
+      "id": "agent-10-realtime-public-scanner",
+      "name": "Continuous Real-Time Public Requisitions Scanner",
+      "cluster": "Fast Freshness (<24h to 72h Postings)",
+      "geography": ["India-wide", "NCR Priority"],
+      "target_companies": ["Monitored Employers across LinkedIn Guest & public job boards"],
+      "focus": "Monitoring newly posted public guest requisitions with high velocity and direct career apply routes"
+    },
+    {
+      "id": "agent-11-supervisor-link-health-auditor",
+      "name": "Supervisor Verification & Live Link Health Auditor",
+      "cluster": "HTTP Verification / Form Availability / Anti-Bot Detection",
+      "geography": ["Global"],
+      "target_companies": ["All Discovered Leads"],
+      "focus": "Automated probing ensuring HTTP 200, detecting 404/410/403/gated links, enforcing clickable direct links only"
+    },
+    {
+      "id": "agent-12-candidate-fit-evaluator",
+      "name": "Candidate Fit Evaluator & Scoring Auditor",
+      "cluster": "Experience Boundary Enforcement / 0–100 Scoring / Schema Validation",
+      "geography": ["Global"],
+      "target_companies": ["All Verified Leads"],
+      "focus": "Enforcing 0 YOE gate for Freshers & 2–5 YOE for SDE II; honest score calibration; package floor audit; deduplication"
+    }
+  ]
+}

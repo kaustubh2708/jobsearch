@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<style>/* latin-ext */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/aFTU7PB1QTsUX8KYthSQBK6PYK3EXw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/aFTU7PB1QTsUX8KYthqQBK6PYK0.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/aFTR7PB1QTsUX8KYvumzEY2tbYf-Vlh3uA.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/aFTR7PB1QTsUX8KYvumzEYOtbYf-Vlg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggqxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggOxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggSxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggixSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggmxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggexSvfedN4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggqxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggOxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggSxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggixSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggmxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggexSvfedN4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggqxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggOxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggSxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggixSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggmxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggexSvfedN4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggqxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggOxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggSxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggixSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggmxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggexSvfedN4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggqxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggOxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggSxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggixSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggmxSvfedN62Zw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(assets/fonts/xn7gYHE41ni1AdIRggexSvfedN4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+
+</head>
+<body>
+
+  <div class="scene-wrap" aria-hidden="true"><canvas id="scene" data-engine="three.js r172" width="1920" height="1080"></canvas><div class="scene-wash"></div></div>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="/home" aria-label="Orbit home"><span class="brand-orbit"><i></i></span><span>orbit<span class="brand-dot">.</span></span></a>
+    <nav class="topnav" aria-label="Main navigation">
+      <a class="nav-link active" data-route="home" href="/home">How it works</a>
+      <a class="nav-link" data-route="vaanya" href="/vaanya">Vaanya</a>
+      <a class="nav-link" data-route="vrinda" href="/vrinda">Vrinda</a>
+      <a class="nav-link" data-route="person" href="/person">My tracker</a>
+    </nav>
+    <div class="top-actions"><span class="local-badge"><i></i> PRIVATE · LOCAL</span><button id="export" class="button button-quiet">Export <span>↗</span></button></div>
+  </header>
+
+  <main>
+    <section id="home-page" class="page home-page">
+      <section class="hero home-hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> A JOB SEARCH SYSTEM, WITH A LITTLE SOUL</div>
+          <h1 id="hero-title">Find the right<br><span class="gradient-word">next orbit.</span></h1>
+          <p class="hero-sub">A focused team of research agents finds roles, checks fit and freshness, brings referral context forward, then leaves every decision in your hands.</p>
+          <div class="hero-controls"><a class="button button-bright" href="/vaanya">Explore Vaanya’s roles <span>↗</span></a><a class="button button-quiet" href="/vrinda">Explore Vrinda’s roles <span>↗</span></a></div>
+        </div>
+        <div class="hero-side home-hero-side">
+          <div class="orbit-card card-float"><div class="orbit-card-top"><span>SEARCH PIPELINE</span><span class="live-pip">READY</span></div><div class="orbit-figure"><span>04</span><small>specialist<br>agents</small></div><div class="orbit-meter"><span style="width:82%"></span></div><div class="orbit-card-foot"><span>Research → Review</span><span>you stay in control</span></div></div>
+          <div class="floating-note note-referral"><span class="note-icon">↗</span><span><b>Human-approved</b><small>no auto outreach</small></span></div>
+          <div class="floating-note note-focus"><span class="note-spark">✳</span><span><b>Freshness-aware</b><small>new roles stand out</small></span></div>
+          <div class="hero-stamp">FIND<br><span>THE<br>FIT</span></div>
+        </div>
+        <div class="hero-bottom"><span>FROM SOURCE SIGNAL TO A HUMAN DECISION.</span><span>01 / 04</span></div>
+      </section>
+
+      <section class="section-pad architecture-section">
+        <div class="section-heading reveal visible"><div><div class="eyebrow"><span class="eyebrow-line"></span> HOW THE AGENT WORKS</div><h2>Four brains.<br><span class="muted-word">One careful loop.</span></h2></div><div class="heading-aside"><span class="heading-mark">✳</span><p>Each agent has a narrow job. A supervisor checks the hand-offs. You choose what deserves your time.</p></div></div>
+        <div class="agent-flow">
+          <article class="agent-card agent-scout reveal visible"><div class="agent-card-top"><span>01 · DISCOVERY</span><span class="agent-status">SCOUT</span></div><div class="buddy buddy-lime" aria-hidden="true"><i></i><i></i><b></b></div><h3>Source scout</h3><p>Checks company career pages and permitted job sources for role records and application links.</p><div class="agent-tags"><span>Career sites</span><span>Job boards</span><span>Posts</span></div></article>
+          <div class="flow-arrow" aria-hidden="true">⟶</div>
+          <article class="agent-card agent-match reveal visible"><div class="agent-card-top"><span>02 · FIT</span><span class="agent-status">ANALYST</span></div><div class="buddy buddy-lilac" aria-hidden="true"><i></i><i></i><b></b></div><h3>Match analyst</h3><p>Compares title, experience, skills, location and pay evidence with each candidate’s profile.</p><div class="agent-tags"><span>Experience fit</span><span>Skill fit</span><span>Salary range</span></div></article>
+          <div class="flow-arrow" aria-hidden="true">⟶</div>
+          <article class="agent-card agent-fresh reveal visible"><div class="agent-card-top"><span>03 · CONTEXT</span><span class="agent-status">CONNECTOR</span></div><div class="buddy buddy-mint" aria-hidden="true"><i></i><i></i><b></b></div><h3>Context finder</h3><p>Pairs a role with the referral or HR/TA details already supplied in your tracker.</p><div class="agent-tags"><span>Warm contacts</span><span>Post date</span><span>New / aging</span></div></article>
+          <div class="flow-arrow" aria-hidden="true">⟶</div>
+          <article class="agent-card agent-guard reveal visible"><div class="agent-card-top"><span>04 · QUALITY</span><span class="agent-status">SUPERVISOR</span></div><div class="buddy buddy-pink" aria-hidden="true"><i></i><i></i><b></b></div><h3>Quality guard</h3><p>Checks links, evidence, duplicates and labels. Uncertain or blocked records stay clearly marked.</p><div class="agent-tags"><span>Evidence</span><span>Duplicates</span><span>Human review</span></div></article>
+        </div>
+        <div class="human-in-loop reveal visible"><span class="human-orbit">YOU</span><p><strong>Then you take the wheel.</strong><br>Review the source, update your application tracker and decide whether to apply or reach out. Nothing is submitted or messaged automatically.</p><a href="/person" class="text-action">Open the tracker ↗</a></div>
+      </section>
+
+      <section class="section-pad candidate-launch-section">
+        <div class="eyebrow"><span class="eyebrow-line"></span> TWO SEARCHES · TWO CLEAR VIEWS</div>
+        <div class="launch-grid">
+          <a class="launch-card launch-vaanya reveal visible" href="/vaanya"><span class="launch-index">A / EARLY CAREER</span><span class="launch-buddy buddy-mini buddy-lime" aria-hidden="true"><i></i><i></i><b></b></span><h3>Vaanya’s search</h3><p>Graduate roles, fresher tracks and hiring drives, grouped by company.</p><span class="launch-go">View openings <b>↗</b></span></a>
+          <a class="launch-card launch-vrinda reveal visible" href="/vrinda"><span class="launch-index">B / EXPERIENCED</span><span class="launch-buddy buddy-mini buddy-lilac" aria-hidden="true"><i></i><i></i><b></b></span><h3>Vrinda’s search</h3><p>Backend and SDE roles, with source links and referral context close by.</p><span class="launch-go">View openings <b>↗</b></span></a>
+        </div>
+      </section>
+    </section>
+
+    <section id="opportunities-page" class="page route-page hidden">
+      <div class="route-hero section-pad"><div class="eyebrow"><span class="eyebrow-line"></span><span id="candidate-kicker">CANDIDATE SEARCH</span></div><h1 id="candidate-title">Openings<br><span class="gradient-word">by company.</span></h1><p id="candidate-description" class="hero-sub"></p><div class="route-hero-actions"><a href="/person" class="button button-quiet">Open application tracker ↗</a></div></div>
+      <section class="desk-section section-pad route-desk">
+        <div class="summary-grid reveal" id="summary-grid"></div>
+        <section id="linkedin-section" class="linkedin-section hidden" aria-labelledby="linkedin-heading">
+          <div class="linkedin-heading-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> APPLY VIA LINKEDIN</div><h2 id="linkedin-heading">LinkedIn opportunities</h2><p>Open a listing on this device. Opening it marks the role Applied in this candidate’s local tracker.</p></div><span id="linkedin-count" class="linkedin-count"></span></div>
+          <div id="linkedin-results" class="linkedin-results"></div>
+        </section>
+        <div class="desk-toolbar reveal"><div class="view-switch"><span class="view-tab active">COMPANY DIRECTORY</span></div><div class="toolbar-filters"><label class="searchbox"><span>⌕</span><input id="search" type="search" placeholder="Search company, role, skill, contact…" autocomplete="off"><kbd>⌘ K</kbd></label><select id="company-filter" aria-label="Jump to a company"><option value="">Choose a company…</option></select><select id="category-filter" aria-label="Filter roles"><option value="jobs">Job openings</option><option value="all">All records</option><option value="drives">Hiring drives</option><option value="new">Newly added</option><option value="referral">Has referral</option></select><select id="sort-order" aria-label="Sort companies"><option value="roles">Most openings</option><option value="name">Company A–Z</option><option value="new">Recently added</option></select><button id="add-opportunity" class="button button-bright">+ Add opportunity</button></div></div>
+        <div class="results-meta"><div><span class="results-kicker">THE OPPORTUNITY LIST</span><span class="results-count" id="results-count">Loading…</span></div><div class="sort-actions"><span id="updated-label">Loading source snapshot</span><button id="refresh" class="text-action">↻ Refresh from sheets</button></div></div>
+        <div id="results" class="company-groups" aria-live="polite"></div><button id="show-more-companies" class="button button-quiet show-more-companies hidden" type="button">Show more companies</button><div id="empty" class="empty-state hidden"><span>◎</span><h3>No match in this orbit.</h3><p>Try another search or filter.</p></div>
+        <div class="privacy-foot"><span class="privacy-lock">⌑</span><span>Google Sheets are read-only here. Application statuses and notes stay in this dashboard.</span><span id="save-label">SAVED LOCALLY</span></div>
+      </section>
+    </section>
+
+    <section id="tracker-page" class="page route-page hidden">
+      <div class="route-hero section-pad"><div class="eyebrow"><span class="eyebrow-line"></span> YOUR APPLICATIONS · PRIVATE TO THIS DEVICE</div><h1>Your follow-through,<br><span class="gradient-word">in one place.</span></h1><p class="hero-sub">Log the date you applied, what you want to remember, who can help and the next step. These notes stay separate from the source sheets.</p><div class="tracker-candidate-switch" id="tracker-candidate-switch"></div></div>
+      <section class="desk-section section-pad route-desk"><div class="summary-grid" id="tracker-summary"></div><div class="desk-toolbar"><div class="view-switch"><span class="view-tab active">APPLICATION TRACKER</span></div><div class="toolbar-filters"><label class="searchbox"><span>⌕</span><input id="tracker-search" type="search" placeholder="Search company, role, notes…" autocomplete="off"></label><select id="tracker-filter" aria-label="Filter tracker"><option value="tracked">Tracked applications</option><option value="all">All roles</option><option value="applied">Applied</option><option value="active">In progress</option><option value="new">Newly added</option></select><button id="tracker-add" class="button button-bright">+ Track role</button></div></div><div class="results-meta"><div><span class="results-kicker">APPLICATION PIPELINE</span><span class="results-count" id="tracker-count">Loading…</span></div><div class="sort-actions"><span id="tracker-save-label">SAVED LOCALLY</span><button id="tracker-refresh" class="text-action">↻ Refresh from sheets</button></div></div><div id="tracker-results" class="tracker-list" aria-live="polite"></div><div id="tracker-empty" class="empty-state hidden"><span>◎</span><h3>No applications tracked yet.</h3><p>Set a role to Watching or Applied from a candidate page, or add one here.</p></div></section>
+    </section>
+  </main>
+  <footer class="site-footer"><a class="brand" href="/home"><span class="brand-orbit"><i></i></span><span>orbit<span class="brand-dot">.</span></span></a><span>YOUR JOB SEARCH, KEPT CLOSE.</span><span>LOCAL-FIRST · HUMAN-REVIEWED</span></footer>
+
+  <datalist id="company-options"><option value=""></option><option value="AHL - Saaf AI"></option><option value="AMD"></option><option value="AQR"></option><option value="Accenture in India"></option><option value="Adobe"></option><option value="AiPrise"></option><option value="Airbnb"></option><option value="AlphaGrep"></option><option value="Amazon"></option><option value="Amazon Payments"></option><option value="American Express"></option><option value="Athena Infonomics"></option><option value="Atlan"></option><option value="Atlassian"></option><option value="Atlys"></option><option value="Automation Anywhere"></option><option value="Avanade"></option><option value="Avoca"></option><option value="Axtria - Ingenious Insights"></option><option value="BCG"></option><option value="Bain & Company"></option><option value="Bain Capital"></option><option value="Bain and company"></option><option value="Barclays"></option><option value="Barclays Global Service Centre"></option><option value="Barco"></option><option value="BlackRock"></option><option value="BlinkIt"></option><option value="Bloomreach"></option><option value="Boeing (BIETC)"></option><option value="Brex"></option><option value="BrowserStack"></option><option value="CData Software"></option><option value="CRED"></option><option value="Canva"></option><option value="Carelon Global Solutions"></option><option value="Cars24"></option><option value="Carta Healthcare"></option><option value="CashKaro"></option><option value="Chargebee"></option><option value="Checkout.com"></option><option value="Cheerio AI"></option><option value="Cisco"></option><option value="Citi"></option><option value="Citicorp"></option><option value="CoRover.ai / BharatGPT"></option><option value="Coinbase"></option><option value="Colt"></option><option value="Commure"></option><option value="Commvault"></option><option value="Composio"></option><option value="Confluent"></option><option value="Copart"></option><option value="Coperion"></option><option value="CrowdStrike"></option><option value="Cursor"></option><option value="Cvent"></option><option value="D. E. Shaw"></option><option value="DE Shaw"></option><option value="DGS Technical Services Inc."></option><option value="Darwin Labs Pvt Ltd"></option><option value="Darwinbox"></option><option value="Dashverse"></option><option value="Data Platform"></option><option value="Databricks"></option><option value="Deloitte"></option><option value="Deutsche Telekom Clinical Solutions India"></option><option value="Dropbox"></option><option value="Dunzo"></option><option value="EPAM Systems"></option><option value="EXL"></option><option value="EXL Service"></option><option value="EY"></option><option value="Edelweiss"></option><option value="Elastic"></option><option value="Eli Lilly"></option><option value="Ema"></option><option value="Enerjazz (YC S21)"></option><option value="Expedia Group"></option><option value="Exponent Energy"></option><option value="FARE Labs Pvt. Ltd."></option><option value="FalconX"></option><option value="Fi Money (Epifi)"></option><option value="Figma"></option><option value="Flipkart"></option><option value="Forma.ai"></option><option value="Freight Tiger"></option><option value="Freshworks"></option><option value="GE HealthCare"></option><option value="GS"></option><option value="GitLab"></option><option value="Goldman Sachs"></option><option value="Google"></option><option value="Google Maps"></option><option value="Gramik®"></option><option value="Graviton Research Capital"></option><option value="GreyOrange"></option><option value="Groww"></option><option value="Gupshup"></option><option value="Gushwork"></option><option value="HPE (Hewlett Packard Enterprise)"></option><option value="HSBC"></option><option value="HackerRank"></option><option value="Hackerrank"></option><option value="Haptik (Jio)"></option><option value="Hewlett Packard Enterprise (HPE)"></option><option value="Hitachi Energy"></option><option value="Honeywell"></option><option value="IBM"></option><option value="IQVIA"></option><option value="InMobi"></option><option value="Indeed"></option><option value="Infineon Technologies"></option><option value="Info Edge"></option><option value="Infoedge"></option><option value="Infosys"></option><option value="Ingersoll Rand"></option><option value="Innovaccer"></option><option value="Intel"></option><option value="Interview Kickstart"></option><option value="Intuit"></option><option value="Invus"></option><option value="JAKSON Group"></option><option value="JP Morgan"></option><option value="JPMorgan Chase"></option><option value="Jefferies"></option><option value="JioHotstar"></option><option value="Jupiter Money"></option><option value="Juspay"></option><option value="Kaseya"></option><option value="Kognitos"></option><option value="KoiReader Technologies"></option><option value="Konecranes"></option><option value="Kotak Neo"></option><option value="LTIMindtree"></option><option value="Level AI"></option><option value="Lodha"></option><option value="Make my trip"></option><option value="MakeMyTrip"></option><option value="Marmon Technologies India Pvt Ltd"></option><option value="MasterCard"></option><option value="Mastercard"></option><option value="McKinsey"></option><option value="McKinsey & Company"></option><option value="Media.net"></option><option value="Meesho"></option><option value="Mensa Brands"></option><option value="Meraki Labs (Fermi)"></option><option value="Microsoft"></option><option value="Millennium"></option><option value="Millennium Management"></option><option value="ModMed (Modernizing Medicine)"></option><option value="MongoDB"></option><option value="Morgan Stanley"></option><option value="Myntra"></option><option value="NIIT"></option><option value="NK Securities"></option><option value="NK Securities Research"></option><option value="NPS Prism (Bain & Co. CoE)"></option><option value="NVIDIA"></option><option value="NatWest Group"></option><option value="New Age"></option><option value="NoBroker"></option><option value="Nutanix"></option><option value="OakNorth Bank"></option><option value="Oolka"></option><option value="Optum (UnitedHealth Group)"></option><option value="Oracle"></option><option value="Palantir"></option><option value="Palo Alto Networks"></option><option value="PayPal"></option><option value="Paytm"></option><option value="Paytm (One97)"></option><option value="PhonePe"></option><option value="Pine Labs"></option><option value="Pitney Bowes"></option><option value="Plaid"></option><option value="Plane"></option><option value="PlayPower Labs"></option><option value="PlaySimple Games"></option><option value="Point72"></option><option value="Polar Analytics"></option><option value="Portage Point Partners"></option><option value="Prismagic Solutions Inc."></option><option value="Procter & Gamble Health"></option><option value="Publicis Sapient"></option><option value="PwC"></option><option value="PwC Acceleration Center India"></option><option value="PwC India"></option><option value="Quadeye"></option><option value="Qualcomm"></option><option value="Quinnox"></option><option value="Quora"></option><option value="RIGR.in"></option><option value="RTX (Raytheon Technologies)"></option><option value="Razor Pay"></option><option value="Razorpay"></option><option value="Reckitt"></option><option value="Rippling"></option><option value="River"></option><option value="Roku"></option><option value="Rox Data Corp"></option><option value="Rubrik"></option><option value="S&P Global"></option><option value="SAP"></option><option value="Saaf AI"></option><option value="Salesforce"></option><option value="SanDisk"></option><option value="Sarvam AI"></option><option value="ServiceNow"></option><option value="Siemens Energy"></option><option value="Signant Health"></option><option value="SingleStore"></option><option value="Skild AI"></option><option value="Slice"></option><option value="Snapmint"></option><option value="Snowflake"></option><option value="Societe Generale"></option><option value="SparrowCX"></option><option value="Sprinklr"></option><option value="Squarepoint Capital"></option><option value="Standard Chartered Bank"></option><option value="Stashfin"></option><option value="Stripe"></option><option value="Swiggy"></option><option value="Synergy Telecom PVT LTD ---RF CONNECTOR, RF CABLES, AND MW COMPONENTS, TOOLS UNDER ONE SHOP"></option><option value="Target (Target Tech)"></option><option value="Tata Motors"></option><option value="Telstra"></option><option value="Thales"></option><option value="Thoucentric"></option><option value="Thoughtworks"></option><option value="Together AI"></option><option value="Tower Research Capital"></option><option value="Tower research"></option><option value="Toyota Automated Logistics"></option><option value="Training Basket"></option><option value="Turnitin"></option><option value="Twilio"></option><option value="Uber"></option><option value="UiPath"></option><option value="United Airlines India Knowledge Center"></option><option value="Urban Company"></option><option value="VMware"></option><option value="Volvo Construction Equipment"></option><option value="Volvo Group"></option><option value="WSP in India"></option><option value="Wadhwani AI"></option><option value="Walmart Global Tech"></option><option value="WisdomAI"></option><option value="Workday"></option><option value="WorldQuant"></option><option value="XenonStack"></option><option value="XenonStack Moments"></option><option value="Youtube?"></option><option value="ZS Associates"></option><option value="Zepto"></option><option value="Zomato"></option><option value="Zopsmart"></option><option value="Zscaler"></option><option value="agoda"></option><option value="amazon"></option><option value="apple"></option><option value="bharatpe"></option><option value="crowdstrike"></option><option value="databricks"></option><option value="deloitte"></option><option value="docusign"></option><option value="ekincare"></option><option value="expedia"></option><option value="freshworks"></option><option value="google"></option><option value="headout"></option><option value="hotstar"></option><option value="insightsoftware"></option><option value="intuit"></option><option value="jiostar"></option><option value="juspay"></option><option value="linkedin"></option><option value="media.net"></option><option value="meta"></option><option value="morgan stanley"></option><option value="myKaarma"></option><option value="myntra"></option><option value="netflix"></option><option value="okta inc"></option><option value="palo alto"></option><option value="paypal"></option><option value="phonepe"></option><option value="pine labs"></option><option value="postman"></option><option value="redBus"></option><option value="sandisk"></option><option value="service Now"></option><option value="twitter"></option><option value="upGrad"></option><option value="videosdk.live"></option><option value="visa"></option><option value="walmart"></option></datalist>
+  <dialog id="entry-dialog" class="modal"><form id="entry-form" method="dialog"><div class="modal-kicker">ADD TO YOUR SEARCH</div><h3 id="entry-title">Track an opportunity</h3><label>Candidate<select id="entry-candidate"><option>Vaanya</option><option>Vrinda</option></select></label><label>Company<input id="entry-company" list="company-options" required maxlength="100" placeholder="Start typing a company"></label><label>Role title<input id="entry-role" required maxlength="160" placeholder="Backend Engineer"></label><div class="form-two"><label>Location<input id="entry-location" maxlength="100" placeholder="India / Remote"></label><label>Source link<input id="entry-url" type="url" maxlength="1000" placeholder="https://…"></label></div><div class="form-two"><label>Status<select id="entry-status"><option>Watching</option><option>Not started</option><option>Applied</option><option>Interviewing</option><option>Offer</option><option>Closed</option></select></label><label>Date applied<input id="entry-date" type="date"></label></div><label>Notes to remember<textarea id="entry-notes" rows="3" placeholder="Why this role, referral context, interview prep, follow-up…"></textarea></label><div class="modal-buttons"><button class="button button-quiet" value="cancel">Cancel</button><button class="button button-bright" id="save-entry" value="default">Save role</button></div><p class="modal-hint">To import new rows from the sheets, use “Refresh from sheets”. Newly discovered rows will be marked NEW.</p></form></dialog>
+  <script type="module" src="/website/scene.js"></script>
+  <script src="/website/app.js" defer></script>
+
+
+
+</body>
+</html>

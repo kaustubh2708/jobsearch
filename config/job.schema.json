@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "company",
+    "title",
+    "location",
+    "original_source_url",
+    "canonical_source_url",
+    "link_status",
+    "source_url_is_direct",
+    "source_type",
+    "verification_status",
+    "needs_verification",
+    "checked_at",
+    "verification_reason",
+    "salary_status",
+    "salary_fit",
+    "role_fit_score",
+    "experience_or_batch_fit_score",
+    "skill_fit_score",
+    "location_fit_score",
+    "source_evidence_score",
+    "salary_fit_score",
+    "freshness_score",
+    "overall_match_score",
+    "match_label",
+    "status"
+  ],
+  "properties": {
+    "company": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "location": { "type": "string", "minLength": 1 },
+    "job_id": { "type": ["string", "null"] },
+    "experience_required": { "type": ["string", "null"] },
+    "experience_min_years_detected": { "type": ["number", "null"] },
+    "experience_max_years_detected": { "type": ["number", "null"] },
+    "experience_eligibility_decision": { "type": ["string", "null"] },
+    "experience_eligibility_reason": { "type": ["string", "null"] },
+    "skills": { "type": "array", "items": { "type": "string" } },
+    "original_source_url": { "type": "string", "format": "uri" },
+    "canonical_source_url": { "type": "string", "format": "uri" },
+    "source_url": { "type": "string", "format": "uri" },
+    "replacement_url": { "type": ["string", "null"] },
+    "link_status": {
+      "type": "string",
+      "enum": [
+        "active_exact",
+        "active_canonical_redirect",
+        "generic_portal",
+        "dead_404",
+        "gone_410",
+        "blocked_403",
+        "connection_failed",
+        "expired_or_closed",
+        "unknown"
+      ]
+    },
+    "http_status": { "type": ["integer", "string", "null"] },
+    "page_title": { "type": ["string", "null"] },
+    "page_company_found": { "type": ["string", "boolean", "null"] },
+    "page_title_found": { "type": ["string", "boolean", "null"] },
+    "page_location_found": { "type": ["string", "boolean", "null"] },
+    "page_job_id_found": { "type": ["string", "null"] },
+    "checked_at": { "type": "string" },
+    "verification_reason": { "type": "string" },
+    "source_url_is_direct": { "type": "boolean" },
+    "source_type": {
+      "type": "string",
+      "enum": ["official_career_page", "official_job_board", "public_job_post", "third_party"]
+    },
+    "retrieved_at": { "type": "string" },
+    "posted_at": { "type": ["string", "null"] },
+    "linkedin_posted_at": { "type": ["string", "null"] },
+    "linkedin_age_days": { "type": ["number", "null"] },
+    "linkedin_age_flag": { "type": ["string", "null"] },
+    "linkedin_open_status": { "type": ["string", "null"] },
+    "linkedin_age_source_text": { "type": ["string", "null"] },
+    "linkedin_age_checked_at": { "type": ["string", "null"] },
+    "deadline": { "type": ["string", "null"] },
+    "verification_status": {
+      "type": "string",
+      "enum": [
+        "verified",
+        "lead",
+        "stale",
+        "closed",
+        "not_eligible",
+        "not_relevant",
+        "blocked_manual_review",
+        "blocked_manual_check",
+        "rejected"
+      ]
+    },
+    "employer_published_salary": {
+      "type": ["object", "null"],
+      "properties": {
+        "currency": { "type": "string" },
+        "base_lpa_low": { "type": ["number", "null"] },
+        "base_lpa_high": { "type": ["number", "null"] },
+        "is_published": { "type": "boolean" },
+        "raw_text": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "market_salary_estimate": {
+      "type": ["object", "null"],
+      "properties": {
+        "currency": { "type": "string" },
+        "base_lpa_low": { "type": ["number", "null"] },
+        "base_lpa_mid": { "type": ["number", "null"] },
+        "base_lpa_high": { "type": ["number", "null"] },
+        "total_comp_lpa_low": { "type": ["number", "null"] },
+        "total_comp_lpa_mid": { "type": ["number", "null"] },
+        "total_comp_lpa_high": { "type": ["number", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "salary_status": {
+      "type": "string",
+      "enum": ["confirmed_published", "estimated_market", "unknown", "confirmed", "estimated", "not_applicable"]
+    },
+    "salary_fit": {
+      "type": "string",
+      "enum": [
+        "confirmed",
+        "estimated_above_target",
+        "estimated_below_target",
+        "published_above_target",
+        "unknown",
+        "below_target",
+        "estimated"
+      ]
+    },
+    "salary_sources": { "type": "array", "items": { "type": "string" } },
+    "salary_source_urls": { "type": "array", "items": { "type": "string" } },
+    "salary_sample_size": { "type": ["integer", "null"] },
+    "salary_confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"]
+    },
+    "salary_checked_at": { "type": "string" },
+    "role_fit_score": { "type": "integer", "minimum": 0, "maximum": 25 },
+    "experience_or_batch_fit_score": { "type": "integer", "minimum": 0, "maximum": 20 },
+    "skill_fit_score": { "type": "integer", "minimum": 0, "maximum": 20 },
+    "location_fit_score": { "type": "integer", "minimum": 0, "maximum": 10 },
+    "source_evidence_score": { "type": "integer", "minimum": 0, "maximum": 5 },
+    "salary_fit_score": { "type": "integer", "minimum": 0, "maximum": 15 },
+    "freshness_score": { "type": "integer", "minimum": 0, "maximum": 5 },
+    "overall_match_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "match_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "match_label": {
+      "type": "string",
+      "enum": ["strong_match", "potential_match", "stretch", "exclude"]
+    },
+    "match_reasons": { "type": "array", "items": { "type": "string" } },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "direct_source_evidence": { "type": "array", "items": { "type": "string" } },
+    "status": {
+      "type": "string",
+      "enum": ["new", "needs_review", "shortlisted", "rejected", "closed", "applied_by_user"]
+    },
+    "needs_verification": { "type": "boolean" },
+    "last_verified_at": { "type": "string" },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

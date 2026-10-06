@@ -1,0 +1,412 @@
+<template>
+  <div id="root" data-composition-id="f-05-tracker" data-duration="4.5" data-width="1920" data-height="1080">
+    <div id="f-05-tracker-ground" class="clip" data-start="0" data-duration="4.5" data-track-index="0"></div>
+
+    <main id="f-05-tracker-camera" class="clip" data-start="0" data-duration="4.5" data-track-index="1" aria-label="Candidate-controlled role tracker">
+      <section id="f-05-tracker-surface">
+        <header id="f-05-tracker-topbar">
+          <div id="f-05-tracker-kicker"><span id="f-05-tracker-spike">✱</span><span>TRACKER SURFACE</span></div>
+          <span id="f-05-tracker-owner">CANDIDATE CONTROLLED</span>
+        </header>
+
+        <div id="f-05-tracker-role" aria-label="Selected verified role">
+          <div id="f-05-tracker-role-icon" aria-hidden="true">R</div>
+          <div id="f-05-tracker-role-copy">
+            <span class="05-tracker-mono-label">VERIFIED ROLE</span>
+            <strong>Platform Engineer</strong>
+            <span id="f-05-tracker-role-meta">Northstar Labs · Remote</span>
+          </div>
+          <span id="f-05-tracker-selected">SELECTED</span>
+        </div>
+
+        <div id="f-05-tracker-fields">
+          <div id="f-05-tracker-status" class="05-tracker-field">
+            <span class="05-tracker-field-label">STATUS</span>
+            <span id="f-05-tracker-status-value" class="05-tracker-value"><i id="f-05-tracker-status-dot" aria-hidden="true"></i>Applied</span>
+          </div>
+          <div id="f-05-tracker-date" class="05-tracker-field">
+            <span class="05-tracker-field-label">APPLIED DATE</span>
+            <span id="f-05-tracker-date-value" class="05-tracker-value">Oct 2, 2026</span>
+          </div>
+        </div>
+
+        <div id="f-05-tracker-note" class="05-tracker-field">
+          <span class="05-tracker-field-label">YOUR NOTES</span>
+          <span id="f-05-tracker-note-copy">Add your context…</span>
+          <span id="f-05-tracker-caret" aria-hidden="true"></span>
+        </div>
+
+        <div id="f-05-tracker-plan">
+          <div id="f-05-tracker-plan-icon" aria-hidden="true">↗</div>
+          <div id="f-05-tracker-plan-copy">
+            <span class="05-tracker-field-label">ROADMAP · OPTIONAL</span>
+            <strong>Day 4 · follow-up check</strong>
+          </div>
+          <span id="f-05-tracker-planned">PLANNED</span>
+        </div>
+
+        <footer id="f-05-tracker-footer" aria-label="Next step summary">
+          <span class="05-tracker-footer-rule" aria-hidden="true"></span>
+          <span>Your next step, at a glance</span>
+          <span class="05-tracker-footer-rule" aria-hidden="true"></span>
+        </footer>
+      </section>
+    </main>
+
+    <style>
+      @font-face {
+        font-family: 'DM Mono';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("assets/fonts/captured-aFTU7PB1QTsUX8KYthqQBK6PYK0.woff2") format('woff2');
+      }
+
+      @font-face {
+        font-family: 'Manrope';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("assets/fonts/captured-xn7gYHE41ni1AdIRggexSvfedN4.woff2") format('woff2');
+      }
+
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        container-type: size;
+        color: #202923;
+        font-family: 'Manrope', sans-serif;
+      }
+
+      #f-05-tracker-ground {
+        position: absolute;
+        inset: 0;
+        background: #F4F1E9;
+      }
+
+      #f-05-tracker-camera {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        transform-origin: 50% 38%;
+      }
+
+      #f-05-tracker-surface {
+        position: absolute;
+        top: 8%;
+        left: 8%;
+        width: 84%;
+        height: 82%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        gap: 1.1cqw;
+        padding: 2.2cqw 3cqw 1.7cqw;
+        overflow: hidden;
+        background: #EBE6E2;
+        border: 1px solid rgba(32, 41, 35, .14);
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(32, 41, 35, .08), 0 4px 16px rgba(32, 41, 35, .04);
+      }
+
+      #f-05-tracker-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 5.1cqw;
+        min-height: 44px;
+        padding-bottom: 1.2cqw;
+        border-bottom: 1px solid rgba(32, 41, 35, .12);
+      }
+
+      #f-05-tracker-kicker,
+      #f-05-tracker-owner,
+      [class="05-tracker-mono-label"],
+      [class="05-tracker-field-label"],
+      #f-05-tracker-selected,
+      #f-05-tracker-planned,
+      #f-05-tracker-footer {
+        font-family: 'DM Mono', monospace;
+        font-size: 1.35cqw;
+        line-height: 1;
+        letter-spacing: .12em;
+      }
+
+      #f-05-tracker-kicker {
+        display: flex;
+        align-items: center;
+        gap: .7cqw;
+        letter-spacing: .16em;
+      }
+
+      #f-05-tracker-spike {
+        color: #426B56;
+        font-size: 2.1cqw;
+        line-height: .7;
+      }
+
+      #f-05-tracker-owner {
+        color: rgba(32, 41, 35, .75);
+        font-size: 1.1cqw;
+        letter-spacing: .11em;
+      }
+
+      #f-05-tracker-role {
+        display: flex;
+        align-items: center;
+        gap: 1.4cqw;
+        min-height: 10.2cqw;
+        padding: 0 1.4cqw;
+        background: #F4F1E9;
+        border: 1px solid rgba(32, 41, 35, .12);
+        border-radius: 8px;
+      }
+
+      #f-05-tracker-role-icon {
+        display: grid;
+        place-items: center;
+        width: 4.2cqw;
+        height: 4.2cqw;
+        flex: 0 0 auto;
+        border-radius: 8px;
+        background: #202923;
+        color: #F4F1E9;
+        font-size: 2.1cqw;
+        line-height: 1;
+      }
+
+      #f-05-tracker-role-copy {
+        display: flex;
+        min-width: 0;
+        flex: 1;
+        flex-direction: column;
+        gap: .35cqw;
+      }
+
+      [class="05-tracker-mono-label"],
+      [class="05-tracker-field-label"] {
+        color: rgba(32, 41, 35, .66);
+        font-size: 1.12cqw;
+        letter-spacing: .1em;
+      }
+
+      #f-05-tracker-role-copy strong {
+        font-size: 2.25cqw;
+        font-weight: 400;
+        letter-spacing: -.02em;
+        line-height: 1.08;
+      }
+
+      #f-05-tracker-role-meta {
+        color: rgba(32, 41, 35, .72);
+        font-size: 1.38cqw;
+        line-height: 1.1;
+      }
+
+      #f-05-tracker-selected {
+        flex: 0 0 auto;
+        padding: .8cqw 1cqw;
+        color: #202923;
+        border: 1px solid rgba(32, 41, 35, .25);
+        border-radius: 6px;
+        font-size: 1.05cqw;
+        letter-spacing: .1em;
+      }
+
+      #f-05-tracker-fields {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.1cqw;
+        min-height: 7.3cqw;
+      }
+
+      [class="05-tracker-field"] {
+        position: relative;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: .8cqw;
+        padding: 1.2cqw 1.3cqw;
+        background: #F4F1E9;
+        border: 1px solid rgba(32, 41, 35, .12);
+        border-radius: 8px;
+      }
+
+      [class="05-tracker-value"] {
+        display: flex;
+        align-items: center;
+        gap: .65cqw;
+        font-size: 1.62cqw;
+        line-height: 1;
+      }
+
+      #f-05-tracker-status-dot {
+        width: .6cqw;
+        height: .6cqw;
+        border-radius: 50%;
+        background: #202923;
+      }
+
+      #f-05-tracker-note {
+        min-height: 6.9cqw;
+        align-items: center;
+        justify-content: flex-start;
+        gap: .5cqw;
+        padding-top: 2.2cqw;
+      }
+
+      #f-05-tracker-note [class="05-tracker-field-label"] {
+        position: absolute;
+        top: 1.05cqw;
+        left: 1.3cqw;
+      }
+
+      #f-05-tracker-note-copy {
+        color: rgba(32, 41, 35, .75);
+        font-size: 1.4cqw;
+        line-height: 1;
+      }
+
+      #f-05-tracker-caret {
+        width: 1px;
+        height: 1.25cqw;
+        background: #202923;
+      }
+
+      #f-05-tracker-plan {
+        display: flex;
+        align-items: center;
+        gap: .9cqw;
+        min-height: 6.4cqw;
+        box-sizing: border-box;
+        padding: 0 1.15cqw;
+        background: rgba(244, 241, 233, .72);
+        border: 1px solid rgba(32, 41, 35, .12);
+        border-radius: 8px;
+      }
+
+      #f-05-tracker-plan-icon {
+        display: grid;
+        place-items: center;
+        width: 2.9cqw;
+        height: 2.9cqw;
+        flex: 0 0 auto;
+        color: #202923;
+        background: rgba(32, 41, 35, .07);
+        border-radius: 6px;
+        font-size: 1.45cqw;
+        line-height: 1;
+      }
+
+      #f-05-tracker-plan-copy {
+        display: flex;
+        min-width: 0;
+        flex: 1;
+        flex-direction: column;
+        gap: .45cqw;
+      }
+
+      #f-05-tracker-plan-copy strong {
+        font-size: 1.6cqw;
+        font-weight: 400;
+        line-height: 1.05;
+      }
+
+      #f-05-tracker-planned {
+        flex: 0 0 auto;
+        padding: .7cqw .9cqw;
+        color: #202923;
+        border: 1px solid rgba(32, 41, 35, .25);
+        border-radius: 6px;
+        font-size: 1.04cqw;
+        letter-spacing: .1em;
+      }
+
+      #f-05-tracker-footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .9cqw;
+        margin-top: auto;
+        min-height: 2.4cqw;
+        color: rgba(32, 41, 35, .82);
+        font-size: 1.16cqw;
+        letter-spacing: .12em;
+      }
+
+      [class="05-tracker-footer-rule"] {
+        width: 3.1cqw;
+        height: 1px;
+        background: rgba(32, 41, 35, .22);
+      }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (() => {
+        const tl = gsap.timeline({ paused: true });
+        window.__timelines = window.__timelines || {};
+        window.__timelines['f-05-tracker'] = tl;
+
+        tl.fromTo(
+          '#f-05-tracker-surface',
+          { opacity: 0, y: 24, scale: 0.985 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.62, ease: 'power2.out' },
+          0.08,
+        );
+
+        tl.fromTo(
+          '#f-05-tracker-role',
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.42, ease: 'power2.out' },
+          0.48,
+        );
+
+        tl.fromTo(
+          '#f-05-tracker-status',
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: 0.34, ease: 'power2.out' },
+          1.02,
+        );
+
+        tl.fromTo(
+          '#f-05-tracker-date',
+          { opacity: 0, x: 18 },
+          { opacity: 1, x: 0, duration: 0.38, ease: 'power1.out' },
+          1.36,
+        );
+
+        tl.fromTo(
+          '#f-05-tracker-note',
+          { opacity: 0, x: 22, scale: 0.99 },
+          { opacity: 1, x: 0, scale: 1, duration: 0.48, ease: 'power2.out' },
+          1.78,
+        );
+
+        tl.fromTo(
+          '#f-05-tracker-plan',
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.42, ease: 'power2.out' },
+          2.56,
+        );
+
+        tl.fromTo(
+          '#f-05-tracker-footer',
+          { opacity: 0, y: 9 },
+          { opacity: 1, y: 0, duration: 0.38, ease: 'power1.out' },
+          3.62,
+        );
+
+        tl.fromTo(
+          '#f-05-tracker-camera',
+          { scale: 1 },
+          { scale: 1.012, duration: 4.25, ease: 'none' },
+          0.12,
+        );
+      })();
+    </script>
+  </div>
+</template>

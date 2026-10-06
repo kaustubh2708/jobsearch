@@ -1,0 +1,138 @@
+[span] orbit
+[a] How it works
+[a] My tracker
+[span] PRIVATE · LOCAL
+[button] Export
+[div] A JOB SEARCH SYSTEM, WITH A LITTLE SOUL
+[h1] Find the right
+[span] next orbit.
+[p] A focused team of research agents finds roles, checks fit and freshness, brings referral context forward, then leaves every decision in your hands.
+[a] Explore Vaanya’s roles
+[a] Explore Vrinda’s roles
+[span] SEARCH PIPELINE
+[span] READY
+[small] specialist
+[small] agents
+[span] Research → Review
+[span] you stay in control
+[b] Human-approved
+[small] no auto outreach
+[b] Freshness-aware
+[small] new roles stand out
+[div] FIND
+[span] THE
+[span] FIT
+[span] FROM SOURCE SIGNAL TO A HUMAN DECISION.
+[span] 01 / 04
+[div] HOW THE AGENT WORKS
+[h2] Four brains.
+[span] One careful loop.
+[p] Each agent has a narrow job. A supervisor checks the hand-offs. You choose what deserves your time.
+[span] 01 · DISCOVERY
+[span] SCOUT
+[h3] Source scout
+[p] Checks company career pages and permitted job sources for role records and application links.
+[span] Career sites
+[span] Job boards
+[span] Posts
+[span] 02 · FIT
+[span] ANALYST
+[h3] Match analyst
+[p] Compares title, experience, skills, location and pay evidence with each candidate’s profile.
+[span] Experience fit
+[span] Skill fit
+[span] Salary range
+[span] 03 · CONTEXT
+[span] CONNECTOR
+[h3] Context finder
+[p] Pairs a role with the referral or HR/TA details already supplied in your tracker.
+[span] Warm contacts
+[span] Post date
+[span] New / aging
+[span] 04 · QUALITY
+[span] SUPERVISOR
+[h3] Quality guard
+[p] Checks links, evidence, duplicates and labels. Uncertain or blocked records stay clearly marked.
+[span] Evidence
+[span] Duplicates
+[span] Human review
+[span] YOU
+[strong] Then you take the wheel.
+[p] Review the source, update your application tracker and decide whether to apply or reach out. Nothing is submitted or messaged automatically.
+[a] Open the tracker ↗
+[div] TWO SEARCHES · TWO CLEAR VIEWS
+[span] A / EARLY CAREER
+[h3] Vaanya’s search
+[p] Graduate roles, fresher tracks and hiring drives, grouped by company.
+[span] View openings
+[span] B / EXPERIENCED
+[h3] Vrinda’s search
+[p] Backend and SDE roles, with source links and referral context close by.
+[span] View openings
+[span] CANDIDATE SEARCH
+[h1] Openings
+[span] by company.
+[a] Open application tracker ↗
+[div] APPLY VIA LINKEDIN
+[h2] LinkedIn opportunities
+[p] Open a listing on this device. Opening it marks the role Applied in this candidate’s local tracker.
+[span] COMPANY DIRECTORY
+[kbd] ⌘ K
+[option] Choose a company…
+[option] Job openings
+[option] All records
+[option] Hiring drives
+[option] Newly added
+[option] Has referral
+[option] Most openings
+[option] Company A–Z
+[option] Recently added
+[button] + Add opportunity
+[span] THE OPPORTUNITY LIST
+[span] Loading…
+[span] Loading source snapshot
+[button] ↻ Refresh from sheets
+[h3] No match in this orbit.
+[p] Try another search or filter.
+[span] Google Sheets are read-only here. Application statuses and notes stay in this dashboard.
+[span] SAVED LOCALLY
+[div] YOUR APPLICATIONS · PRIVATE TO THIS DEVICE
+[h1] Your follow-through,
+[span] in one place.
+[p] Log the date you applied, what you want to remember, who can help and the next step. These notes stay separate from the source sheets.
+[span] APPLICATION TRACKER
+[option] Tracked applications
+[option] All roles
+[option] Applied
+[option] In progress
+[option] Newly added
+[button] + Track role
+[span] APPLICATION PIPELINE
+[span] Loading…
+[span] SAVED LOCALLY
+[button] ↻ Refresh from sheets
+[h3] No applications tracked yet.
+[p] Set a role to Watching or Applied from a candidate page, or add one here.
+[span] YOUR JOB SEARCH, KEPT CLOSE.
+[span] LOCAL-FIRST · HUMAN-REVIEWED
+[div] ADD TO YOUR SEARCH
+[h3] Track an opportunity
+[label] Candidate
+[option] Vaanya
+[option] Vrinda
+[label] Company
+[label] Role title
+[label] Location
+[label] Source link
+[label] Status
+[option] Watching
+[option] Not started
+[option] Applied
+[option] Interviewing
+[option] Offer
+[option] Closed
+[label] Date applied
+[label] Notes to remember
+[button] Cancel
+[button] Save role
+[p] To import new rows from the sheets, use “Refresh from sheets”. Newly discovered rows will be marked NEW.

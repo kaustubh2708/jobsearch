@@ -1,0 +1,140 @@
+/* Orbit refresh — one light design system for the header, footer and the Vaanya / Vrinda / tracker pages.
+   Loaded last; overrides the legacy dark-theme rules in styles.css. */
+:root{--bg:#F4F1E9;--paper:#FFFDF8;--stone:#EBE6E2;--ink:#202923;--green:#426B56;--green-d:#2F5240;--clay:#6F5C4B;--terra:#B87860;--terra-d:#92583f;--line:rgba(32,41,35,.14);--ease:cubic-bezier(.22,.8,.2,1);--lime:#426B56;--lilac:#6F5C4B}
+html{background:var(--bg);scroll-padding-top:96px}
+body{background:var(--bg);font-size:15px;color:var(--ink);-webkit-font-smoothing:antialiased}
+.grain{opacity:.05;mix-blend-mode:multiply}
+
+/* header */
+.topbar{height:72px;background:rgba(244,241,233,.82);backdrop-filter:blur(18px) saturate(1.2);border-bottom:1px solid var(--line)}
+.brand{font-size:21px;letter-spacing:-.04em}
+.topnav{gap:6px;margin-left:56px}
+.nav-link{font:700 13px Manrope,sans-serif;letter-spacing:0;color:#5c665e;padding:9px 15px;border-radius:99px;transition:background .2s,color .2s}
+.nav-link:hover{background:rgba(32,41,35,.06);color:var(--ink)}
+.nav-link.active{background:var(--ink);color:#fff}
+.local-badge{font:500 11px "DM Mono",monospace;letter-spacing:.1em;color:#5c665e}
+.local-badge i{background:var(--green);box-shadow:0 0 0 0 rgba(66,107,86,.5);animation:rfPing 2.4s infinite}
+@keyframes rfPing{70%,100%{box-shadow:0 0 0 8px rgba(66,107,86,0)}}
+
+/* buttons */
+.button{min-height:42px;padding:0 18px;border-radius:99px;font:700 13px/1 Manrope,sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);transition:transform .25s var(--ease),box-shadow .25s,background .2s,border-color .2s}
+.button:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(51,48,39,.1)}
+.button-quiet{background:var(--paper);color:var(--ink)}.button-quiet span{color:var(--green)}
+.button-bright{background:var(--green);border-color:var(--green);color:#fffdf8;box-shadow:none}
+.button-bright:hover{background:var(--green-d);border-color:var(--green-d)}
+.text-action{color:var(--green);font:700 12px Manrope,sans-serif;cursor:pointer}.text-action:hover{text-decoration:underline}
+:focus-visible{outline:3px solid #8fb7a0;outline-offset:2px}
+
+/* form controls — one consistent look */
+select,input[type=text],input[type=search],input[type=url],input[type=date],input:not([type]),textarea{
+  font:600 13px Manrope,sans-serif;color:var(--ink)!important;background-color:var(--paper)!important;border:1px solid var(--line)!important;border-radius:12px!important;min-height:40px;padding:0 12px;outline:none;transition:border-color .2s,box-shadow .2s}
+textarea{padding:10px 12px;min-height:72px;line-height:1.5;font-weight:500}
+select{appearance:none;-webkit-appearance:none;padding-right:34px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23426B56' stroke-width='1.8' viewBox='0 0 12 12'%3E%3Cpath d='m2.5 4.5 3.5 3.2 3.5-3.2'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 12px center!important}
+select option{color:var(--ink);background:var(--paper)}
+select:hover,input:hover,textarea:hover{border-color:rgba(66,107,86,.45)!important}
+select:focus,input:focus,textarea:focus{border-color:var(--green)!important;box-shadow:0 0 0 4px rgba(66,107,86,.14)}
+::placeholder{color:#8a8f86!important;opacity:1}
+.company-status-control select,.tracker-stage select,.role-status-wrap select{font-size:12px;min-height:38px}
+
+/* route hero */
+.route-hero{position:relative;max-width:1440px;padding:128px clamp(20px,6vw,88px) 28px}
+.route-hero .eyebrow{font:500 12px "DM Mono",monospace;letter-spacing:.14em;color:var(--clay)}
+.route-hero .eyebrow-line{background:var(--green);box-shadow:none;width:26px}
+.route-hero h1{font-size:clamp(44px,6vw,86px);line-height:.98;letter-spacing:-.055em;font-weight:700;margin:18px 0 18px}
+.gradient-word{background:none;-webkit-background-clip:initial;background-clip:initial;color:var(--green)}
+.route-hero .hero-sub{font-size:17px;line-height:1.7;max-width:620px;color:#4d574f}
+.route-hero-actions{margin-top:22px}
+.rf-routebot{position:absolute;right:clamp(20px,8vw,120px);top:112px;width:170px;height:250px;pointer-events:none}
+.rf-routebot svg{width:100%;height:100%;overflow:visible}
+
+/* summary cards */
+.section-pad{max-width:1440px;padding-left:clamp(20px,6vw,88px);padding-right:clamp(20px,6vw,88px)}
+.summary-grid{gap:14px}
+.summary-card,.route-page .summary-card{min-height:136px;padding:20px 22px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(160deg,var(--paper),var(--stone))!important;box-shadow:none;transition:transform .3s var(--ease),box-shadow .3s,border-color .3s;backdrop-filter:none}
+.summary-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(51,48,39,.1);border-color:rgba(66,107,86,.4)}
+.summary-primary{background:linear-gradient(160deg,#E2EAE0,var(--paper))!important}
+.summary-label{font:500 11px "DM Mono",monospace;letter-spacing:.1em;color:var(--clay)}.summary-label span{color:#8b8f86}
+.summary-value{font-size:clamp(36px,4vw,52px);letter-spacing:-.06em;margin:20px 0 6px;color:var(--ink)}
+.summary-caption{font-size:13px;color:#5c665e}
+
+/* toolbar */
+.route-page .desk-toolbar{top:82px;padding:10px 12px;border:1px solid var(--line);border-radius:20px;background:rgba(255,253,248,.92)!important;backdrop-filter:blur(14px);box-shadow:0 10px 30px rgba(51,48,39,.07);margin-bottom:6px}
+.view-tab{font:700 11px "DM Mono",monospace;letter-spacing:.1em;color:var(--clay);padding:10px 14px}
+.view-tab.active{background:var(--stone);color:var(--ink)}
+.route-page .searchbox{background:var(--paper)!important;border:1px solid var(--line);border-radius:12px;min-height:40px;height:40px}
+.route-page .searchbox input{border:0!important;box-shadow:none!important;min-height:0;padding:0;background:none!important;font-size:13px}
+.searchbox kbd{font:500 10px "DM Mono",monospace;border-radius:6px}
+.results-meta{padding:26px 2px 12px}
+.results-kicker{font:500 11px "DM Mono",monospace;letter-spacing:.14em;color:var(--green)}
+.results-count{font-size:14px;font-weight:600;color:var(--ink)}
+.sort-actions{font:500 11px "DM Mono",monospace;color:var(--clay)}
+
+/* company directory */
+.company-groups{gap:12px}
+.company-group{border-radius:22px;border:1px solid var(--line);background:var(--paper)!important;box-shadow:none;transition:transform .3s var(--ease),border-color .25s,box-shadow .3s}
+.company-group:hover{border-color:rgba(66,107,86,.4);box-shadow:0 14px 34px rgba(51,48,39,.08);transform:translateY(-2px)}
+.company-group[open]{border-color:var(--green);box-shadow:0 22px 50px rgba(51,48,39,.1);transform:none}
+.company-summary{min-height:84px;padding:14px 22px;gap:20px}
+.company-logo{width:42px;height:42px;border-radius:12px;font-size:12px}.company-logo img{width:28px;height:28px}
+.company-identity strong{font-size:17px;letter-spacing:-.025em;font-weight:800}
+.company-identity small{font:500 11px "DM Mono",monospace;letter-spacing:.06em;color:#7a7f76;margin-top:4px}
+.company-count strong{font-size:30px;letter-spacing:-.06em}.company-count span{font-size:13px;color:#5c665e}
+.referral-chip{padding:7px 12px;font:700 12px Manrope,sans-serif;background:rgba(66,107,86,.12);color:var(--green-d)}
+.referral-chip.none{background:var(--stone);color:#7a7f76;font-weight:600}
+.chevron{font-size:18px;color:var(--clay)}
+.company-body{padding:6px 24px 24px;border-top:1px solid var(--line);background:linear-gradient(180deg,rgba(235,230,226,.45),transparent 140px)}
+.company-body-heading{font:500 11px "DM Mono",monospace;letter-spacing:.12em;color:var(--clay)}
+.company-notes{gap:20px;padding:18px 0}
+.company-jobs{display:grid;gap:12px}
+.role-card,.route-page .company-group .role-card{border-radius:18px;background:var(--paper)!important;border:1px solid var(--line);padding:18px 20px;transition:border-color .2s,box-shadow .25s,transform .25s var(--ease)}
+.role-card:hover{border-color:rgba(66,107,86,.45);box-shadow:0 12px 28px rgba(51,48,39,.08);transform:translateY(-1px)}
+.role-title{font-size:17px;font-weight:800;letter-spacing:-.025em;margin:0}
+.role-meta{display:flex;flex-wrap:wrap;gap:6px 14px;margin:8px 0;font-size:13px;color:#5c665e}
+.tiny-chip{padding:5px 10px;font:500 11px "DM Mono",monospace;border-radius:99px;background:var(--stone);color:var(--clay)}
+.tiny-chip.priority{background:rgba(66,107,86,.14);color:var(--green-d)}.tiny-chip.drive{background:rgba(184,120,96,.16);color:var(--terra-d)}
+.referral-pill{font-size:12px;padding:6px 11px;background:rgba(66,107,86,.12);color:var(--green-d);font-weight:600}.referral-pill.hr{background:rgba(184,120,96,.15);color:var(--terra-d)}
+.no-referral,.no-link{font-size:12px;color:#8a8f86}
+.role-referral-label{font:500 10px "DM Mono",monospace;letter-spacing:.12em;color:var(--clay)}
+.role-source-note{font-size:13px;color:#5c665e}.role-source-note a,.role-source-note strong{color:var(--ink)}
+.open-link{border-radius:12px;border-color:rgba(66,107,86,.4);color:var(--green)}.open-link:hover{background:var(--green);color:#fff}
+.role-tracking summary{font:700 12px Manrope,sans-serif;color:var(--green);cursor:pointer;padding:8px 0}
+.tracking-fields label,.tracker-notes label,.tracker-date>span,.tracker-stage>span{font:600 12px Manrope,sans-serif;color:#5c665e}
+.tracker-date>span,.tracker-stage>span{font:500 10px "DM Mono",monospace;letter-spacing:.1em;color:var(--clay)}
+.company-note-editor textarea{min-height:76px}
+
+/* linkedin block */
+.linkedin-section{border-radius:24px}
+.linkedin-job{border-radius:16px}
+
+/* tracker rows */
+.tracker-list{gap:12px}
+.tracker-row{border-radius:22px;background:var(--paper)!important;border:1px solid var(--line);padding:20px 22px;gap:18px;box-shadow:none;transition:border-color .25s,box-shadow .3s,transform .3s var(--ease)}
+.tracker-row:hover{border-color:rgba(66,107,86,.4);box-shadow:0 14px 34px rgba(51,48,39,.08);transform:translateY(-2px)}
+.tracker-company{font-size:14px;font-weight:800}
+.tracker-role strong{font-size:16px;font-weight:800;letter-spacing:-.02em}
+.tracker-role small{font-size:13px;color:#5c665e}.tracker-role a{font-size:12px;font-weight:700;color:var(--green)}
+.candidate-tab{font:700 13px Manrope,sans-serif;padding:9px 18px}.candidate-tab.active{background:var(--ink)!important;color:#fff!important}
+
+/* misc states */
+.empty-state{border:1px dashed rgba(32,41,35,.25);border-radius:24px;background:rgba(255,253,248,.6)}
+.empty-state>span{color:var(--green)}.empty-state h3{font-size:22px;letter-spacing:-.03em}.empty-state p{font-size:14px;color:#5c665e}
+.privacy-foot{font-size:13px;color:#5c665e}.privacy-foot #save-label{font:500 11px "DM Mono",monospace;color:var(--green)}
+.show-more-companies{min-height:46px}
+.modal{border-radius:26px;background:var(--paper)!important;border:1px solid var(--line);box-shadow:0 40px 100px rgba(32,41,35,.25)}
+.modal h3{font-size:28px;letter-spacing:-.04em}.modal-kicker{font:500 11px "DM Mono",monospace;letter-spacing:.14em;color:var(--green)}
+.modal label{font-size:13px;color:#4d574f;font-weight:600}
+.modal::backdrop{background:rgba(32,41,35,.45);backdrop-filter:blur(6px)}
+.site-footer{min-height:96px;padding:24px clamp(20px,6vw,88px);border-top:1px solid var(--line);background:var(--paper);color:#5c665e}
+.site-footer>span{font:500 11px "DM Mono",monospace;letter-spacing:.12em;color:#7a7f76}
+.reveal{transition:opacity .8s var(--ease),transform .8s var(--ease)}
+
+@media(max-width:1000px){.rf-routebot{display:none}.topnav{margin-left:12px}.nav-link{padding:8px 11px}}
+@media(max-width:700px){.topbar{height:64px}.route-hero{padding-top:104px}.route-hero .hero-sub{font-size:15px}.company-summary{padding:12px 14px}.company-identity strong{font-size:15px}.company-body{padding:4px 14px 16px}.role-card{padding:14px}.summary-value{font-size:36px}}
+@media(prefers-reduced-motion:reduce){.local-badge i{animation:none}}
+.route-page .toolbar-filters{flex-wrap:nowrap}
+.route-page .toolbar-filters select{width:auto;min-width:max-content;flex:0 0 auto;padding-left:14px}
+.route-page .toolbar-filters .searchbox{flex:1 1 220px;min-width:180px;width:auto}
+#company-filter{min-width:190px;max-width:260px}
+@media(max-width:1180px){.route-page .toolbar-filters{flex-wrap:wrap}}
+.role-status-wrap{display:flex;align-items:center;gap:12px}.role-status-wrap select{min-width:138px}
+.company-status-control select{min-width:138px}

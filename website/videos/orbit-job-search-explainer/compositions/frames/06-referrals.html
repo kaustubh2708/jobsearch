@@ -1,0 +1,333 @@
+<template>
+  <div id="root" data-composition-id="f-06-referrals" data-duration="4" data-width="1920" data-height="1080">
+    <div id="f06-referrals-ground" class="clip frame-ground" data-start="0" data-duration="4" data-track-index="0" aria-hidden="true"></div>
+
+    <div id="f06-referrals-kicker" class="clip frame-kicker-clip" data-start="0" data-duration="4" data-track-index="1">
+      <div class="frame-kicker"><span class="frame-kicker-mark">✱</span> referral context</div>
+    </div>
+
+    <div id="f06-referrals-role" class="clip frame-role-clip" data-start="0" data-duration="4" data-track-index="2">
+      <article class="frame-card frame-role-card">
+        <div class="frame-card-topline">
+          <span class="frame-card-label">Target role</span>
+          <span class="frame-card-status">saved</span>
+        </div>
+        <div class="frame-card-title">Role card</div>
+        <div class="frame-card-rule"></div>
+        <div class="frame-role-row">
+          <span class="frame-role-glyph" aria-hidden="true">↗</span>
+          <span>Ready for a warm introduction</span>
+        </div>
+      </article>
+    </div>
+
+    <div id="f06-referrals-source" class="clip frame-source-clip" data-start="0" data-duration="4" data-track-index="3">
+      <div class="frame-source-label"><span class="frame-source-mark">✓</span> Your verified contact list</div>
+    </div>
+
+    <div id="f06-referrals-connector" class="clip frame-connector-clip" data-start="0" data-duration="4" data-track-index="4" aria-hidden="true">
+      <div class="frame-connector"><span class="frame-connector-dot"></span></div>
+    </div>
+
+    <div id="f06-referrals-contact" class="clip frame-contact-clip" data-start="0" data-duration="4" data-track-index="5">
+      <article class="frame-card frame-contact-card">
+        <div class="frame-card-topline">
+          <span class="frame-card-label">Verified contact</span>
+          <span class="frame-card-status">supplied</span>
+        </div>
+        <div class="frame-card-title">Referral contact</div>
+        <div class="frame-card-rule"></div>
+        <div class="frame-contact-row">
+          <span class="frame-contact-badge" aria-hidden="true">✓</span>
+          <span>Choose an approach that feels human</span>
+        </div>
+      </article>
+    </div>
+
+    <div id="f06-referrals-close" class="clip frame-close-clip" data-start="0" data-duration="4" data-track-index="6">
+      <div class="frame-close-line">You choose who to approach</div>
+    </div>
+
+    <style>
+      @font-face {
+        font-family: 'Manrope';
+        font-style: normal;
+        font-weight: 400 800;
+        font-display: swap;
+        src: url('assets/fonts/captured-xn7gYHE41ni1AdIRggexSvfedN4.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'DM Mono';
+        font-style: normal;
+        font-weight: 400 500;
+        font-display: swap;
+        src: url('assets/fonts/captured-aFTU7PB1QTsUX8KYthqQBK6PYK0.woff2') format('woff2');
+      }
+
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        container-type: size;
+        isolation: isolate;
+        color: #202923;
+        font-family: 'Manrope', sans-serif;
+      }
+
+      .frame-ground {
+        position: absolute;
+        inset: 0;
+        background: #F4F1E9;
+      }
+
+      .frame-kicker-clip,
+      .frame-role-clip,
+      .frame-source-clip,
+      .frame-connector-clip,
+      .frame-contact-clip,
+      .frame-close-clip {
+        position: absolute;
+      }
+
+      .frame-kicker-clip {
+        top: 8.2cqh;
+        left: 8.3cqw;
+        width: 40cqw;
+        height: 4cqh;
+      }
+
+      .frame-kicker {
+        font-family: 'DM Mono', monospace;
+        font-size: 1.35cqw;
+        font-weight: 500;
+        letter-spacing: .16em;
+        line-height: 1;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .frame-kicker-mark {
+        color: #426B56;
+        padding-right: .45em;
+      }
+
+      .frame-role-clip,
+      .frame-contact-clip {
+        top: 24cqh;
+        width: 29.2cqw;
+        height: 50cqh;
+      }
+
+      .frame-role-clip { left: 11.5cqw; }
+      .frame-contact-clip { left: 59.3cqw; }
+
+      .frame-card {
+        position: absolute;
+        inset: 0;
+        padding: 3.1cqw 3.2cqw;
+        border: 1px solid rgba(32, 41, 35, .16);
+        border-radius: 12px;
+        background: #EBE6E2;
+        box-shadow: 0 1px 3px rgba(32, 41, 35, .08), 0 4px 16px rgba(32, 41, 35, .04);
+        transform-origin: 50% 50%;
+        will-change: transform, opacity;
+      }
+
+      .frame-card-topline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 2.6cqw;
+      }
+
+      .frame-card-label,
+      .frame-card-status,
+      .frame-source-label {
+        font-family: 'DM Mono', monospace;
+        font-size: 1.25cqw;
+        line-height: 1;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+
+      .frame-card-label { opacity: .64; }
+      .frame-card-status { opacity: .54; }
+
+      .frame-card-title {
+        margin-top: 3.2cqw;
+        font-size: 3.3cqw;
+        font-weight: 400;
+        letter-spacing: -.022em;
+        line-height: 1.04;
+      }
+
+      .frame-card-rule {
+        width: 100%;
+        height: 1px;
+        margin-top: 2.6cqw;
+        background: rgba(32, 41, 35, .14);
+      }
+
+      .frame-role-row,
+      .frame-contact-row {
+        display: flex;
+        align-items: center;
+        gap: 1.3cqw;
+        margin-top: 2.2cqw;
+        font-size: 1.48cqw;
+        line-height: 1.35;
+      }
+
+      .frame-role-glyph,
+      .frame-contact-badge {
+        display: inline-grid;
+        flex: 0 0 auto;
+        place-items: center;
+        width: 2.6cqw;
+        height: 2.6cqw;
+        border: 1px solid rgba(32, 41, 35, .28);
+        border-radius: 9999px;
+        font-family: 'DM Mono', monospace;
+        font-size: 1.32cqw;
+        line-height: 1;
+      }
+
+      .frame-role-glyph { font-size: 1.5cqw; }
+
+      .frame-source-clip {
+        top: 16.4cqh;
+        left: 59.3cqw;
+        width: 29.2cqw;
+        height: 4.2cqh;
+      }
+
+      .frame-source-label {
+        display: flex;
+        align-items: center;
+        gap: .8cqw;
+        font-size: 1.35cqw;
+        letter-spacing: .1em;
+        white-space: nowrap;
+      }
+
+      .frame-source-mark {
+        display: inline-grid;
+        place-items: center;
+        width: 2.1cqw;
+        height: 2.1cqw;
+        border: 1px solid rgba(32, 41, 35, .34);
+        border-radius: 9999px;
+        font-size: 1cqw;
+        letter-spacing: 0;
+      }
+
+      .frame-connector-clip {
+        top: 42cqh;
+        left: 40.7cqw;
+        width: 18.6cqw;
+        height: 1px;
+      }
+
+      .frame-connector {
+        position: absolute;
+        inset: 0;
+        background: rgba(32, 41, 35, .2);
+        transform-origin: 0 50%;
+        will-change: transform, opacity;
+      }
+
+      .frame-connector-dot {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #202923;
+        transform: translateY(-50%);
+      }
+
+      .frame-close-clip {
+        top: 82cqh;
+        left: 11.5cqw;
+        width: 77cqw;
+        height: 7.5cqh;
+      }
+
+      .frame-close-line {
+        font-size: 2.7cqw;
+        font-weight: 400;
+        letter-spacing: -.018em;
+        line-height: 1.08;
+        text-align: center;
+        will-change: transform, opacity;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const tl = gsap.timeline({ paused: true });
+        const role = document.querySelector('.frame-role-card');
+        const contact = document.querySelector('.frame-contact-card');
+        const source = document.querySelector('.frame-source-label');
+        const kicker = document.querySelector('.frame-kicker');
+        const connector = document.querySelector('.frame-connector');
+        const closeLine = document.querySelector('.frame-close-line');
+
+        tl.fromTo(kicker,
+          { y: -12, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.32, ease: 'power2.out' },
+          0.05
+        );
+
+        // Scene 1: the role card lands first on the left.
+        tl.fromTo(role,
+          { x: 72, y: 12, scale: 0.965, opacity: 0 },
+          { x: 0, y: 0, scale: 1, opacity: 1, duration: 0.62, ease: 'power3.out' },
+          0.16
+        );
+
+        tl.fromTo(source,
+          { y: 16, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.38, ease: 'power2.out' },
+          0.68
+        );
+
+        // Scene 2: the verified contact card assembles into the right-hand slot.
+        tl.fromTo(contact,
+          { x: -74, y: 18, scale: 0.95, opacity: 0 },
+          { x: 0, y: 0, scale: 1, opacity: 1, duration: 0.72, ease: 'power3.out' },
+          1.06
+        );
+        tl.fromTo(connector,
+          { scaleX: 0, opacity: 0 },
+          { scaleX: 1, opacity: 1, duration: 0.46, ease: 'power2.out' },
+          1.42
+        );
+
+        // Scene 3: the quiet held read lands below the pair.
+        tl.fromTo(closeLine,
+          { y: 16, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.46, ease: 'power2.out' },
+          2.72
+        );
+
+        const float = { p: 0 };
+        tl.to(float, {
+          p: Math.PI * 2 * 0.55,
+          duration: 1.05,
+          ease: 'none',
+          onUpdate: () => {
+            const s = Math.sin(float.p);
+            role.style.transform = `translateY(${s * 1.5}px)`;
+            contact.style.transform = `translateY(${Math.sin(float.p + Math.PI * 0.5) * 1.5}px)`;
+          },
+        }, 2.95);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines['f-06-referrals'] = tl;
+      })();
+    </script>
+  </div>
+</template>

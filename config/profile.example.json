@@ -1,0 +1,39 @@
+{
+  "candidate_name": "Candidate Name",
+  "experience_years": 3,
+  "current_employer": "",
+  "target_roles": [
+    "Software Engineer II",
+    "SDE II",
+    "Backend Engineer",
+    "Software Engineer",
+    "Platform Engineer",
+    "Distributed Systems Engineer",
+    "Full-stack Engineer with backend emphasis",
+    "selected SDE III / Senior Software Engineer"
+  ],
+  "locations": [
+    "Gurgaon",
+    "Bengaluru",
+    "Hyderabad",
+    "Noida",
+    "India",
+    "Remote India"
+  ],
+  "priority_locations": [
+    "Gurgaon",
+    "Bengaluru",
+    "Hyderabad",
+    "Noida"
+  ],
+  "willing_to_relocate": true,
+  "minimum_fixed_base_lpa": 30,
+  "skills": [
+    "Backend development",
+    "REST APIs",
+    "Cloud"
+  ],
+  "resume_path": "",
+  "notes": "Short, factual summary of the candidate's background and what they want next.",
+  "salary_policy": "Only treat salary as confirmed when fixed base is explicitly published. Otherwise use unknown."
+}

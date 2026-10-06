@@ -1,0 +1,22 @@
+{
+  "description": "Dynamic search filtering switches for job discovery waves",
+  "active_switches": {
+    "exclude_companies_with_existing_openings": true,
+    "exclude_python_heavy_roles": true
+  },
+  "switch_metadata": {
+    "cadence_rule": "Turn ON after every 5 waves (or toggle per wave as requested by user)",
+    "last_toggled_wave": 9,
+    "last_updated": "2026-10-05"
+  },
+  "rules": {
+    "exclude_companies_with_existing_openings": {
+      "enabled": true,
+      "description": "Strictly exclude employers that already have one or more job openings recorded in past waves or the preceding wave. Only discover and add completely new companies."
+    },
+    "exclude_python_heavy_roles": {
+      "enabled": true,
+      "description": "Strictly exclude Python-heavy roles (e.g. Python Developer, Quantitative Developer requiring pure Python, or roles whose primary tech stack is Python without candidate core skills like C#/.NET Core, Node.js, TypeScript, Azure, or Java)."
+    }
+  }
+}

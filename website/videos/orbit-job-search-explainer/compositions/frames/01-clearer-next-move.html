@@ -1,0 +1,117 @@
+<template>
+  <div id="root" data-composition-id="f-01-clearer-next-move" data-duration="3" data-width="1920" data-height="1080">
+    <div id="f-01-clearer-next-move-ground" class="clip" data-start="0" data-duration="3" data-track-index="0"></div>
+
+    <main id="f-01-clearer-next-move-stage" class="clip" data-start="0" data-duration="3" data-track-index="1" aria-label="Outcome-focused introduction">
+      <div id="f-01-clearer-next-move-cards" aria-hidden="true">
+        <div id="f-01-clearer-next-move-card-a" data-role-card>
+          <span data-card-line="long"></span><span data-card-line="medium"></span><span data-card-line="short"></span>
+        </div>
+        <div id="f-01-clearer-next-move-card-b" data-role-card>
+          <span data-card-line="long"></span><span data-card-line="short"></span><span data-card-line="medium"></span>
+        </div>
+        <div id="f-01-clearer-next-move-card-c" data-role-card>
+          <span data-card-line="medium"></span><span data-card-line="long"></span><span data-card-line="short"></span>
+        </div>
+        <div id="f-01-clearer-next-move-card-d" data-role-card>
+          <span data-card-line="long"></span><span data-card-line="medium"></span><span data-card-line="short"></span>
+        </div>
+        <div id="f-01-clearer-next-move-card-e" data-role-card>
+          <span data-card-line="short"></span><span data-card-line="long"></span><span data-card-line="medium"></span>
+        </div>
+      </div>
+
+      <div id="f-01-clearer-next-move-bot" aria-hidden="true">
+        <span id="f-01-clearer-next-move-bot-antenna"></span>
+        <span id="f-01-clearer-next-move-bot-head">
+          <i id="f-01-clearer-next-move-bot-eye-a"></i>
+          <i id="f-01-clearer-next-move-bot-eye-b"></i>
+          <b id="f-01-clearer-next-move-bot-mouth"></b>
+        </span>
+      </div>
+
+      <div id="f-01-clearer-next-move-promise" aria-label="Less searching.">
+        <span id="f-01-clearer-next-move-typed-wrap"><span id="f-01-clearer-next-move-typed"></span><span id="f-01-clearer-next-move-caret" aria-hidden="true"></span></span>
+      </div>
+
+      <div id="f-01-clearer-next-move-second-line" aria-label="More relevant roles.">
+        <span id="f-01-clearer-next-move-more">More</span>
+        <span id="f-01-clearer-next-move-relevant">&nbsp;relevant roles.</span>
+      </div>
+
+      <div id="f-01-clearer-next-move-wordmark" aria-label="Orbit">
+        <span id="f-01-clearer-next-move-wordmark-mark" aria-hidden="true">✱</span>
+        <span id="f-01-clearer-next-move-wordmark-name">Orbit</span>
+      </div>
+    </main>
+
+    <style>
+      @font-face{font-family:'Manrope';font-style:normal;font-weight:400;font-display:swap;src:url("assets/fonts/captured-xn7gYHE41ni1AdIRggexSvfedN4.woff2") format('woff2')}
+      @font-face{font-family:'Manrope';font-style:normal;font-weight:500;font-display:swap;src:url("assets/fonts/captured-xn7gYHE41ni1AdIRggexSvfedN4.woff2") format('woff2')}
+      @font-face{font-family:'DM Mono';font-style:normal;font-weight:400;font-display:swap;src:url("assets/fonts/captured-aFTU7PB1QTsUX8KYthqQBK6PYK0.woff2") format('woff2')}
+
+      #root{position:relative;width:100%;height:100%;overflow:hidden;container-type:size;color:#202923;font-family:'Manrope',sans-serif}
+      #f-01-clearer-next-move-ground{position:absolute;inset:0;background:#F4F1E9}
+      #f-01-clearer-next-move-stage{position:absolute;inset:0;overflow:hidden}
+
+      #f-01-clearer-next-move-cards{position:absolute;inset:0;z-index:0}
+      [data-role-card]{position:absolute;box-sizing:border-box;width:330px;height:166px;padding:30px 28px;background:rgba(235,230,226,.72);border:1px solid rgba(32,41,35,.12);border-radius:12px;box-shadow:0 1px 3px rgba(32,41,35,.06),0 4px 16px rgba(32,41,35,.035);transform-origin:50% 50%}
+      #f-01-clearer-next-move-card-a{left:610px;top:148px;opacity:.25}
+      #f-01-clearer-next-move-card-b{left:1252px;top:206px;width:382px;height:184px;opacity:.22}
+      #f-01-clearer-next-move-card-c{left:548px;top:514px;width:304px;height:148px;opacity:.22}
+      #f-01-clearer-next-move-card-d{left:1015px;top:540px;width:382px;height:172px}
+      #f-01-clearer-next-move-card-e{left:1510px;top:370px;width:244px;height:142px}
+      [data-card-line]{display:block;height:9px;margin-bottom:17px;border-radius:999px;background:rgba(32,41,35,.11)}
+      [data-card-line="long"]{width:86%}
+      [data-card-line="medium"]{width:64%}
+      [data-card-line="short"]{width:42%}
+
+      #f-01-clearer-next-move-bot{position:absolute;left:292px;top:386px;width:92px;height:92px;box-sizing:border-box;border:1px solid rgba(32,41,35,.18);border-radius:50%;background:rgba(235,230,226,.82);display:grid;place-items:center;z-index:2;transform-origin:50% 50%}
+      #f-01-clearer-next-move-bot-antenna{position:absolute;left:45px;top:13px;width:1px;height:12px;background:#202923}
+      #f-01-clearer-next-move-bot-antenna::after{content:"";position:absolute;left:-3px;top:-4px;width:7px;height:7px;border-radius:50%;background:#426B56}
+      #f-01-clearer-next-move-bot-head{position:relative;width:50px;height:38px;box-sizing:border-box;border:1px solid #202923;border-radius:14px 14px 12px 12px;background:#F4F1E9;display:flex;align-items:center;justify-content:center;gap:8px}
+      #f-01-clearer-next-move-bot-eye-a,#f-01-clearer-next-move-bot-eye-b{display:block;width:5px;height:5px;border-radius:50%;background:#202923}
+      #f-01-clearer-next-move-bot-mouth{position:absolute;left:18px;bottom:7px;width:14px;height:1px;background:#426B56}
+
+      #f-01-clearer-next-move-promise{position:absolute;top:220px;left:0;right:0;display:flex;justify-content:center;align-items:baseline;font-size:7.3cqw;font-weight:400;line-height:1.02;letter-spacing:-.028em;white-space:nowrap;z-index:3}
+      #f-01-clearer-next-move-typed-wrap{display:inline-flex;align-items:baseline;justify-content:center;min-width:49cqw;white-space:nowrap}
+      #f-01-clearer-next-move-typed{white-space:pre}
+      #f-01-clearer-next-move-caret{display:inline-block;width:.075em;height:.7em;margin-left:.12em;background:#202923;vertical-align:-.06em;opacity:0}
+
+      #f-01-clearer-next-move-second-line{position:absolute;top:395px;left:0;right:0;display:flex;justify-content:center;align-items:baseline;gap:.22em;font-size:6.8cqw;font-weight:400;line-height:1.04;letter-spacing:-.028em;color:#426B56;white-space:nowrap;z-index:3}
+      #f-01-clearer-next-move-more,#f-01-clearer-next-move-relevant{display:inline-block;transform-origin:50% 50%}
+
+      #f-01-clearer-next-move-wordmark{position:absolute;top:708px;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:12px;font-size:3.25cqw;font-weight:500;line-height:1;letter-spacing:-.035em;z-index:3;transform-origin:50% 50%}
+      #f-01-clearer-next-move-wordmark-mark{font-size:.92em;color:#426B56;line-height:1}
+      #f-01-clearer-next-move-wordmark-name{color:#202923}
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+      (function(){
+        const tl = gsap.timeline({paused:true});
+        const typed = document.getElementById('f-01-clearer-next-move-typed');
+        const caret = document.getElementById('f-01-clearer-next-move-caret');
+        const fullText = 'Less searching.';
+        const typeDriver = {count:0};
+        const blinkDriver = {phase:0};
+
+        tl.fromTo('#f-01-clearer-next-move-bot',{opacity:0,scale:.9},{opacity:1,scale:1,duration:.36,ease:'power3.out'},.06);
+        tl.to(typeDriver,{count:fullText.length,duration:.72,ease:'none',onUpdate:function(){typed.textContent = fullText.slice(0,Math.floor(typeDriver.count));}},.08);
+        tl.fromTo(caret,{opacity:0},{opacity:1,duration:.01,ease:'none'},.08);
+        tl.to(blinkDriver,{phase:Math.PI*2*2,duration:.86,ease:'none',onUpdate:function(){caret.style.opacity = Math.sin(blinkDriver.phase) > 0 ? '1' : '0';}},.08);
+        tl.set(caret,{opacity:0},.94);
+
+        tl.fromTo('#f-01-clearer-next-move-card-d',{opacity:0,y:22,scale:.98},{opacity:.48,y:0,scale:1,duration:.4,ease:'power2.out'},.96);
+        tl.fromTo('#f-01-clearer-next-move-card-e',{opacity:0,y:18,scale:.98},{opacity:.42,y:0,scale:1,duration:.38,ease:'power2.out'},1.08);
+        tl.fromTo('#f-01-clearer-next-move-more',{opacity:0,y:22},{opacity:1,y:0,duration:.34,ease:'power3.out'},1.0);
+        tl.fromTo('#f-01-clearer-next-move-relevant',{opacity:0,y:26},{opacity:1,y:0,duration:.42,ease:'power3.out'},1.12);
+
+        tl.fromTo('#f-01-clearer-next-move-wordmark',{opacity:0,scale:.86,y:16},{opacity:1,scale:1,y:0,duration:.58,ease:'power3.out'},2.2);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines['f-01-clearer-next-move'] = tl;
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,404 @@
+<template>
+  <div id="root" data-composition-id="f-07-human-control" data-duration="4" data-width="1920" data-height="1080">
+    <div id="f-07-human-control-ground" class="clip" data-start="0" data-duration="4" data-track-index="0"></div>
+
+    <section id="f-07-human-control-roadmap-clip" class="clip" data-start="0" data-duration="2.7" data-track-index="1" aria-label="Application and outreach assistance roadmap">
+      <div id="f-07-human-control-roadmap-shell">
+        <div id="f-07-human-control-scout" aria-hidden="true">
+          <span id="f-07-human-control-scout-orbit"></span>
+          <span id="f-07-human-control-scout-core"></span>
+        </div>
+
+        <div id="f-07-human-control-roadmap-card">
+          <div id="f-07-human-control-roadmap-head">
+            <div id="f-07-human-control-roadmap-kicker">ROADMAP / FUTURE ASSISTANCE</div>
+            <div id="f-07-human-control-status">WORK IN PROGRESS</div>
+          </div>
+
+          <div id="f-07-human-control-roadmap-title">
+            <span>Application &amp;</span>
+            <span>outreach assistance</span>
+          </div>
+          <div id="f-07-human-control-roadmap-rule"></div>
+
+          <div id="f-07-human-control-preview">
+            <div id="f-07-human-control-preview-top"><span id="f-07-human-control-preview-dot"></span><span>DRAFT PREVIEW</span></div>
+            <div id="f-07-human-control-preview-lines" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div id="f-07-human-control-preview-foot">Prepared for your review</div>
+          </div>
+
+          <div id="f-07-human-control-gate">
+            <span id="f-07-human-control-lock" aria-hidden="true">
+              <svg viewBox="0 0 32 36" role="presentation"><path d="M8 15V10a8 8 0 0 1 16 0v5M5 15h22v18H5z"></path><circle cx="16" cy="23" r="1.5"></circle><path d="M16 25v3"></path></svg>
+            </span>
+            <span id="f-07-human-control-gate-copy"><small>HUMAN APPROVAL</small><b>Review first</b></span>
+            <span id="f-07-human-control-toggle" aria-label="Approval gate closed"><i></i></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="f-07-human-control-closing-clip" class="clip" data-start="2.7" data-duration="1.3" data-track-index="2" aria-label="Closing control statement">
+      <div id="f-07-human-control-closing-shell">
+        <div id="f-07-human-control-close-line">You stay in control.</div>
+        <div id="f-07-human-control-brand" aria-label="Orbit">
+          <span id="f-07-human-control-brand-mark" aria-hidden="true"><i></i></span>
+          <span id="f-07-human-control-brand-word">Orbit</span>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      @font-face {
+        font-family: 'Manrope';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("assets/fonts/captured-xn7gYHE41ni1AdIRggexSvfedN4.woff2") format('woff2');
+      }
+      @font-face {
+        font-family: 'DM Mono';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("assets/fonts/captured-aFTU7PB1QTsUX8KYthqQBK6PYK0.woff2") format('woff2');
+      }
+      @font-face {
+        font-family: 'DM Mono';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url("assets/fonts/captured-aFTR7PB1QTsUX8KYvumzEYOtbYf-Vlg.woff2") format('woff2');
+      }
+
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        container-type: size;
+        color: #202923;
+        font-family: 'Manrope', sans-serif;
+      }
+
+      #f-07-human-control-ground {
+        position: absolute;
+        inset: 0;
+        background: #F4F1E9;
+      }
+
+      #f-07-human-control-roadmap-clip,
+      #f-07-human-control-closing-clip {
+        position: absolute;
+        inset: 0;
+      }
+
+      #f-07-human-control-roadmap-shell {
+        position: absolute;
+        inset: 0;
+      }
+
+      #f-07-human-control-scout {
+        position: absolute;
+        left: calc(50% - 34px);
+        top: 7.78cqh;
+        width: 68px;
+        height: 68px;
+        border: 1px solid rgba(32, 41, 35, .18);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: #EBE6E2;
+        z-index: 2;
+      }
+
+      #f-07-human-control-scout-orbit {
+        position: absolute;
+        width: 43px;
+        height: 27px;
+        border: 1px solid rgba(32, 41, 35, .28);
+        border-radius: 50%;
+        transform: rotate(-28deg);
+      }
+
+      #f-07-human-control-scout-core {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #202923;
+      }
+
+      #f-07-human-control-roadmap-card {
+        position: absolute;
+        left: 50%;
+        top: 11.85cqh;
+        width: 42.71cqw;
+        height: 52.78cqh;
+        box-sizing: border-box;
+        padding: 4.26cqh 2.92cqw;
+        background: #EBE6E2;
+        border: 1px solid rgba(32, 41, 35, .12);
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(32, 41, 35, .08), 0 4px 16px rgba(32, 41, 35, .04);
+        margin-left: -21.355cqw;
+      }
+
+      #f-07-human-control-roadmap-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      #f-07-human-control-roadmap-kicker {
+        font: 500 1.15cqw 'DM Mono', monospace;
+        letter-spacing: .14em;
+        color: #202923;
+      }
+
+      #f-07-human-control-status {
+        padding: 1.11cqh .83cqw;
+        border-radius: 6px;
+        background: #426B56;
+        color: #F4F1E9;
+        font: 500 1cqw 'DM Mono', monospace;
+        letter-spacing: .1em;
+      }
+
+      #f-07-human-control-roadmap-title {
+        display: grid;
+        gap: 2px;
+        margin-top: 2.96cqh;
+        font-size: 2.6cqw;
+        line-height: 1.08;
+        font-weight: 400;
+        letter-spacing: -.022em;
+      }
+
+      #f-07-human-control-roadmap-title span {
+        display: block;
+      }
+
+      #f-07-human-control-roadmap-rule {
+        height: 1px;
+        margin-top: 2.78cqh;
+        background: rgba(32, 41, 35, .14);
+      }
+
+      #f-07-human-control-preview {
+        position: absolute;
+        left: 2.92cqw;
+        top: 29.81cqh;
+        width: 21.25cqw;
+        height: 16.48cqh;
+        box-sizing: border-box;
+        padding: 1.76cqh 1.15cqw;
+        background: #F4F1E9;
+        border: 1px solid rgba(32, 41, 35, .12);
+        border-radius: 8px;
+      }
+
+      #f-07-human-control-preview-top {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font: 500 .78cqw 'DM Mono', monospace;
+        letter-spacing: .12em;
+      }
+
+      #f-07-human-control-preview-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #6F5C4B;
+      }
+
+      #f-07-human-control-preview-lines {
+        display: grid;
+        gap: 9px;
+        margin-top: 1.85cqh;
+      }
+
+      #f-07-human-control-preview-lines i {
+        display: block;
+        width: 100%;
+        height: 7px;
+        border-radius: 5px;
+        background: #EBE6E2;
+      }
+
+      #f-07-human-control-preview-lines i:nth-child(2) { width: 84%; }
+      #f-07-human-control-preview-lines i:nth-child(3) { width: 61%; }
+
+      #f-07-human-control-preview-foot {
+        margin-top: 1.39cqh;
+        color: #6F5C4B;
+        font-size: .85cqw;
+      }
+
+      #f-07-human-control-gate {
+        position: absolute;
+        right: 5.85cqw;
+        top: 30.93cqh;
+        width: 13.65cqw;
+        height: 13.89cqh;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 1.85cqh 1.04cqw;
+        background: #F4F1E9;
+        border: 1px solid rgba(32, 41, 35, .2);
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(32, 41, 35, .05);
+        z-index: 2;
+      }
+
+      #f-07-human-control-lock {
+        width: 36px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+      }
+
+      #f-07-human-control-lock svg {
+        width: 29px;
+        height: 33px;
+        fill: none;
+        stroke: #202923;
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      #f-07-human-control-gate-copy {
+        display: grid;
+        gap: 9px;
+      }
+
+      #f-07-human-control-gate-copy small {
+        color: #6F5C4B;
+        font: 500 .7cqw 'DM Mono', monospace;
+        letter-spacing: .1em;
+      }
+
+      #f-07-human-control-gate-copy b {
+        font-size: 1.3cqw;
+        line-height: 1;
+        font-weight: 400;
+        letter-spacing: -.01em;
+      }
+
+      #f-07-human-control-toggle {
+        position: absolute;
+        right: .83cqw;
+        top: 1.48cqh;
+        width: 1.77cqw;
+        height: 1.85cqh;
+        box-sizing: border-box;
+        padding: 3px;
+        display: flex;
+        align-items: center;
+        border-radius: 9999px;
+        background: #6F5C4B;
+      }
+
+      #f-07-human-control-toggle i {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #F4F1E9;
+      }
+
+      #f-07-human-control-closing-shell {
+        position: absolute;
+        left: 50%;
+        top: 21.76cqh;
+        width: 52.08cqw;
+        margin-left: -26.04cqw;
+        text-align: center;
+      }
+
+      #f-07-human-control-close-line {
+        font-size: 4.27cqw;
+        line-height: 1.04;
+        font-weight: 400;
+        letter-spacing: -.028em;
+      }
+
+      #f-07-human-control-brand {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 2.41cqh;
+        font-size: 1.35cqw;
+        font-weight: 400;
+        letter-spacing: -.018em;
+      }
+
+      #f-07-human-control-brand-mark {
+        position: relative;
+        width: 26px;
+        height: 18px;
+        border: 1px solid #202923;
+        border-radius: 50%;
+        transform: rotate(-24deg);
+      }
+
+      #f-07-human-control-brand-mark i {
+        position: absolute;
+        left: 10px;
+        top: 6px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #202923;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const tl = gsap.timeline({ paused: true });
+        window.__timelines = window.__timelines || {};
+        window.__timelines['f-07-human-control'] = tl;
+
+        tl.fromTo(
+          document.getElementById('f-07-human-control-roadmap-card'),
+          { opacity: 0, y: 14, scale: 0.965 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.62, ease: 'power2.out' },
+          0.08
+        );
+        tl.fromTo(
+          document.getElementById('f-07-human-control-scout'),
+          { opacity: 0, scale: 0.92 },
+          { opacity: 1, scale: 1, duration: 0.42, ease: 'power2.out' },
+          0.12
+        );
+        tl.fromTo(
+          document.getElementById('f-07-human-control-status'),
+          { opacity: 0, y: 5 },
+          { opacity: 1, y: 0, duration: 0.32, ease: 'power2.out' },
+          0.64
+        );
+        tl.fromTo(
+          document.getElementById('f-07-human-control-preview'),
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: 0.42, ease: 'power2.out' },
+          1.12
+        );
+        tl.fromTo(
+          document.getElementById('f-07-human-control-gate'),
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: 0.42, ease: 'power2.out' },
+          1.48
+        );
+        tl.fromTo(
+          document.getElementById('f-07-human-control-closing-shell'),
+          { opacity: 0, y: 10, scale: 0.985 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.46, ease: 'power2.out' },
+          2.7
+        );
+      })();
+    </script>
+  </div>
+</template>

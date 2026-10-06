@@ -1,29 +1,29 @@
-# --- python ---
-.venv/
-venv/
-env/
+# tooling and caches
+node_modules
 __pycache__/
-*.py[cod]
-*.egg-info/
-.pytest_cache/
-
-# --- runtime state (db, browser sessions, screenshots, logs) ---
-data/
-logs/
+*.pyc
+.DS_Store
 .env
 
-# --- your resume stays on your machine ---
-resume/*
-!resume/.gitkeep
+# personal data stays local (contacts, application tracker, workbooks, profiles)
+website/sheets.config.json
+website/data/dashboard_state.json
+website/data/dashboard_data.json
+website/data/title_cache.json
+website/data/*.xlsx
+data/*.xlsx
+data/archive/
+config/profile.json
+config/profiles/
 
-# --- os junk ---
-.DS_Store
-Thumbs.db
-desktop.ini
-$RECYCLE.BIN/
-*.lnk
+# internal notes that name the candidates, their employer and college
+ARCHITECTURE.md
+PROJECT.md
+PROGRESS.md
+HANDOFF.md
+RUN_SEARCH_VAANYA.md
+CLAUDE_RESUME_PROMPT.md
+data/last_run.md
 
-# --- editors ---
-.idea/
-.vscode/
-*.swp
+# licensed music bed used inside the promo render
+brag-output/composition/assets/music/

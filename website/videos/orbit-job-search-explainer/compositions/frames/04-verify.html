@@ -1,0 +1,172 @@
+<template>
+  <div id="root" data-composition-id="f-04-verify" data-width="1920" data-height="1080">
+    <div id="f-04-verify-ground" class="clip" data-start="0" data-duration="4" data-track-index="0"></div>
+
+    <main id="f-04-verify-stage" class="clip" data-start="0" data-duration="4" data-track-index="1" aria-label="Evidence check between candidate preferences and a role listing">
+      <div id="f-04-verify-glow-left" aria-hidden="true"></div>
+      <div id="f-04-verify-glow-right" aria-hidden="true"></div>
+
+      <h1 id="f-04-verify-title">Check the fit</h1>
+
+      <section id="f-04-verify-cards" aria-label="Candidate preferences and example role listing">
+        <div id="f-04-verify-left-shell">
+          <article id="f-04-verify-left-card">
+            <header id="f-04-verify-left-header">
+              <span id="f-04-verify-left-kicker">CANDIDATE PREFERENCES</span>
+              <span id="f-04-verify-left-index">01</span>
+            </header>
+            <div id="f-04-verify-left-role" class="04-verify-row">
+              <span class="04-verify-row-label">ROLE</span>
+              <strong class="04-verify-row-value">Product designer</strong>
+              <span id="f-04-verify-left-role-check" class="04-verify-check" aria-hidden="true">✓</span>
+            </div>
+            <div id="f-04-verify-left-experience" class="04-verify-row">
+              <span class="04-verify-row-label">EXPERIENCE</span>
+              <strong class="04-verify-row-value">5+ years</strong>
+              <span id="f-04-verify-left-experience-check" class="04-verify-check" aria-hidden="true">✓</span>
+            </div>
+            <div id="f-04-verify-left-skills" class="04-verify-row">
+              <span class="04-verify-row-label">SKILLS</span>
+              <strong class="04-verify-row-value">Systems · research</strong>
+              <span id="f-04-verify-left-skills-check" class="04-verify-check" aria-hidden="true">✓</span>
+            </div>
+            <div id="f-04-verify-left-location" class="04-verify-row">
+              <span class="04-verify-row-label">LOCATION</span>
+              <strong class="04-verify-row-value">Remote</strong>
+              <span id="f-04-verify-left-location-check" class="04-verify-check" aria-hidden="true">✓</span>
+            </div>
+          </article>
+        </div>
+
+        <div id="f-04-verify-right-shell">
+          <article id="f-04-verify-right-card">
+            <header id="f-04-verify-right-header">
+              <span id="f-04-verify-right-kicker">ROLE LISTING · EXAMPLE</span>
+              <span id="f-04-verify-right-index">02</span>
+            </header>
+            <div id="f-04-verify-right-role" class="04-verify-row">
+              <span class="04-verify-row-label">ROLE</span>
+              <strong class="04-verify-row-value">Product designer</strong>
+              <span id="f-04-verify-right-role-check" class="04-verify-check" aria-hidden="true">✓</span>
+            </div>
+            <div id="f-04-verify-right-experience" class="04-verify-row">
+              <span class="04-verify-row-label">EXPERIENCE</span>
+              <strong class="04-verify-row-value">5+ years</strong>
+              <span id="f-04-verify-right-experience-check" class="04-verify-check" aria-hidden="true">✓</span>
+            </div>
+            <div id="f-04-verify-right-skills" class="04-verify-row">
+              <span class="04-verify-row-label">SKILLS</span>
+              <strong class="04-verify-row-value">Systems · research</strong>
+              <span id="f-04-verify-right-skills-check" class="04-verify-check" aria-hidden="true">✓</span>
+            </div>
+            <div id="f-04-verify-right-location" class="04-verify-row">
+              <span class="04-verify-row-label">LOCATION</span>
+              <strong class="04-verify-row-value">Remote</strong>
+              <span id="f-04-verify-right-location-check" class="04-verify-check" aria-hidden="true">✓</span>
+            </div>
+          </article>
+        </div>
+
+        <span id="f-04-verify-match-badge" class="04-verify-badge" aria-hidden="true"><i>✓</i> MATCHED</span>
+        <span id="f-04-verify-source-badge" class="04-verify-badge" aria-hidden="true"><i>↗</i> SOURCE LINK</span>
+      </section>
+    </main>
+
+    <style>
+      @font-face{font-family:'Manrope';font-style:normal;font-weight:400;font-display:swap;src:url("assets/fonts/captured-xn7gYHE41ni1AdIRggexSvfedN4.woff2") format('woff2')}
+      @font-face{font-family:'Manrope';font-style:normal;font-weight:500;font-display:swap;src:url("assets/fonts/captured-xn7gYHE41ni1AdIRggexSvfedN4.woff2") format('woff2')}
+      @font-face{font-family:'DM Mono';font-style:normal;font-weight:400;font-display:swap;src:url("assets/fonts/captured-aFTU7PB1QTsUX8KYthqQBK6PYK0.woff2") format('woff2')}
+      @font-face{font-family:'DM Mono';font-style:normal;font-weight:500;font-display:swap;src:url("assets/fonts/captured-aFTR7PB1QTsUX8KYvumzEYOtbYf-Vlg.woff2") format('woff2')}
+
+      #root{position:relative;width:100%;height:100%;overflow:hidden;container-type:size;color:#202923;font-family:'Manrope',sans-serif}
+      #f-04-verify-ground{position:absolute;inset:0;background:#F4F1E9}
+      #f-04-verify-stage{position:absolute;inset:0;perspective:1600px;transform-style:preserve-3d;overflow:hidden}
+      #f-04-verify-glow-left,#f-04-verify-glow-right{position:absolute;top:226px;width:660px;height:660px;border-radius:50%;pointer-events:none;opacity:0;filter:blur(3px)}
+      #f-04-verify-glow-left{left:70px;background:radial-gradient(circle,rgba(66,107,86,.18) 0%,rgba(66,107,86,.08) 38%,rgba(66,107,86,0) 72%)}
+      #f-04-verify-glow-right{right:70px;background:radial-gradient(circle,rgba(66,107,86,.15) 0%,rgba(66,107,86,.06) 38%,rgba(66,107,86,0) 72%)}
+      #f-04-verify-title{position:absolute;top:68px;left:0;right:0;margin:0;text-align:center;font-size:84px;line-height:1.04;font-weight:400;letter-spacing:-.045em;color:#202923}
+      #f-04-verify-cards{position:absolute;top:244px;left:7.8%;right:7.8%;height:582px;display:flex;gap:4.7%;transform-style:preserve-3d}
+      #f-04-verify-left-shell,#f-04-verify-right-shell{position:relative;flex:1;height:100%;transform-style:preserve-3d;will-change:transform}
+      #f-04-verify-left-shell{transform-origin:50% 50%;box-shadow:22px 18px 30px rgba(32,41,35,.08)}
+      #f-04-verify-right-shell{transform-origin:50% 50%;box-shadow:-22px 18px 30px rgba(32,41,35,.08)}
+      #f-04-verify-left-card,#f-04-verify-right-card{position:absolute;inset:0;box-sizing:border-box;padding:34px 38px 30px;background:#EBE6E2;border:1px solid rgba(32,41,35,.16);border-radius:12px;transform-style:preserve-3d;will-change:transform}
+      #f-04-verify-left-card{border-top:4px solid #6F5C4B}
+      #f-04-verify-right-card{border-top:4px solid #202923}
+      #f-04-verify-left-header,#f-04-verify-right-header{display:flex;align-items:center;justify-content:space-between;height:44px;padding-bottom:18px;border-bottom:1px solid rgba(32,41,35,.14)}
+      #f-04-verify-left-kicker,#f-04-verify-right-kicker{font:500 17px/1 'DM Mono',monospace;letter-spacing:.13em;color:#202923}
+      #f-04-verify-left-index,#f-04-verify-right-index{font:400 16px/1 'DM Mono',monospace;letter-spacing:.08em;color:#6F5C4B}
+      #f-04-verify-right-index{color:#202923}
+      .\30 4-verify-row{position:relative;display:grid;grid-template-columns:170px 1fr 34px;align-items:center;min-height:91px;border-bottom:1px solid rgba(32,41,35,.12);opacity:0}
+      .\30 4-verify-row-label{font:500 16px/1 'DM Mono',monospace;letter-spacing:.14em;color:#6F5C4B}
+      .\30 4-verify-row-value{font-size:28px;line-height:1.15;font-weight:500;letter-spacing:-.025em;color:#202923}
+      .\30 4-verify-check{width:28px;height:28px;display:grid;place-items:center;border:1px solid rgba(66,107,86,.55);border-radius:50%;box-sizing:border-box;color:#426B56;font:500 19px/1 'Manrope',sans-serif;opacity:0;transform-origin:50% 50%}
+      .\30 4-verify-badge{position:absolute;z-index:4;top:286px;display:flex;align-items:center;gap:10px;height:48px;box-sizing:border-box;padding:0 17px;border:1px solid rgba(66,107,86,.42);border-radius:9999px;background:#F4F1E9;color:#426B56;font:500 15px/1 'DM Mono',monospace;letter-spacing:.08em;box-shadow:0 1px 3px rgba(32,41,35,.08),0 4px 16px rgba(32,41,35,.04);transform-origin:50% 50%;opacity:0}
+      #f-04-verify-match-badge{left:44.5%}
+      #f-04-verify-source-badge{left:49.2%;top:646px}
+      .\30 4-verify-badge i{font-style:normal;font-family:'Manrope',sans-serif;font-size:19px;line-height:1}
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+      (()=>{
+        const tl=gsap.timeline({paused:true});
+        window.__timelines=window.__timelines||{};
+        window.__timelines["f-04-verify"]=tl;
+
+        const leftShell=document.getElementById("f-04-verify-left-shell");
+        const rightShell=document.getElementById("f-04-verify-right-shell");
+        const leftCard=document.getElementById("f-04-verify-left-card");
+        const rightCard=document.getElementById("f-04-verify-right-card");
+        const leftGlow=document.getElementById("f-04-verify-glow-left");
+        const rightGlow=document.getElementById("f-04-verify-glow-right");
+
+        tl.fromTo("#f-04-verify-title",{opacity:0,y:-42},{opacity:1,y:0,duration:.68,ease:"power3.out"},.02);
+        tl.fromTo(leftGlow,{opacity:0,scale:.86},{opacity:.15,scale:1,duration:1.05,ease:"power2.out"},.02);
+        tl.fromTo(rightGlow,{opacity:0,scale:.86},{opacity:.12,scale:1,duration:1.05,ease:"power2.out"},.14);
+
+        tl.fromTo(leftShell,{x:-360,scale:.86,rotateY:23,opacity:0},{x:0,scale:1,rotateY:11,opacity:1,duration:.86,ease:"power3.out"},.28);
+        tl.fromTo(rightShell,{x:360,scale:.86,rotateY:-23,opacity:0},{x:0,scale:1,rotateY:-11,opacity:1,duration:.86,ease:"power3.out"},.46);
+        tl.fromTo("#f-04-verify-left-header,#f-04-verify-right-header",{opacity:0,y:16},{opacity:1,y:0,duration:.42,ease:"power2.out",stagger:.06},.74);
+
+        const rows=[
+          ["#f-04-verify-left-role","#f-04-verify-right-role",.92],
+          ["#f-04-verify-left-experience","#f-04-verify-right-experience",1.26],
+          ["#f-04-verify-left-skills","#f-04-verify-right-skills",2.18],
+          ["#f-04-verify-left-location","#f-04-verify-right-location",2.62]
+        ];
+        rows.forEach(([left,right,at])=>{
+          tl.fromTo([left,right],{opacity:0,y:14},{opacity:1,y:0,duration:.4,ease:"power2.out"},at);
+        });
+
+        const checks=[
+          ["#f-04-verify-left-role-check","#f-04-verify-right-role-check",1.02],
+          ["#f-04-verify-left-experience-check","#f-04-verify-right-experience-check",1.43],
+          ["#f-04-verify-left-skills-check","#f-04-verify-right-skills-check",2.35],
+          ["#f-04-verify-left-location-check","#f-04-verify-right-location-check",2.79]
+        ];
+        checks.forEach(([left,right,at])=>{
+          tl.fromTo([left,right],{opacity:0,scale:0},{opacity:1,scale:1,duration:.35,ease:"power3.out"},at);
+        });
+
+        tl.fromTo("#f-04-verify-match-badge",{opacity:0,scale:0},{opacity:1,scale:1,duration:.55,ease:"back.out(1.1)"},1.62);
+        tl.fromTo("#f-04-verify-source-badge",{opacity:0,scale:0},{opacity:1,scale:1,duration:.55,ease:"back.out(1.1)"},3.12);
+
+        const cardPhase={p:0};
+        tl.to(cardPhase,{p:Math.PI*2*.92,duration:2.72,ease:"none",onUpdate:()=>{
+          const s=Math.sin(cardPhase.p);
+          leftCard.style.transform=`translateY(${(-3.2*s).toFixed(3)}px)`;
+          rightCard.style.transform=`translateY(${(3.2*s).toFixed(3)}px)`;
+        }},1.28);
+
+        const glowPhase={p:0};
+        tl.to(glowPhase,{p:Math.PI*2*.82,duration:2.85,ease:"none",onUpdate:()=>{
+          const s=Math.sin(glowPhase.p);
+          leftGlow.style.opacity=String(.15+s*.014);
+          rightGlow.style.opacity=String(.12-s*.012);
+          leftGlow.style.transform=`scale(${(1+s*.018).toFixed(4)})`;
+          rightGlow.style.transform=`scale(${(1-s*.018).toFixed(4)})`;
+        }},1.07);
+      })();
+    </script>
+  </div>
+</template>

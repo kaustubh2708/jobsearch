@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "preferences": {
+    "flow": {
+      "value": "automation",
+      "confirmed_in": [
+        "orbit-job-search-explainer"
+      ],
+      "updated_at": "2026-10-05T10:57:03.851Z"
+    },
+    "storyboard": {
+      "value": "no",
+      "confirmed_in": [
+        "orbit-job-search-explainer"
+      ],
+      "updated_at": "2026-10-05T10:57:03.919Z"
+    }
+  },
+  "sightings": {}
+}

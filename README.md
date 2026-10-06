@@ -1,106 +1,74 @@
-# LocalJobAgent
+# Job Search Agent + Orbit
 
-An autonomous job search agent for the Indian market that runs entirely on your
-own machine. It reads your resume, searches the boards daily, scores every
-posting against your real skills with a local LLM, and applies to the ones you
-approve.
+A human-supervised job-discovery workspace (an Antigravity agent that finds and verifies openings) and **Orbit**, a local-first website that turns those results into a calm job-search workflow:
 
-**Nothing is sent to any cloud AI service.** Your resume, salary expectations and
-application history stay on your computer.
+**choose companies (or stay open to any above a pay floor) -> a detective agent hunts career portals, LinkedIn posts and job platforms -> an analyst filters by skills and fit -> a verifier double-checks every link -> your tracker shows Jobs available with referral options beside them.** Orbit drafts notes; you review and send. It never applies or messages for you.
 
----
+[![Orbit promo (click to play the full video)](website/assets/orbit-promo.gif)](website/assets/orbit-promo.mp4)
 
-## Quick start
+<sub>Click the preview to watch the 24-second promo ([`website/assets/orbit-promo.mp4`](website/assets/orbit-promo.mp4)). Source, plan and share copy live in [`brag-output/`](brag-output/).</sub>
 
-**macOS / Linux / WSL**
+## Orbit website
 
 ```bash
-git clone https://github.com/kaustubh2708/jobsearch.git Jobsearch
-cd Jobsearch
-cp ~/Downloads/MyResume.pdf resume/
-./start.sh
+cp website/sheets.config.example.json website/sheets.config.json   # add your Google Sheet IDs (git-ignored)
+python3 website/export_data.py                                     # builds website/data/dashboard_data.json
+python3 website/server.py                                          # http://127.0.0.1:8766/home
 ```
 
-**Windows** (PowerShell, Windows Terminal, or just double-click `start.bat`)
+Pages: **Home**, **Apply now** (choose companies, today's picks) and **Tracker** (Jobs available, board, list). Full details, the sheet status/notes mapping and the file map are in [`website/README.md`](website/README.md).
 
-```powershell
-git clone https://github.com/kaustubh2708/jobsearch.git Jobsearch
-cd Jobsearch
-copy "$env:USERPROFILE\Downloads\MyResume.pdf" resume\
-.\start.bat
-```
-
-That's it. The launcher installs Python dependencies, Playwright's Chromium and
-the Ollama models, sizes the model to your GPU, walks you through a short setup,
-and opens the dashboard at **http://127.0.0.1:8765**.
-
-Every run after the first just starts the agent.
-
-> Both launchers are thin wrappers. All the real setup logic lives in
-> `jobagent/bootstrap.py`, so every platform behaves identically.
+Personal data stays local and is git-ignored: your tracker state, the generated snapshot, workbooks, contact lists and `config/profile.json` (copy `config/profile.example.json` to start).
 
 ---
+
+## The discovery agent (Google Antigravity)
+
+This is an Antigravity-native, human-supervised job-discovery workspace. It is designed to run inside Google Antigravity using the Gemini model available through your Google AI plan.
+
+Google AI Pro provides higher Antigravity usage quota, but it is not a general-purpose Gemini API key for an unattended scraper. This project therefore uses Antigravity's agent/browser workflow and keeps login, CAPTCHA, and approval steps with you.
 
 ## What it does
 
-- **Reads your resume** into a structured skill library — skills, seniority,
-  domains, achievements, and the job titles you should actually be searching for
-- **Searches 13+ sources daily** — LinkedIn, Naukri, Indeed, Google Jobs,
-  Instahyre, Foundit, Cutshort, Wellfound, Adzuna, Jooble, HN Who's Hiring, and
-  company career portals via their official Greenhouse / Lever / Ashby APIs
-- **Scores every posting 0-100** with a two-stage pipeline: a fast embedding
-  screen, then a 14B reasoning model that reads the JD properly and returns
-  matched skills, gaps, red flags and seniority fit
-- **Shows you 15-25 real matches a day** in a review dashboard
-- **Applies for you** when you approve — real browser, your logged-in session,
-  resume uploaded, form filled, cover letter generated, screenshot saved
-- **Tracks everything** on a Kanban board through to offer
+- Reads the 137-company target list from `config/companies.txt`.
+- Keeps the spelling/normalization decisions in `config/company_aliases.json`.
+- Reads your role, location, experience, and salary preferences from `config/profile.json`.
+- Searches official career pages first.
+- Searches approved public job sources and user-visible browser pages second.
+- Extracts and normalizes jobs into `data/jobs.json`.
+- Scores jobs against your profile.
+- Deduplicates results.
+- Produces a review queue without applying or messaging automatically.
 
-It stops and asks rather than guessing whenever a form asks something it can't
-answer from your resume — and remembers your answer forever.
+## What it does not do
 
----
+- Scrape LinkedIn profiles or connection databases.
+- Infer hidden LinkedIn relationships.
+- Create fake accounts or bypass login, CAPTCHA, paywalls, robots rules, or anti-bot controls.
+- Send connection requests, messages, recruiter outreach, or job applications.
 
-## Requirements
+## Run it in Antigravity
 
-- Python 3.10+
-- ~10 GB free disk for the models
-- A GPU helps a lot (12GB+ VRAM recommended), but CPU works with a smaller model
-- Windows 10/11, macOS, or Linux
+1. Open this folder as a workspace in Antigravity.
+2. Start an agent task using the prompt in `RUN_SEARCH.md`.
+3. Let the agent search public career pages.
+4. When the browser reaches a login, CAPTCHA, or approval point, take over the browser yourself.
+5. Review `data/jobs.json` and `data/last_run.md`.
+6. Run the validator:
 
----
+```bash
+python3 scripts/validate_jobs.py --jobs data/jobs.json
+```
 
-## Commands
+The resulting records can be copied into the existing `job_search_dashboard.xlsx` workbook's `Openings` tab.
 
-| What | macOS / Linux | Windows |
-|---|---|---|
-| Install + run everything | `./start.sh` | `start.bat` |
-| Run one job search now | `./run.sh discover` | `run.bat discover` |
-| Apply to everything approved | `./run.sh apply` | `run.bat apply` |
-| Show your skill library | `./run.sh profile` | `run.bat profile` |
-| Log into a board once | `./run.sh login linkedin` | `run.bat login linkedin` |
-| Check the setup | `./run.sh doctor` | `run.bat doctor` |
-| Pipeline snapshot | `./run.sh status` | `run.bat status` |
+## Files
 
-On Windows you can also use `.\start.ps1` / `.\run.ps1` directly if your
-execution policy allows it — the `.bat` files just wrap them with
-`-ExecutionPolicy Bypass` so you never have to change a machine setting.
-
----
-
-## Docs
-
-- **[GUIDE.md](GUIDE.md)** — full user guide: setup, tuning, troubleshooting,
-  how auto-apply works, source-by-source reliability
-- **[CLAUDE.md](CLAUDE.md)** — architecture and code map, for AI assistants and
-  future you
-
----
-
-## A note on risk
-
-LinkedIn and Naukri actively discourage automation. This project reduces the risk
-— it drives a real browser with your own session, paces applications randomly,
-and caps daily volume — but it does not eliminate it. Start with
-`apply.auto_submit: false`, watch a few applications get filled in, and keep the
-daily cap modest.
+- `AGENTS.md` — operating rules for the Antigravity agent.
+- `RUN_SEARCH.md` — reusable task prompt.
+- `config/profile.json` — candidate search criteria (git-ignored; start from `config/profile.example.json`).
+- `config/companies.txt` — deduplicated target company list.
+- `config/job.schema.json` — normalized job record schema.
+- `data/jobs.json` — agent output.
+- `scripts/validate_jobs.py` — local validation and duplicate detection.
+- `skills/job-discovery/SKILL.md` — detailed collector workflow.
