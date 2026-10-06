@@ -1,14 +1,14 @@
-# Job Search Agent + Orbit
+# Job Search AI Agent + Orbit
 
-A human-supervised job-discovery workspace (an Antigravity agent that finds and verifies openings) and **Orbit**, a local-first website that turns those results into a calm job-search workflow:
+A human-supervised job-search system: an **AI agent** that finds and verifies openings, and **Orbit**, a local-first website that turns those results into a calm job-search workflow.
 
-**choose companies (or stay open to any above a pay floor) -> a detective agent hunts career portals, LinkedIn posts and job platforms -> an analyst filters by skills and fit -> a verifier double-checks every link -> your tracker shows Jobs available with referral options beside them.** Orbit drafts notes; you review and send. It never applies or messages for you.
+**Choose companies (or stay open to any above a pay floor) -> a detective agent hunts career portals, LinkedIn posts and job platforms -> an analyst filters by skills and fit -> a verifier double-checks every link -> your tracker shows Jobs available with referral options beside them.** Orbit drafts notes; you review and send. It never applies or messages for you.
 
 [![Orbit promo (click to play the full video)](website/assets/orbit-promo.gif)](website/assets/orbit-promo.mp4)
 
 <sub>Click the preview to watch the 24-second promo ([`website/assets/orbit-promo.mp4`](website/assets/orbit-promo.mp4)). Source, plan and share copy live in [`brag-output/`](brag-output/).</sub>
 
-## Orbit website
+## Quick start
 
 ```bash
 cp website/sheets.config.example.json website/sheets.config.json   # add your Google Sheet IDs (git-ignored)
@@ -16,59 +16,99 @@ python3 website/export_data.py                                     # builds webs
 python3 website/server.py                                          # http://127.0.0.1:8766/home
 ```
 
-Pages: **Home**, **Apply now** (choose companies, today's picks) and **Tracker** (Jobs available, board, list). Full details, the sheet status/notes mapping and the file map are in [`website/README.md`](website/README.md).
+Pages: **Home**, **Apply now** (choose companies, today's picks) and **Tracker** (Jobs available, board, list). Full details, the sheet status and notes mapping, and the file map are in [`website/README.md`](website/README.md).
 
 Personal data stays local and is git-ignored: your tracker state, the generated snapshot, workbooks, contact lists and `config/profile.json` (copy `config/profile.example.json` to start).
 
 ---
 
-## The discovery agent (Google Antigravity)
+## Architecture
 
-This is an Antigravity-native, human-supervised job-discovery workspace. It is designed to run inside Google Antigravity using the Gemini model available through your Google AI plan.
+```mermaid
+flowchart LR
+    subgraph Sources["Public sources"]
+        CP["Company career portals"]
+        LI["LinkedIn job posts<br/>(visible session only)"]
+        JB["Job platforms"]
+    end
 
-Google AI Pro provides higher Antigravity usage quota, but it is not a general-purpose Gemini API key for an unattended scraper. This project therefore uses Antigravity's agent/browser workflow and keeps login, CAPTCHA, and approval steps with you.
+    subgraph Agent["AI agent (supervised)"]
+        DET["Detective<br/>finds openings"]
+        ANA["Analyst<br/>skills + fit score"]
+        VER["Verifier<br/>link + still-open check"]
+        CON["Connector<br/>referral options"]
+    end
 
-## What it does
+    subgraph Stores["Local data"]
+        JOBS[("data/jobs.json<br/>validated job records")]
+        SHEETS[("Google Sheets<br/>statuses, notes, contacts")]
+        STATE[("website/data<br/>tracker state, snapshot")]
+    end
 
-- Reads the 137-company target list from `config/companies.txt`.
-- Keeps the spelling/normalization decisions in `config/company_aliases.json`.
-- Reads your role, location, experience, and salary preferences from `config/profile.json`.
-- Searches official career pages first.
-- Searches approved public job sources and user-visible browser pages second.
-- Extracts and normalizes jobs into `data/jobs.json`.
-- Scores jobs against your profile.
-- Deduplicates results.
-- Produces a review queue without applying or messaging automatically.
+    subgraph Orbit["Orbit website (local)"]
+        HOME["Home"]
+        APPLY["Apply now<br/>choose companies, today's picks"]
+        TRACK["Tracker<br/>jobs available, board, list"]
+    end
 
-## What it does not do
+    CP --> DET
+    LI --> DET
+    JB --> DET
+    DET --> ANA --> VER --> JOBS
+    JOBS --> SHEETS
+    SHEETS -->|"export_data.py"| STATE
+    STATE --> APPLY
+    STATE --> TRACK
+    CON -.-> TRACK
+    VER -.->|"POST /api/verify"| TRACK
+    TRACK -->|"you review, you send"| YOU(["You"])
+```
 
-- Scrape LinkedIn profiles or connection databases.
-- Infer hidden LinkedIn relationships.
-- Create fake accounts or bypass login, CAPTCHA, paywalls, robots rules, or anti-bot controls.
-- Send connection requests, messages, recruiter outreach, or job applications.
+### How it fits together
 
-## Run it in Antigravity
+| Layer | What it does | Where it lives |
+|---|---|---|
+| **AI agent** | Four narrow roles. The *Detective* reads career portals first, then visible LinkedIn posts and public job platforms. The *Analyst* scores each role against the candidate profile and explains why. The *Verifier* opens every link and confirms the opening is real and still live. The *Connector* lines up the HR/TA, alumni and engineer contacts the candidate already added. | `AGENTS.md`, `skills/`, `config/` |
+| **Validation** | Every record is normalised to a schema, de-duplicated and checked before it is reported. Third-party listings are marked for verification, and unpublished pay stays `null`. | `config/job.schema.json`, `scripts/validate_jobs.py`, `data/jobs.json` |
+| **Sheets as the source of truth** | The agent run and the candidate both write statuses, notes and contacts into Google Sheets. The exporter reads them read-only, understands free text such as "applied on 30/09" or "message sent for referral", reads real job titles from posting pages, and builds one snapshot. | `scripts/export_dashboard_data.py`, `website/export_data.py` |
+| **Orbit server** | A small local-only Python server. It serves the pages, stores tracker state in a JSON file, refreshes the snapshot, and runs polite link checks (`POST /api/verify`) for URLs that already exist in the data. | `website/server.py` |
+| **Orbit front end** | Plain HTML, CSS and JavaScript with no build step. `app.js` owns routing, data and the company directories. `product.js` adds picks, fit scoring, the board, goals and the command palette. `hunt.js` runs company choice, the hunt pipeline and Jobs available. `home.js` draws the landing page and the agent factory. | `website/` |
+| **Promo** | A 24-second video built with Hyperframes from the site's own components, with plan, brief and share copy. | `brag-output/` |
 
-1. Open this folder as a workspace in Antigravity.
-2. Start an agent task using the prompt in `RUN_SEARCH.md`.
-3. Let the agent search public career pages.
-4. When the browser reaches a login, CAPTCHA, or approval point, take over the browser yourself.
-5. Review `data/jobs.json` and `data/last_run.md`.
-6. Run the validator:
+### Request flow in the browser
+
+1. **Choose companies.** The Apply now page lists company blocks with the contacts you already have (HR/TA, alumni, engineers), or you stay open to any company above a minimum pay.
+2. **Hunt.** Orbit reads the latest snapshot and scores roles locally with an explainable fit score. The verifier then checks the top links through the local server. Blocked sites are labelled "check it yourself" rather than guessed.
+3. **Track.** Roles appear under Tracker as *Jobs available*, with the listing link, tracking details and reach-out options side by side. Statuses and notes you wrote in the sheets show up with a "From your sheet" marker.
+4. **Decide.** Orbit drafts a note you can copy and edit. You send it, or apply, yourself.
+
+### Design principles
+
+- **Human in the loop.** Nothing is applied for, sent or messaged automatically, anywhere in the system.
+- **Local-first and private.** The server binds to localhost. Tracker state, contacts, sheet IDs and profiles stay on your machine and are git-ignored.
+- **Official sources first.** Career pages come before job boards. LinkedIn is read only as listings you can see in your own session; profiles and connection data are never scraped.
+- **Honest data.** No salary is ever inferred, scores come with reasons, and every claim keeps its source link.
+- **No build tooling.** The site runs from plain files, so it is easy to read, audit and change.
+
+### Repository layout
+
+```
+AGENTS.md              operating rules for the AI agent
+RUN_SEARCH.md          reusable task prompt for a supervised run
+config/                company list, schema, aliases, agent roster, profile example
+data/                  validated job records and wave outputs
+scripts/               discovery, verification and export tooling
+skills/                the job-discovery workflow
+website/               Orbit (see website/README.md for the file map)
+brag-output/           promo video, plan, brief and Hyperframes composition
+```
+
+## Running the AI agent
+
+1. Copy `config/profile.example.json` to `config/profile.json` and fill in the candidate's criteria.
+2. Start a supervised run with the prompt in `RUN_SEARCH.md`. The agent searches public career pages and visible listings. When it reaches a login, CAPTCHA or approval step, you take over the browser yourself.
+3. Review `data/jobs.json`, then validate it:
 
 ```bash
 python3 scripts/validate_jobs.py --jobs data/jobs.json
 ```
-
-The resulting records can be copied into the existing `job_search_dashboard.xlsx` workbook's `Openings` tab.
-
-## Files
-
-- `AGENTS.md` — operating rules for the Antigravity agent.
-- `RUN_SEARCH.md` — reusable task prompt.
-- `config/profile.json` — candidate search criteria (git-ignored; start from `config/profile.example.json`).
-- `config/companies.txt` — deduplicated target company list.
-- `config/job.schema.json` — normalized job record schema.
-- `data/jobs.json` — agent output.
-- `scripts/validate_jobs.py` — local validation and duplicate detection.
-- `skills/job-discovery/SKILL.md` — detailed collector workflow.
