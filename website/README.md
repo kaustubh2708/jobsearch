@@ -5,6 +5,7 @@ All site code and its generated snapshot live in this `website/` directory. The 
 - `/home`: the landing page. Hero, a scroll-driven factory scene, the agent crew, the promo video and a journey explainer.
 - `/apply` (**Apply now**): two tabs, *Choose companies* and *Today's picks* (described below). `/today` and `/hunt` still open the matching tab.
 - `/person` (**Tracker**): Jobs available, Board and List (described below).
+- `/v2`: an alternative design, a dense keyboard-first triage workspace (pipeline rail, fit-ranked inbox, detail pane with verification, your sheet notes and reach-out drafts). It reads the same `/api/data` and `/api/state` and shares the tracker state and scope with v1. Shortcuts: `j`/`k` move, `o` open listing, `w` watch, `a` mark applied (undo), `s` skip, `1`-`7` stages, `/` filter, `c` scope, `?` help.
 - `/vaanya`, `/vrinda`: the company directories (roles grouped by employer). They are linked from Apply now rather than from the main navigation.
 
 The candidate views default to current job openings, order company groups by opening count, and render 12 companies at a time. Use the company picker or search for a direct jump; **Show next 12** reveals more only when wanted. Switch to **All records** to include drives and older source rows. Home-page reveal animations use an IntersectionObserver with a reduced-motion / unsupported-browser fallback, so content does not remain hidden if the animation API is unavailable.
@@ -81,6 +82,7 @@ Job identity now includes the query params that name a job (`jk`, `gh_jid`, `job
 | `product.js` / `product.css` | Today's picks, fit score, board, goals and rhythm, tuning, command palette, dark mode. Exposes `window.OrbitProduct`. |
 | `hunt.js` | Choose companies, the hunt pipeline, link verification and the Jobs available tracker view. |
 | `styles.css`, `refresh.css` | Shared base styles (pruned of unused rules) and the light design layer for header, forms and directories. |
+| `v2/` | The v2 triage workspace (`index.html`, `v2.css`, `v2.js`), self-contained. |
 | `server.py` | Local-only server, tracker state API and `POST /api/verify`. |
 | `export_data.py` | Reads the Google Sheets (falls back to the local workbooks) via `scripts/export_dashboard_data.py`. |
 | `data/` | `dashboard_data.json` (generated snapshot), `dashboard_state.json` (your tracker state), `title_cache.json`. |

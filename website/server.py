@@ -112,7 +112,9 @@ class Handler(SimpleHTTPRequestHandler):
         if path == "/api/state":
             value = json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else DEFAULT_STATE
             return self.json_response(200, value)
-        if path in APP_ROUTES:
+        if path in ("/v2", "/v2/"):
+            self.path = "/website/v2/index.html"
+        elif path in APP_ROUTES:
             self.path = "/website/index.html"
         return super().do_GET()
 

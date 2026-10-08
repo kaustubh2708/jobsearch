@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orbit v2 — Triage workspace</title>
+  <meta name="description" content="A keyboard-driven triage workspace for your job search: inbox, pipeline, fit, verification and reach-out in one view.">
+  <script>try{var t=localStorage.getItem("orbit.v2.theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/website/v2/v2.css">
+</head>
+<body>
+  <div id="app" class="app">
+    <header class="bar">
+      <a class="brand" href="/v2" aria-label="Orbit v2"><i></i><b>orbit</b><span>v2</span></a>
+      <div class="seg" id="cand" role="group" aria-label="Candidate"></div>
+      <label class="search"><span aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Filter by company, role, place, note…" autocomplete="off"><kbd>/</kbd></label>
+      <div class="bar-actions">
+        <button class="btn" id="scope-btn" type="button">Scope</button>
+        <button class="btn ghost" id="refresh-btn" type="button" title="Re-read your Google Sheets">↻ Sync</button>
+        <button class="btn ghost" id="theme-btn" type="button" aria-label="Toggle theme">◐</button>
+        <button class="btn ghost" id="help-btn" type="button" aria-label="Keyboard shortcuts">?</button>
+        <a class="btn ghost" href="/home">v1 ↗</a>
+      </div>
+    </header>
+
+    <section class="brief" id="brief" aria-label="Daily brief"></section>
+
+    <main class="grid">
+      <nav class="rail" id="rail" aria-label="Pipeline"></nav>
+      <section class="list" id="list" aria-label="Roles" tabindex="0"></section>
+      <aside class="detail" id="detail" aria-label="Role detail"></aside>
+    </main>
+  </div>
+
+  <div class="sheet-backdrop hidden" id="backdrop"></div>
+  <aside class="drawer hidden" id="scope" role="dialog" aria-label="Scope"></aside>
+  <div class="modal hidden" id="help" role="dialog" aria-label="Keyboard shortcuts"></div>
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+
+  <script src="/website/v2/v2.js" defer></script>
+</body>
+</html>

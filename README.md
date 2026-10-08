@@ -16,11 +16,16 @@ python3 website/export_data.py                                     # builds webs
 python3 website/server.py                                          # http://127.0.0.1:8766/home
 ```
 
-Pages: **Home**, **Apply now** (choose companies, today's picks) and **Tracker** (Jobs available, board, list). Full details, the sheet status and notes mapping, and the file map are in [`website/README.md`](website/README.md).
+Pages: **Home**, **Apply now** (choose companies, today's picks) and **Tracker** (Jobs available, board, list), plus **`/v2`**, an alternative keyboard-driven triage workspace on the same data. Full details, the sheet status and notes mapping, and the file map are in [`website/README.md`](website/README.md).
 
 Personal data stays local and is git-ignored: your tracker state, the generated snapshot, workbooks, contact lists and `config/profile.json` (copy `config/profile.example.json` to start).
 
 ---
+
+## For contributors and AI agents
+
+- [`CLAUDE.md`](CLAUDE.md): project memory (architecture, data contracts, rules, gotchas) and a chronological change log.
+- [`HANDOFF-ORBIT.md`](HANDOFF-ORBIT.md): current state, how to resume, open items and decisions.
 
 ## Architecture
 
