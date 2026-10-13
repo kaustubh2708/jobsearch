@@ -2,15 +2,15 @@
 
 All site code and its generated snapshot live in this `website/` directory. The app is local-first. The story: **choose companies (or stay open to any above a pay floor) → a detective agent hunts career portals, LinkedIn posts and job platforms → an analyst filters by skills and fit score → a verifier double-checks every link → your tracker shows Jobs available with referral options beside them.** Navigation is three pages: **Home**, **Apply now** and **Tracker**. The Vaanya/Vrinda company directories remain reachable from Apply now ("Browse all by company"). `/today` and `/hunt` still open the matching Apply now tab. Views:
 
-- `/home`: the landing page. Hero, a scroll-driven factory scene, the agent crew, the promo video and a journey explainer.
+- `/home`: the landing page. Hero, a scroll-driven factory scene, the agent crew, the promo video and a walkthrough of how a search runs.
 - `/apply` (**Apply now**): two tabs, *Choose companies* and *Today's picks* (described below). `/today` and `/hunt` still open the matching tab.
 - `/person` (**Tracker**): Jobs available, Board and List (described below).
 - `/v2`: an alternative design, a dense keyboard-first triage workspace (pipeline rail, fit-ranked inbox, detail pane with verification, your sheet notes and reach-out drafts). It reads the same `/api/data` and `/api/state` and shares the tracker state and scope with v1. Shortcuts: `j`/`k` move, `o` open listing, `w` watch, `a` mark applied (undo), `s` skip, `1`-`7` stages, `/` filter, `c` scope, `?` help.
 - `/vaanya`, `/vrinda`: the company directories (roles grouped by employer). They are linked from Apply now rather than from the main navigation.
 
-The candidate views default to current job openings, order company groups by opening count, and render 12 companies at a time. Use the company picker or search for a direct jump; **Show next 12** reveals more only when wanted. Switch to **All records** to include drives and older source rows. Home-page reveal animations use an IntersectionObserver with a reduced-motion / unsupported-browser fallback, so content does not remain hidden if the animation API is unavailable.
+The candidate views default to current job openings, order company groups by opening count, and render 12 companies at a time. Use the company picker or search for a direct jump. **Show next 12** reveals more only when wanted. Switch to **All records** to include drives and older source rows. Home-page reveal animations use an IntersectionObserver with a reduced-motion / unsupported-browser fallback, so content does not remain hidden if the animation API is unavailable.
 
-LinkedIn listing URLs are separated into an **Apply via LinkedIn** section on each candidate view. The section detects URLs in either the record URL field or its notes, and keeps these roles out of the regular company directory to avoid duplicate listings. Opening a LinkedIn link marks that role **Applied** and records today’s date in local tracker state; this records that the listing was opened, not proof that an application was submitted. The current source snapshot has 10 LinkedIn listing URLs for Vaanya and none for Vrinda.
+LinkedIn listing URLs are separated into an **Apply via LinkedIn** section on each candidate view. The section detects URLs in either the record URL field or its notes, and keeps these roles out of the regular company directory to avoid duplicate listings. Opening a LinkedIn link marks that role **Applied** and records today’s date in local tracker state. This records that the listing was opened, not proof that an application was submitted. The current source snapshot has 10 LinkedIn listing URLs for Vaanya and none for Vrinda.
 
 ## Run
 
@@ -25,7 +25,7 @@ Then open <http://127.0.0.1:8766/home>. Keep the terminal process running. The s
 
 ## Workbook refresh and new opportunities
 
-The exporter fetches the supplied Google Sheets as XLSX exports and parses them in memory. It never writes back to either Sheet or saves a downloaded workbook. Refresh reads the current tabs and updates `website/data/dashboard_data.json`; new source rows are compared with the first-run baseline and marked **NEW** for 30 days. If Google's export is unavailable, the exporter falls back to `data/Job Search.xlsx` or `data/companies.xlsx`, and the page labels that snapshot as a local-workbook fallback. You can also add a one-off opportunity from a short form; it is saved to the local tracker, not back to a spreadsheet.
+The exporter fetches the supplied Google Sheets as XLSX exports and parses them in memory. It never writes back to either Sheet or saves a downloaded workbook. Refresh reads the current tabs and updates `website/data/dashboard_data.json`. New source rows are compared with the first-run baseline and marked **NEW** for 30 days. If Google's export is unavailable, the exporter falls back to `data/Job Search.xlsx` or `data/companies.xlsx`, and the page labels that snapshot as a local-workbook fallback. You can also add a one-off opportunity from a short form — it is saved to the local tracker, not back to a spreadsheet.
 
 The two supplied Sheets currently allow XLSX export through their share links, so this setup does not require API keys or Google OAuth. If their sharing permissions change, the site will use the local workbook fallback and show that status. The site does not scrape LinkedIn profiles or connection data and never sends applications, messages or referral requests.
 
@@ -33,13 +33,13 @@ The two supplied Sheets currently allow XLSX export through their share links, s
 
 Application status, application date, follow-up notes, next steps, custom companies and manually added opportunities are stored in `website/data/dashboard_state.json`. They are kept separate from workbook source notes and do not modify the source workbooks. Use **Export** to download a JSON copy of the selected candidate's data and tracker state.
 
-Company favicons and web fonts load from public providers when online. GSAP and ScrollTrigger load from jsDelivr for the home-page animation; everything else works without them, and reduced-motion preferences switch the motion off.
+Company favicons and web fonts load from public providers when online. GSAP and ScrollTrigger load from jsDelivr for the home-page animation. Everything else works without them, and reduced-motion preferences switch the motion off.
 
 
-## The hunt, Today and Jobs available
+## The hunt → Today's picks → Jobs available
 
-- `/apply` (**Apply now**): two tabs. **1 Choose companies**: pick company blocks (5 per row, with HR/TA, alumni and engineer contact counts from your sheets) or choose **Open to any company** with a minimum pay. The detective scene then runs the pipeline on your real data. Listings with no published pay are kept unless you untick that option; Orbit never infers salary.
-  **2 Today's picks**: five picks a day with an explainable local fit score ("How is this scored?"), Apply (opens the listing, then asks you to confirm) / Watch / Skip with a reason, weekly goal ring, rhythm, 4-day follow-up reminders and a shift report.
+- `/apply` (**Apply now**): two tabs. **Choose companies**: pick company blocks (5 per row, with HR/TA, alumni and engineer contact counts from your sheets) or choose **Open to any company** with a minimum pay. The detective scene then runs the pipeline on your real data. Listings with no published pay are kept unless you untick that option. Orbit never infers salary.
+  **Today's picks**: five picks a day with an explainable local fit score ("How is this scored?"), Apply (opens the listing, then asks you to confirm) / Watch / Skip with a reason, weekly goal ring, rhythm, 4-day follow-up reminders and a shift report.
 - `/person` (Tracker): **Jobs available** (companies as dropdowns with job details, link, verification badge, stage and notes; reach-out panel beside them), plus the Board (drag cards between stages) and the original List.
 - ⌘K / `/`: command palette. The moon button toggles dark mode.
 
@@ -65,7 +65,7 @@ The exporter (`scripts/export_dashboard_data.py`, run by `export_data.py`) reads
 | `Priority 1`, `First Priority`, `Active Hiring` | a tag |
 | anything else | kept as your note |
 
-Company tracker rows that name a job link are matched to the same job by URL; if the job isn't in Job Links yet, a tracked entry is created. Sheets are never written to. Edits made in Orbit take precedence on the site and are marked **Edited here · sheet: …** when they differ from the sheet.
+Company tracker rows that name a job link are matched to the same job by URL. If the job isn't in Job Links yet, a tracked entry is created. Sheets are never written to. Edits made in Orbit take precedence on the site and are marked **Edited here · sheet: …** when they differ from the sheet.
 
 Job identity now includes the query params that name a job (`jk`, `gh_jid`, `jobId`…), so jobs that share a path (Indeed, Greenhouse boards) no longer share one tracker record.
 
@@ -78,7 +78,7 @@ Job identity now includes the query params that name a job (`jk`, `gh_jid`, `job
 |---|---|
 | `index.html` | One page shell for every route. |
 | `app.js` | Data loading, routing, the company directories, tracker list, local state and `window.OrbitApp`. |
-| `home.js` / `home.css` | Landing page: robots, factory scene, crew, tour video, journey. Exposes `window.OrbitRobots`. |
+| `home.js` / `home.css` | Landing page: robots, factory scene, crew, tour video, how-it-works walkthrough. Exposes `window.OrbitRobots`. |
 | `product.js` / `product.css` | Today's picks, fit score, board, goals and rhythm, tuning, command palette, dark mode. Exposes `window.OrbitProduct`. |
 | `hunt.js` | Choose companies, the hunt pipeline, link verification and the Jobs available tracker view. |
 | `styles.css`, `refresh.css` | Shared base styles (pruned of unused rules) and the light design layer for header, forms and directories. |
