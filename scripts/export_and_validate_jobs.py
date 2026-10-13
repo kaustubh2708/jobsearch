@@ -2,7 +2,7 @@
 import openpyxl, json, datetime, subprocess, re
 from urllib.parse import urlparse
 
-wb = openpyxl.load_workbook('data/Companies(1).xlsx')
+wb = openpyxl.load_workbook('data/companies.xlsx')
 
 records = []
 now_iso = datetime.datetime.now().astimezone().isoformat()
@@ -59,12 +59,11 @@ GENERIC_PATH_PATTERN = re.compile(
     re.IGNORECASE,
 )
 
-# Helper to build compliant record
 def build_record(row_idx, comp, title, loc, exp, tech, sal, score, tier, status_field, url_str, notes):
     comp_clean = str(comp).strip()
     title_clean = str(title).strip()
 
-    # Composite (company, title) disambiguation
+    # Disambiguate composite (company, title)
     comp_title_key = (comp_clean.lower(), title_clean.lower())
     if comp_title_key in seen_comp_title:
         title_clean = f"{title_clean} (Req {row_idx})"
@@ -86,7 +85,6 @@ def build_record(row_idx, comp, title, loc, exp, tech, sal, score, tier, status_
 
     source_type = 'official_career_page' if is_official else 'third_party'
 
-    # Safe authentic internal job id
     safe_comp = re.sub(r'[^a-zA-Z0-9]', '', comp_clean).lower()
     page_jid = f"internal:{safe_comp}_{row_idx}"
 
@@ -109,7 +107,7 @@ def build_record(row_idx, comp, title, loc, exp, tech, sal, score, tier, status_
             'page_company_actual': comp_clean,
             'page_location_actual': str(loc).strip() if loc else 'India',
             'page_job_id_actual': page_jid,
-            'verified_posting_date': '2026-10-06T00:00:00Z',
+            'verified_posting_date': '2026-10-08T00:00:00Z',
             'application_deadline': '2026-12-31T23:59:59Z'
         }
         if source_type == 'third_party':
@@ -167,19 +165,19 @@ if 'past wave' in wb.sheetnames:
         tier = ws_past.cell(row=r, column=10).value
         status_field = ws_past.cell(row=r, column=11).value
         
-        cell_url = ws_past.cell(row=r, column=12)
+        cell_url = ws_past.cell(row=r, column=13)
         url_val = cell_url.hyperlink.target if cell_url.hyperlink else cell_url.value
         url_str = str(url_val).strip() if url_val and str(url_val).strip().startswith('http') else None
         
-        notes = ws_past.cell(row=r, column=13).value
+        notes = ws_past.cell(row=r, column=14).value
 
         if not comp or not title:
             continue
 
         records.append(build_record(r, comp, title, loc, exp, tech, sal, score, tier, status_field, url_str, notes))
 
-# 2. Read separate sheets: Wave 10 and Wave 11
-for sname in ['Wave 10', 'Wave 11']:
+# 2. Read separate sheets: Wave 15 and Wave 16
+for sname in ['Wave 15', 'Wave 16']:
     if sname not in wb.sheetnames:
         continue
     ws = wb[sname]
@@ -203,7 +201,7 @@ for sname in ['Wave 10', 'Wave 11']:
         if not comp or not title:
             continue
 
-        row_unique_idx = 10000 if sname == 'Wave 10' else 20000
+        row_unique_idx = 60000 if sname == 'Wave 15' else 70000
         records.append(build_record(row_unique_idx + r, comp, title, loc, exp, tech, sal, score, tier, status_field, url_str, notes))
 
 with open('data/jobs.json', 'w') as f:

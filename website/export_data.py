@@ -2,10 +2,10 @@
 """Build the website snapshot from the project's latest tracker workbooks."""
 from __future__ import annotations
 
-import importlib.util
 import io
 import json
 import os
+import sys
 from datetime import datetime
 from pathlib import Path
 from urllib.request import Request, urlopen
@@ -36,14 +36,9 @@ SHEETS = {
 }
 
 
-def load_project_parser():
-    parser_path = ROOT / "scripts" / "export_dashboard_data.py"
-    spec = importlib.util.spec_from_file_location("project_dashboard_exporter", parser_path)
-    if spec is None or spec.loader is None:
-        raise RuntimeError(f"Could not load project workbook parser: {parser_path}")
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
+if str(ROOT / "scripts") not in sys.path:
+    sys.path.insert(0, str(ROOT / "scripts"))
+import export_dashboard_data
 
 
 def fetch_live_workbook(sheet_id: str) -> io.BytesIO:
@@ -62,7 +57,7 @@ def fetch_live_workbook(sheet_id: str) -> io.BytesIO:
 
 
 def main() -> None:
-    parser = load_project_parser()
+    parser = export_dashboard_data
     profiles = []
     sources = {}
     warnings = []

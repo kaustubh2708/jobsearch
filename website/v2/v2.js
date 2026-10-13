@@ -23,11 +23,7 @@
   const save = () => { clearTimeout(timer); timer = setTimeout(() => fetch("/api/state", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(S.st) }).catch(() => toast("Could not save locally")), 250); };
 
   /* ---------- identity, jobs, contacts ---------- */
-  const IDP = ["jk", "gh_jid", "jobid", "job_id", "requisitionid", "reqid", "folderid", "id"];
-  const ident = j => {
-    if (j.url) { try { const u = new URL(j.url); const q = IDP.map(k => [k, u.searchParams.get(k)]).filter(x => x[1]).map(x => x.join("=")).join("&"); return `url:${u.hostname.toLowerCase()}${u.pathname.replace(/\/$/, "")}${q ? "?" + q : ""}`; } catch (_) {} }
-    return `role:${norm(j.company)}|${norm(j.title)}|${norm(j.location)}`;
-  };
+  const ident = j => window.jobIdentity(j);
   const keyOf = (c, j) => `${c}:${ident(j)}`;
   const urlOf = j => { const m = String(j.url || j.notes || "").match(/https?:\/\/[^\s<>"']+/i); return m ? m[0].replace(/[),.;]+$/, "") : ""; };
   const profile = c => S.data.profiles.find(p => p.candidate === c);

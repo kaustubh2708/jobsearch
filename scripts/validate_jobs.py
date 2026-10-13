@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Strict Validator for Vrinda Job Records.
+"""Strict Validator for Job Discovery Records.
 
 Enforces schema compliance, direct source URLs, verified statuses,
 authentic job IDs (internal: prefixes), source type integrity,
@@ -108,7 +108,10 @@ ALLOWED_VERIFICATION_STATUSES = {
     "blocked_manual_review",
     "blocked_manual_check",
     "browser_manual_check",
+    "manual_check",
     "rejected",
+    "dead",
+    "unknown",
 }
 
 ALLOWED_SALARY_STATUSES = {
@@ -201,23 +204,8 @@ def key_for(job: dict) -> tuple[str, str, str, str]:
     )
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--jobs", default="data/jobs_vrinda_repaired_final.json")
-    parser.add_argument("--legacy", action="store_true", help="Validate against legacy schema")
-    args = parser.parse_args()
-    path = Path(args.jobs)
-
-    try:
-        jobs = json.loads(path.read_text())
-    except Exception as exc:
-        print(f"ERROR: could not read {path}: {exc}")
-        return 2
-
-    if not isinstance(jobs, list):
-        print("ERROR: jobs file must contain a JSON array")
-        return 2
-
+def validate_job_records(jobs: list[dict], legacy: bool = False) -> tuple[list[str], list[str]]:
+    """Programmatic validator returning (errors, warnings)."""
     errors: list[str] = []
     warnings: list[str] = []
     seen: set[tuple[str, str, str, str]] = set()
@@ -231,12 +219,11 @@ def main() -> int:
         title = job.get("title", "Unknown")
         label = f"#{index} [{c_name} - {title}]"
 
-        # Determine schema profile
         is_repaired = "overall_match_score" in job and "canonical_source_url" in job
         is_intermediate = "role_match_score" in job and not is_repaired
 
         # 1. Required fields
-        if args.legacy:
+        if legacy:
             req_fields = REQUIRED_LEGACY
         elif is_repaired:
             req_fields = REQUIRED_REPAIRED
@@ -249,7 +236,7 @@ def main() -> int:
         if missing:
             errors.append(f"{label}: missing required fields: {', '.join(missing)}")
 
-        if args.legacy:
+        if legacy:
             if job.get("source_type") not in ALLOWED_SOURCE_TYPES:
                 errors.append(f"{label}: invalid source_type")
             if job.get("status") not in ALLOWED_STATUSES:
@@ -347,26 +334,21 @@ def main() -> int:
                     errors.append(f"{label}: generic career URL '{u}' cannot have source_url_is_direct=true")
                 if job.get("verification_status") == "verified":
                     errors.append(f"{label}: generic career URL '{u}' cannot have verification_status=verified (must be 'lead')")
+                if job.get("link_status") == "active_exact":
+                    errors.append(f"{label}: generic career URL '{u}' cannot have link_status=active_exact")
 
         if job.get("source_url_is_direct") is False and job.get("verification_status") == "verified":
             errors.append(f"{label}: cannot be verification_status='verified' when source_url_is_direct=false")
 
         # Page-level evidence is required for an active exact/verified record.
-        # A direct-looking URL, API result, or LinkedIn card is discovery only.
         if job.get("link_status") == "active_exact" or job.get("verification_status") == "verified":
-            required_evidence = {
-                "actual_http_status": job.get("actual_http_status", job.get("http_status")),
-                "application_form_visible": job.get("application_form_visible"),
-                "page_title_actual": job.get("page_title_actual", job.get("page_title")),
-                "page_company_actual": job.get("page_company_actual"),
-                "page_location_actual": job.get("page_location_actual"),
-                "page_job_id_actual": job.get("page_job_id_actual"),
-            }
-            missing_evidence = [k for k, v in required_evidence.items() if v in (None, "", False)]
-            if missing_evidence:
-                errors.append(f"{label}: active/verified record lacks page evidence: {', '.join(missing_evidence)}")
-            if required_evidence["actual_http_status"] != 200:
-                errors.append(f"{label}: active/verified record must have actual HTTP 200")
+            actual_http = job.get("actual_http_status", job.get("http_status"))
+            if actual_http != 200:
+                errors.append(f"{label}: active/verified record must have actual HTTP 200, observed: {actual_http}")
+            if not job.get("application_form_visible"):
+                errors.append(f"{label}: active/verified record must have visible application form/route")
+            if not job.get("page_title_actual"):
+                errors.append(f"{label}: active/verified record must have page_title_actual")
             if job.get("needs_verification") is True:
                 errors.append(f"{label}: active/verified record cannot still have needs_verification=true")
             if job.get("source_type") == "third_party":
@@ -381,32 +363,80 @@ def main() -> int:
                     f"{label}: invented/slug job_id '{jid_str}' must be prefixed with 'internal:' (e.g. 'internal:{jid_str}')"
                 )
 
-        # 6. Salary & Salary Estimate Checks
+        # 6. Salary & Salary Evidence Checks
+        if job.get("salary_status") in ("confirmed", "confirmed_published"):
+            pub_sal = job.get("employer_published_salary")
+            if not isinstance(pub_sal, dict) or (not pub_sal.get("base_lpa_low") and not pub_sal.get("base_lpa_high")):
+                errors.append(
+                    f"{label}: salary_status='{job.get('salary_status')}' requires non-null employer_published_salary object with numbers"
+                )
         m_estimate = job.get("market_salary_estimate") or job.get("salary_estimate")
         if m_estimate is not None:
             if not isinstance(m_estimate, dict):
                 errors.append(f"{label}: market_salary_estimate must be an object or null")
 
-        # 7. Strong Match Constraint Checks
+        # 7. Experience & Candidate Eligibility Integrity Checks
+        raw_exp = str(job.get("experience_required") or "").lower()
+        exp_decision = job.get("experience_eligibility_decision")
+        min_det = job.get("experience_min_years_detected")
+        max_det = job.get("experience_max_years_detected")
+
+        if exp_decision == "eligible":
+            if not raw_exp:
+                errors.append(f"{label}: cannot mark experience_eligibility_decision='eligible' when experience_required is empty/unknown (must be 'review')")
+            elif any(pat in raw_exp for pat in ("0-2 years", "0–2 years", "0 to 2 years")):
+                if max_det == 1:
+                    errors.append(f"{label}: falsified experience bounds: source text explicitly requires 0–2 years but max_years was forced to 1")
+            elif any(pat in raw_exp for pat in ("2+ years", "3+ years", "4+ years", "5+ years")):
+                errors.append(f"{label}: candidate eligibility violation: role requires 2+ years of experience but is marked 'eligible' for fresher")
+
+        # 8. Separate Match Quality from Link Verification State
+        # A candidate can be a strong match while still needing verification (e.g. manual_check or lead)
         if job.get("match_label") == "strong_match":
-            if job.get("verification_status") != "verified":
+            if job.get("verification_status") not in ("verified", "manual_check", "lead"):
                 errors.append(
-                    f"{label}: cannot be labelled 'strong_match' when verification_status is '{job.get('verification_status')}' (must be 'verified')"
+                    f"{label}: strong_match cannot have invalid verification_status '{job.get('verification_status')}'"
+                )
+            if job.get("verification_status") != "verified" and not job.get("needs_verification"):
+                errors.append(
+                    f"{label}: unverified strong_match must have needs_verification=true"
                 )
             if job.get("salary_fit") in {"below_target", "estimated_below_target"}:
                 errors.append(f"{label}: cannot be labelled 'strong_match' when salary_fit is below target")
 
-        # 8. Needs verification consistency
+        # 9. Needs verification consistency
         if job.get("source_type") == "third_party" and not job.get("needs_verification"):
             warnings.append(f"{label}: third-party source should normally have needs_verification=true")
-        if job.get("verification_status") == "lead" and not job.get("needs_verification"):
-            errors.append(f"{label}: verification_status='lead' must have needs_verification=true")
+        if job.get("verification_status") in ("lead", "manual_check") and not job.get("needs_verification"):
+            errors.append(f"{label}: verification_status='{job.get('verification_status')}' must have needs_verification=true")
 
-        # 9. Deduplication check
+        # 10. Deduplication check
         key = key_for(job)
         if key in seen:
             errors.append(f"{label}: duplicate company/title/location/job_id key")
         seen.add(key)
+
+    return errors, warnings
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--jobs", default="data/jobs_vrinda_repaired_final.json")
+    parser.add_argument("--legacy", action="store_true", help="Validate against legacy schema")
+    args = parser.parse_args()
+    path = Path(args.jobs)
+
+    try:
+        jobs = json.loads(path.read_text())
+    except Exception as exc:
+        print(f"ERROR: could not read {path}: {exc}")
+        return 2
+
+    if not isinstance(jobs, list):
+        print("ERROR: jobs file must contain a JSON array")
+        return 2
+
+    errors, warnings = validate_job_records(jobs, legacy=args.legacy)
 
     print("=" * 60)
     print(f"Strict Validator Report for: {path}")

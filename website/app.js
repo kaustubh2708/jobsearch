@@ -13,10 +13,7 @@
   const normalizedStatus = value => statuses.includes(value) ? value : "Not started";
   function routeFromPath(){const path=location.pathname.replace(/\/+$/g,"");if(["/apply","/today","/hunt"].includes(path)){state.applyTab=path==="/hunt"?"choose":path==="/today"?"picks":null;return "apply";}return ["/vaanya","/vrinda","/person","/home"].includes(path)?path.slice(1):"home";}
   function goRoute(route){location.href=`/${route}`;}
-  function jobIdentity(job){
-    if(job.url){try{const u=new URL(job.url);const q=["jk","gh_jid","jobid","job_id","requisitionid","reqid","folderid","id"].map(k=>[k,u.searchParams.get(k)]).filter(x=>x[1]).map(x=>x.join("=")).join("&");return `url:${u.hostname.toLowerCase()}${u.pathname.replace(/\/$/,"")}${q?"?"+q:""}`;}catch{}}
-    return `role:${norm(job.company)}|${norm(job.title)}|${norm(job.location)}`;
-  }
+  function jobIdentity(job){return window.jobIdentity(job);}
   function sourceJobs(candidate){return profile(candidate)?.jobs||[];}
   function customJobs(candidate){return Object.values(state.saved.customJobs||{}).filter(job=>job.candidate===candidate);}
   function allJobs(candidate){return [...sourceJobs(candidate),...customJobs(candidate)];}

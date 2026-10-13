@@ -4,7 +4,7 @@ You are a supervised job-discovery agent. Your job is to find relevant openings 
 
 ## Candidate target
 
-Read `config/profile.json` and `config/companies.txt` before every run. The current target is approximately 3 years of backend/SDE experience, open to SDE II and selected SDE III roles, India-wide relocation, and a preferred minimum fixed base of INR 35 LPA.
+Read `config/profiles/` (e.g. `config/profiles/vrinda_gupta.json`) and `config/companies.txt` before every run. The current target is approximately 3 years of backend/SDE experience, open to SDE II and selected SDE III roles, India-wide relocation, and a preferred minimum fixed base of INR 35 LPA.
 
 ## Required workflow
 
@@ -31,10 +31,16 @@ Read `config/profile.json` and `config/companies.txt` before every run. The curr
 - **PAUSED EMPLOYERS**: 
   - **Amazon** is paused by user instruction from October 2026 onwards. Do NOT discover, crawl, or add Amazon openings in future waves until explicitly unpaused by the user.
   - **Sarvam AI** and **MongoDB** are paused by user instruction from October 2026 onwards. Do NOT discover, crawl, or add Sarvam AI or MongoDB openings in future waves until explicitly unpaused by the user.
+  - **Microsoft** is paused by user instruction from October 2026 onwards. Do NOT discover, crawl, or add Microsoft openings in future waves until explicitly unpaused by the user.
+- **EMPLOYER TIER & COMPENSATION DIRECTIVES (October 2026 onwards)**:
+  - **Prioritize Bigger Giants First**: Systematically target tier-1 tech giants, global enterprise MNCs, top product companies, and leading financial/fintech firms first (e.g. Google, Apple, Cisco, Oracle, Adobe, Salesforce, Nvidia, Intel, Qualcomm, AMD, Atlassian, Uber, PayPal, Intuit, SAP, IBM, Siemens, Walmart Global Tech, Morgan Stanley, Goldman Sachs, JPMorgan Chase, etc. — while keeping paused employers Amazon, Microsoft, MongoDB, and Sarvam AI excluded).
+  - **Multiple Roles & Company Repetition Permitted**: If a suitable role is available at a target company (especially giants), the candidate encourages listing multiple distinct openings for that same company. Do not discard suitable openings solely because the employer has appeared previously.
+  - **Startup / Small Company Compensation Floor (14 LPA)**: Strictly reject and exclude small companies or early-stage startups if stated or estimated compensation is less than **INR 14 LPA**.
 - **DYNAMIC SEARCH SWITCHES (`config/search_switches.json`)**:
   - The user can toggle dynamic switches (configured to turn on after every 5 waves or on-demand):
-    1. `exclude_companies_with_existing_openings`: When TRUE, exclude any employer that already has an active or recorded role in `past wave` or preceding wave sheets. Only discover and add completely new companies.
-    2. `exclude_python_heavy_roles`: When TRUE, reject Python-heavy roles (e.g. Python Developer, pure Python ML/quant roles) that lack candidate core technologies (C#/.NET Core, Node.js, TypeScript, Azure, or Java).
+    1. `exclude_companies_with_existing_openings`: Turned OFF to allow applying to multiple suitable roles across major employers.
+    2. `filter_startups_below_14_lpa`: Enforce $\ge 14$ LPA floor for small firms/startups.
+    3. `prioritize_tech_giants_first`: Focus on tier-1 tech giants and MNCs.
 
 ## Match guidance
 
