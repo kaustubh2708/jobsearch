@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="utf-8"></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; overflow: hidden; pointer-events: none; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+        .caption {
+          position: absolute; left: 96px; bottom: 76px; width: 980px; box-sizing: border-box;
+          padding: 30px 38px 32px; border-radius: 20px; color: #fffdf8;
+          background: rgba(32, 38, 36, 0.94); box-shadow: 0 14px 45px rgba(20, 28, 24, 0.20);
+          opacity: 0; transform-origin: left bottom;
+        }
+        .stage { margin: 0 0 12px; color: #b8d0c2; font-size: 22px; font-weight: 750; letter-spacing: 0.13em; text-transform: uppercase; }
+        .caption-high { top: 76px; bottom: auto; width: 900px; }
+        .title { margin: 0 0 10px; font-size: 48px; line-height: 1.08; font-weight: 760; letter-spacing: -0.025em; }
+        .body { margin: 0; color: #f0eee7; font-size: 28px; line-height: 1.3; font-weight: 450; }
+      </style>
+      <div data-hf-id="hf-im30" id="root" data-composition-id="factory-captions" data-width="1920" data-height="1080" data-duration="36">
+        <section data-hf-id="hf-7ac1" id="caption-01" class="caption clip" data-start="0" data-duration="4" data-track-index="1"><p data-hf-id="hf-fltl" class="stage">01 / Candidate setup</p><h1 data-hf-id="hf-0fna" class="title">Start with the person.</h1><p data-hf-id="hf-x4tm" class="body">Resume, location, role, salary, and preferences shape a private profile.</p></section>
+        <section data-hf-id="hf-xo6m" id="caption-02" class="caption clip" data-start="4" data-duration="4" data-track-index="1"><p data-hf-id="hf-ncj3" class="stage">02 / Opportunity discovery</p><h1 data-hf-id="hf-53ub" class="title">Search across sources.</h1><p data-hf-id="hf-c85c" class="body">Company career pages, job boards, and permitted public job posts.</p></section>
+        <section data-hf-id="hf-xih7" id="caption-03" class="caption clip" data-start="8" data-duration="4" data-track-index="1"><p data-hf-id="hf-1ajc" class="stage">03 / Clean records</p><h1 data-hf-id="hf-41mx" class="title">Make listings comparable.</h1><p data-hf-id="hf-g87p" class="body">Normalize role details, reconcile IDs, and remove duplicates.</p></section>
+        <section data-hf-id="hf-4n54" id="caption-04" class="caption clip" data-start="12" data-duration="5" data-track-index="1"><p data-hf-id="hf-dsnl" class="stage">04 / Candidate-specific fit</p><h1 data-hf-id="hf-6hao" class="title">Match each profile independently.</h1><p data-hf-id="hf-4l3d" class="body">Skills, experience, location, and constraints decide the fit.</p></section>
+        <section data-hf-id="hf-eep9" id="caption-05" class="caption caption-high clip" data-start="17" data-duration="5" data-track-index="1"><p data-hf-id="hf-ibx5" class="stage">05 / Evidence verification</p><h1 data-hf-id="hf-jw2b" class="title">Verify before calling it open.</h1><p data-hf-id="hf-78ms" class="body">Confirm the exact role; send blocked or closed links to the right status.</p></section>
+        <section data-hf-id="hf-q2ii" id="caption-06" class="caption clip" data-start="22" data-duration="4" data-track-index="1"><p data-hf-id="hf-stbx" class="stage">06 / Fit and pay evidence</p><h1 data-hf-id="hf-w8ck" class="title">Keep facts separate from estimates.</h1><p data-hf-id="hf-7uxh" class="body">Show role alignment and label salary as published, estimated, or unknown.</p></section>
+        <section data-hf-id="hf-4gc4" id="caption-07" class="caption clip" data-start="26" data-duration="5" data-track-index="1"><p data-hf-id="hf-thkj" class="stage">07 / Human-led tracking</p><h1 data-hf-id="hf-7hvm" class="title">Track progress. You take action.</h1><p data-hf-id="hf-e4kr" class="body">Applications, follow-ups, and referral paths stay under your control.</p></section>
+        <section data-hf-id="hf-xiev" id="caption-08" class="caption clip" data-start="31" data-duration="5" data-track-index="1"><p data-hf-id="hf-18g1" class="stage">08 / Planned — human checkpoint</p><h1 data-hf-id="hf-wlhw" class="title">Scale carefully, keep approval human.</h1><p data-hf-id="hf-tg5m" class="body">Freshness checks are planned; no automatic applications or messages.</p></section>
+        <script>
+          const tl = gsap.timeline({ paused: true });
+          const beats = [
+            { id: "caption-01", start: 0, duration: 4 }, { id: "caption-02", start: 4, duration: 4 },
+            { id: "caption-03", start: 8, duration: 4 }, { id: "caption-04", start: 12, duration: 5 },
+            { id: "caption-05", start: 17, duration: 5 }, { id: "caption-06", start: 22, duration: 4 },
+            { id: "caption-07", start: 26, duration: 5 }, { id: "caption-08", start: 31, duration: 5 }
+          ];
+          for (const beat of beats) {
+            const target = `#${beat.id}`;
+            tl.fromTo(target, { x: -24, opacity: 0 }, { x: 0, opacity: 1, duration: 0.42, ease: "power3.out" }, beat.start + 0.12);
+            tl.to(target, { opacity: 0, duration: 0.22, ease: "power1.in" }, beat.start + beat.duration - 0.24);
+          }
+          window.__timelines["factory-captions"] = tl;
+        </script>
+      </div>
+    </template>
+  </body>
+</html>
